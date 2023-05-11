@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_home"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.tutorial.Fragment.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_navigation_service_music"
+            app:destination="@id/navigation_service_music" />
+        <action
+            android:id="@+id/action_homeFragment_to_navigation_connect_api"
+            app:destination="@id/navigation_connect_api" />
+    </fragment>
+    <include app:graph="@navigation/navigation_service_music" />
+    <include app:graph="@navigation/navigation_connect_api" />
+</navigation>
