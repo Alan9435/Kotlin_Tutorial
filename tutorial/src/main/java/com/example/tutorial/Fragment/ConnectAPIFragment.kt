@@ -22,12 +22,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ConnectAPIFragment : BaseFragment<FragmentConnectApiBinding>() {
 
+    //需要封裝
     object RetrofitHelper {
         val baseUrl = "https://quotable.io/"
 
         fun getInstance(): Retrofit {
             return Retrofit.Builder().baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create()) //使用Gson轉換json物件為java物件ㄌ
+                .addConverterFactory(GsonConverterFactory.create()) //使用Gson轉換json物件為java物件
                 .build()
         }
     }
