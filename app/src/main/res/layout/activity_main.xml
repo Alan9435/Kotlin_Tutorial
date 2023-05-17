@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <fragment
         android:id="@+id/mainFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -17,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/navigation_rsa" />
+        app:navGraph="@navigation/navigation_epoxy" />
         <!--  透過navGraph 調整需要進入的頁面  -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

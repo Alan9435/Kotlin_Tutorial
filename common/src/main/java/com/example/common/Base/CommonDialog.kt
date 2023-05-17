@@ -14,7 +14,7 @@ class CommonDialog(
     private var onCancel: (() -> Unit)? = null
 
     override fun onViewInit() {
-        initView(title,content,onCancel)    //初始化內容 showDialog()時綁定數據
+        initView(title, content, onCancel)    //初始化內容 showDialog()時綁定數據
         dialog?.setCanceledOnTouchOutside(false) //禁止點擊背景取消dialog
     }
 
@@ -22,24 +22,22 @@ class CommonDialog(
         title: String? = null,
         content: String? = null,
         onCancel: (() -> Unit)? = null
-    ){
+    ) {
         this.title = title
         this.content = content
         this.onCancel = onCancel
         this.showDialog()
     }
 
-    private fun initView(title: String?, content: String?, onCancel: (() -> Unit)?){
-       binding.tvTitle.text = title
-       binding.tvContent.text = content
+    private fun initView(title: String?, content: String?, onCancel: (() -> Unit)?) {
+        binding.tvTitle.text = title
+        binding.tvContent.text = content
 
-       onCancel?.let {
-           binding.btnClose.apply {
-               setOnClickListener {
-                   onCancel.invoke()
-                   this@CommonDialog.dismiss()
-               }
-           }
-       }
+        binding.btnClose.apply {
+            setOnClickListener {
+                onCancel?.invoke()
+                this@CommonDialog.dismiss()
+            }
+        }
     }
 }
