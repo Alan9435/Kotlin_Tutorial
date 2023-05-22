@@ -5,23 +5,50 @@
 
 <!--    網路連線權限-->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+<!--    提供網路訊息的權限 EX:現在使否連線到網路的狀態...-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<!--相機-->
+    <uses-permission android:name="android.permission.CAMERA"/>
 
+    <!--    API 30(含)以前的藍芽權限-->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+<!--    如果app需要尋找藍芽設備 才需加入-->
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+<!--    如果app需要被其他藍芽設備搜尋到 才需加入-->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+<!--    app需要與以配對的藍芽通信 才需加入-->
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+<!--    如果app需要獲取藍芽裝置的位址 才需加入-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+
+<!-- hardwareAccelerated 啟用硬體加速 缺點:佔用內存
+     largeHeap="true" 表示app可以使用更多內存  -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:hardwareAccelerated="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tutorial">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service android:name=".Fragment.Service.MusicService"/>
     </application>
 

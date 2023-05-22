@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //todo Collapsing Effect、Data binding Nowinandroid
     }
-
-
 }
