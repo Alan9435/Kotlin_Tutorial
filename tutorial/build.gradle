@@ -79,6 +79,7 @@ dependencies {
 
     //Epoxy
     implementation "com.airbnb.android:epoxy:5.0.0-beta03"
+    implementation 'com.google.android.gms:play-services-nearby:18.1.0'
     kapt "com.airbnb.android:epoxy-processor:5.0.0-beta03"
 
     //cardview
@@ -87,4 +88,22 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    implementation 'androidx.media:media:1.4.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    // 完整的第三方庫 可視情況引用這個或下面各項分別引用
+    implementation 'com.google.android.exoplayer:exoplayer:2.18.7'
+//    // 核心功能 (必備)
+//    implementation 'com.google.android.exoplayer:exoplayer-core:2.18.7'
+//    // 支持 DASH 內容
+//    implementation 'com.google.android.exoplayer:exoplayer-dash:2.18.7'
+//    // 支持 HLS 內容
+//    implementation 'com.google.android.exoplayer:exoplayer-hls:2.18.7'
+//    // 支持 SmoothStreaming 內容
+//    implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:2.18.7'
+
+// ui組件
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.7'
+
 }
