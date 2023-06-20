@@ -2,7 +2,10 @@ package com.example.tutorial.Fragment
 
 import android.util.Log
 import com.example.common.Base.BaseFragment
+import com.example.common.Base.RxModel.RxSchedulers
+import com.example.common.Base.RxModel.RxSubscriber
 import com.example.tutorial.databinding.FragmentRxjavaBinding
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -28,6 +31,7 @@ class RxjavaFragment: BaseFragment<FragmentRxjavaBinding>() {
             testFilter()
             testMap()
             fetchData()
+            getInfo()
         }
     }
 
@@ -72,8 +76,39 @@ class RxjavaFragment: BaseFragment<FragmentRxjavaBinding>() {
         compositeDisposable.add(disposable)  //disposable添加至CompositeDisposable 利於取消訂閱
     }
 
+    private fun getInfo() {
+        val data: Flowable<TestData> = Flowable.just("hi my test").map { TestData(title = it)}
+        data.onBackpressureBuffer() //背壓 平衡二者之間壓力的機制，避免Subscriber被淹沒(內存溢出 系統崩潰)
+            //用於將一個 Observable 或 Flowable 與一個或多個 ObservableTransformer 或
+            // FlowableTransformer 組合在一起，以形成一個新的 Observable 或 Flowable。
+            //.subscribeOn(Schedulers.io()) //指定ob操作在IO線程執行
+            //.observeOn(AndroidSchedulers.mainThread()) //指定訂閱者的操作在主線程執行
+            .compose(RxSchedulers.applyFlowableSchedulers())
+//            .doOnSubscribe{}//訂閱開始時執行的操作
+//            .doFinally{}//資料串流結束後動作
+            //.onBackpressureBuffer //
+            //.doOnNext { KLog.i("測試") }  //每次發射資料後 執行
+            //.doOnError { KLog.i("測試錯誤") }   //錯誤時執行
+            //.doOnComplete { KLog.i("測試完成")  }  //完成時執行 不包含錯誤時
+            //getNewStoreInfo(storeId, groupId)的結果
+            .subscribeWith(object : RxSubscriber<TestData>() {
+                override fun onSuccess(t: TestData) {
+                    Log.d("******", "onSuccess: 成功動作 ${t.title}")
+                }
+
+                override fun onError(code: Int, msg: String) {
+                    Log.d("******", "onError: 失敗動作 $code $msg")
+                }
+            }).add(compositeDisposable)
+    }
+
+
     override fun onDestroy() {
         super.onDestroy()
         compositeDisposable.dispose()  //取消訂閱 避免OOM
     }
 }
+
+data class TestData(
+    val title: String = ""
+)
