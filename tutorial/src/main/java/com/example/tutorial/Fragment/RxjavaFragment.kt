@@ -76,6 +76,7 @@ class RxjavaFragment: BaseFragment<FragmentRxjavaBinding>() {
         compositeDisposable.add(disposable)  //disposable添加至CompositeDisposable 利於取消訂閱
     }
 
+    /**模擬呼叫api*/
     private fun getInfo() {
         val data: Flowable<TestData> = Flowable.just("hi my test").map { TestData(title = it)}
         data.onBackpressureBuffer() //背壓 平衡二者之間壓力的機制，避免Subscriber被淹沒(內存溢出 系統崩潰)
