@@ -23,8 +23,8 @@ commands:
   say-hello:
     steps:
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+          name: "test name"
+          command: "test command"
 
 # 使用workflows編排作業流程
 # See: https://circleci.com/docs/configuration-reference/#workflows
