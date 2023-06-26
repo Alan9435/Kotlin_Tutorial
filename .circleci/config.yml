@@ -25,8 +25,7 @@ jobs:
       - run:
           name: Check JAVA_HOME
           command: |
-            ls -la /Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home
-            echo $JAVA_HOME
+            ls -la /Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/
       - run:
           name: Download Dependencies
           command: JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home ./gradlew androidDependencies
