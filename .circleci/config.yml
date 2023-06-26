@@ -1,56 +1,30 @@
-# 使用最新2.1版本的CircleCI管道流程引擎
-# 參考: https://circleci.com/docs/configuration-reference
-version: 2.1
-
-# 定義在job中調用的作業
-# See: https://circleci.com/docs/configuration-reference/#jobs
+version: 2
 jobs:
-  test:
-    # 指定執行環境。您可以指定來自 Docker Hub 的圖像或使用我們來自 CircleCI 開發人員中心的便利圖像之一
-    # See: https://circleci.com/docs/configuration-reference/#executor-job
+  build:
+    working_directory: ~/code
     docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/configuration-reference/#steps
+      - image: circleci/android:api-25-alpha
+    environment:
+      JVM_OPTS: -Xmx3200m
     steps:
       - checkout
-      - say-hello
-      - run:
-          name: "Grant execute permission to gradlew"
-          command: "chmod +x gradlew"
-      # 通過使用 checksum 來生成 key，可以確保只有在相關文件發生變化時才重新執行相應的步驟，
-      # 從而節省時間和資源。這對於在多次執行相同的配置文件時特別有用，可以避免重複執行不必要的步驟。
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+#      - run:
+#         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this. 
+#         command: sudo chmod +x ./gradlew
       - run:
           name: Download Dependencies
-          command: JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home ./gradlew androidDependencies
-          
-
-      # - run-android-unit-test
-      # - run:
-      #     name: "Say hello"
-      #     command: "echo Hello, World!"
-
-commands:
-  say-hello:
-    steps:
+          command: ./gradlew androidDependencies
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
-          name: "test name"
-          command: "test command"
-
-  run-android-unit-test:
-    steps:
-      - run:
-          name: "Grant execute permission to gradlew"
-          command: "chmod +x gradlew"
-      - run:
-          name: "unit test"
-          command: "./gradlew testDebug"
-
-# 使用workflows編排作業流程
-# See: https://circleci.com/docs/configuration-reference/#workflows
-workflows:
-  say-hello-workflow:
-    jobs:
-      - test
+          name: Run Tests
+          command: ./gradlew lint test
+      - store_artifacts:
+          path: app/build/reports
+          destination: reports
+      - store_test_results:
+          path: app/build/test-results
