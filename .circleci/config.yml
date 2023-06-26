@@ -25,6 +25,8 @@ jobs:
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
+          environment:
+            JAVA_HOME: /usr/bin/java
       # - run-android-unit-test
       # - run:
       #     name: "Say hello"
