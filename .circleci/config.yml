@@ -23,6 +23,11 @@ jobs:
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
+          name: Check JAVA_HOME
+          command: |
+            ls -la /Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home
+            echo $JAVA_HOME
+      - run:
           name: Download Dependencies
           command: JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home ./gradlew androidDependencies
           
