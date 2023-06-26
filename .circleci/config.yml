@@ -23,10 +23,8 @@ jobs:
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
-          environment:
-            JAVA_HOME: /Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home
           name: Download Dependencies
-          command: ./gradlew androidDependencies
+          command: JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home ./gradlew androidDependencies
           
 
       # - run-android-unit-test
