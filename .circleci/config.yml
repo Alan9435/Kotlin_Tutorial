@@ -15,6 +15,9 @@ jobs:
     steps:
       - checkout
       - say-hello
+      - run:
+          name: "Grant execute permission to gradlew"
+          command: "chmod +x gradlew"
       # 通過使用 checksum 來生成 key，可以確保只有在相關文件發生變化時才重新執行相應的步驟，
       # 從而節省時間和資源。這對於在多次執行相同的配置文件時特別有用，可以避免重複執行不必要的步驟。
       - restore_cache:
