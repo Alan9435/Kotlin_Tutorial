@@ -34,7 +34,7 @@ commands:
           command: "chmod +x gradlew"
       - run:
           name: "unit test"
-          command: "./gradlew test"
+          command: "./gradlew testDebug"
 
 # 使用workflows編排作業流程
 # See: https://circleci.com/docs/configuration-reference/#workflows
