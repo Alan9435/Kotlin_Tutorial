@@ -23,9 +23,11 @@ jobs:
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
+          environment:
+            JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
           name: Download Dependencies
-          command: JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home ./gradlew androidDependencies
-
+          command: ./gradlew androidDependencies
+          
       # - run-android-unit-test
       # - run:
       #     name: "Say hello"
