@@ -15,6 +15,7 @@ jobs:
     steps:
       - checkout
       - say-hello
+      - run-android-unit-test
       # - run:
       #     name: "Say hello"
       #     command: "echo Hello, World!"
