@@ -24,10 +24,11 @@ jobs:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           environment:
-            JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
+            JAVA_HOME: /Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home
           name: Download Dependencies
           command: ./gradlew androidDependencies
           
+
       # - run-android-unit-test
       # - run:
       #     name: "Say hello"
