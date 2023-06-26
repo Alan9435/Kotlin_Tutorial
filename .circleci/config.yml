@@ -30,7 +30,10 @@ commands:
   run-android-unit-test:
     steps:
       - run:
-          name: "test name"
+          name: "Grant execute permission to gradlew"
+          command: "chmod +x gradlew"
+      - run:
+          name: "unit test"
           command: "./gradlew test"
 
 # 使用workflows編排作業流程
