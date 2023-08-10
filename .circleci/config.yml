@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build:
+ build:
     docker:
       - image: circleci/android:api-30
     steps:
