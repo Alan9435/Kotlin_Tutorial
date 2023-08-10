@@ -8,9 +8,9 @@ jobs:
       - run:
           name: Build APK
           command: ./gradlew assembleRelease
-      - run:
-          name: Upload to Cloud Storage
-          command: |
+      # - run:
+      #     name: Upload to Cloud Storage
+      #     command: |
             # 在這裡加入上傳至雲端的指令
 
 workflows:
