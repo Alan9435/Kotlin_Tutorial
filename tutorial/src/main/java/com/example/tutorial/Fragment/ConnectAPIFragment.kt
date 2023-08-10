@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ConnectAPIFragment : BaseFragment<FragmentConnectApiBinding>() {
 
-    //需要封裝
+    //需要封裝 測試用
     object RetrofitHelper {
         val baseUrl = "https://quotable.io/"
 
