@@ -65,5 +65,5 @@ commands:
           #     -Pandroid.injected.signing.key.password=rfe666
               
       - store_artifacts:
-          path: app/build/outputs/apk/release/app-release.apk
+          path: app/build/outputs/apk/release/app-release-unsigned.apk
           destination: app-release-testName.apk
