@@ -19,7 +19,7 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - build-debug-apk
+      # - build-debug-apk
       # - build-debug-aab
       - build-release-apk
 
@@ -51,16 +51,16 @@ commands:
 
   build-release-apk:
     steps:
-      - android/restore-gradle-cache
-      - android/restore-build-cache
+      # - android/restore-gradle-cache
+      # - android/restore-build-cache
       #建構release版本apk
       - run:
           name: Build Release APK
           command: ./gradlew assembleRelease 
-              -Pandroid.injected.signing.store.file=../1691/MyKeyStore/keyStore
-              -Pandroid.injected.signing.store.password=rfe666
-              -Pandroid.injected.signing.key.alias=KotlinTutorialKey
-              -Pandroid.injected.signing.key.password=rfe666
+              # -Pandroid.injected.signing.store.file=../1691/MyKeyStore/keyStore
+              # -Pandroid.injected.signing.store.password=rfe666
+              # -Pandroid.injected.signing.key.alias=KotlinTutorialKey
+              # -Pandroid.injected.signing.key.password=rfe666
               
       - store_artifacts:
           path: app/build/outputs/apk/release/app-release-unsigned.apk
