@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/serviceMusicFragment"
-        android:name="com.example.tutorial.Fragment.ServiceMusicFragment"
+        android:name="com.example.tutorial_example.Fragment.ServiceMusicFragment"
         android:label="ServiceMusicFragment" />
 </navigation>

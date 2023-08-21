@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/epoxyFragment"
-        android:name="com.example.tutorial.Fragment.EpoxyFragment"
+        android:name="com.example.tutorial_example.Fragment.EpoxyFragment"
         android:label="EpoxyFragment" />
 </navigation>

@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.common.Base.InterfaceCallback
-import com.example.tutorial.Fragment.Adapter.ItemData
-import com.example.tutorial.Fragment.Adapter.RecycleViewAdapter
+import com.example.tutorial_example.Fragment.Adapter.ItemData
+import com.example.tutorial_example.Fragment.Adapter.RecycleViewAdapter
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

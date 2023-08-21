@@ -49,7 +49,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".Fragment.Service.MusicService"/>
+        <service android:name="com.example.tutorial_example.Fragment.Service.MusicService"/>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.tutorial.Epoxy
+package com.example.tutorial_example.Epoxy
 
 import com.airbnb.epoxy.Carousel
 import com.airbnb.epoxy.EpoxyController

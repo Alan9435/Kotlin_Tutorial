@@ -1,4 +1,4 @@
-package com.example.tutorial.Fragment
+package com.example.tutorial_example.Fragment
 
 import android.app.Service
 import android.content.ComponentName
@@ -13,9 +13,8 @@ import android.util.Log
 import androidx.navigation.fragment.findNavController
 import com.example.common.Base.BaseFragment
 import com.example.common.Base.Extensins.isBoolean
-import com.example.tutorial.Fragment.Service.MusicService
-import com.example.tutorial.R
-import com.example.tutorial.databinding.FragmentServiceMusicBinding
+import com.example.tutorial_example.Fragment.Service.MusicService
+import com.example.tutorial_example.databinding.FragmentServiceMusicBinding
 
 class ServiceMusicFragment: BaseFragment<FragmentServiceMusicBinding>() {
 
@@ -34,7 +33,7 @@ class ServiceMusicFragment: BaseFragment<FragmentServiceMusicBinding>() {
         }
     }
     override fun onViewInit() {
-        serviceIntent = Intent(activity,MusicService :: class.java)
+        serviceIntent = Intent(activity, MusicService :: class.java)
         activity?.startService(serviceIntent)    //啟動Service
         activity?.bindService(serviceIntent,serviceConnection,Context.BIND_AUTO_CREATE) //綁定Service
 

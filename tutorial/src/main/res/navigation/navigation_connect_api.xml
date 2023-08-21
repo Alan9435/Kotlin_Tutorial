@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/connectAPIFragment"
-        android:name="com.example.tutorial.Fragment.ConnectAPIFragment"
+        android:name="com.example.tutorial_example.Fragment.ConnectAPIFragment"
         android:label="ConnectAPIFragment" />
 </navigation>

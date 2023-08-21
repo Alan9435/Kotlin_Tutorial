@@ -1,4 +1,4 @@
-package com.example.tutorial.Fragment
+package com.example.tutorial_example.Fragment
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,10 +8,10 @@ import android.widget.BaseAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.common.Base.BaseFragment
 import com.example.common.Base.InterfaceCallback
-import com.example.tutorial.Fragment.Adapter.ItemData
-import com.example.tutorial.Fragment.Adapter.RecycleViewAdapter
-import com.example.tutorial.databinding.FragmentRecycleviewBinding
-import com.example.tutorial.databinding.ItemViewBinding
+import com.example.tutorial_example.Fragment.Adapter.ItemData
+import com.example.tutorial_example.Fragment.Adapter.RecycleViewAdapter
+import com.example.tutorial_example.databinding.FragmentRecycleviewBinding
+import com.example.tutorial_example.databinding.ItemViewBinding
 
 /** 開Profiler觀察ListView跟RV的效能差別
  * 可以發現當你使用ListView時上下滑動記憶體並不會被回收後重用

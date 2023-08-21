@@ -1,8 +1,8 @@
-package com.example.tutorial.Fragment
+package com.example.tutorial_example.Fragment
 
 import android.util.Log
 import com.example.common.Base.BaseFragment
-import com.example.tutorial.databinding.FragmentRsaBinding
+import com.example.tutorial_example.databinding.FragmentRsaBinding
 import java.security.KeyPairGenerator
 import java.security.interfaces.RSAPrivateKey
 import java.security.interfaces.RSAPublicKey

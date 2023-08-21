@@ -1,4 +1,4 @@
-package com.example.tutorial.Fragment
+package com.example.tutorial_example.Fragment
 
 import android.annotation.SuppressLint
 import android.transition.Explode
@@ -12,8 +12,8 @@ import com.example.common.Base.DataClass.QuoteList
 import com.example.common.Base.Extensins.isBoolean
 import com.example.common.Base.Extensins.toSafeString
 import com.example.common.Base.InterfaceApi.InterfaceApiService
-import com.example.tutorial.ViewModel.ConnectAPIViewModel
-import com.example.tutorial.databinding.FragmentConnectApiBinding
+import com.example.tutorial_example.ViewModel.ConnectAPIViewModel
+import com.example.tutorial_example.databinding.FragmentConnectApiBinding
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import retrofit2.Response

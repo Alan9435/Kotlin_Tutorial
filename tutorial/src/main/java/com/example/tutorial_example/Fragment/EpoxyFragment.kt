@@ -1,14 +1,14 @@
-package com.example.tutorial.Fragment
+package com.example.tutorial_example.Fragment
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.common.Base.BaseFragment
 import com.example.common.Base.CommonDialog
 import com.example.common.Base.InterfaceCallback
-import com.example.tutorial.Epoxy.HeadData
-import com.example.tutorial.Epoxy.HomeController
-import com.example.tutorial.Epoxy.MessageData
-import com.example.tutorial.R
-import com.example.tutorial.databinding.FragmentExpoxyBinding
+import com.example.tutorial_example.Epoxy.HeadData
+import com.example.tutorial_example.Epoxy.HomeController
+import com.example.tutorial_example.Epoxy.MessageData
+import com.example.tutorial_example.R
+import com.example.tutorial_example.databinding.FragmentExpoxyBinding
 
 class EpoxyFragment:BaseFragment<FragmentExpoxyBinding>(),InterfaceCallback {
     private var dialog: CommonDialog? = null

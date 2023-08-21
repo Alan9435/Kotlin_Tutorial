@@ -1,23 +1,16 @@
-package com.example.tutorial.Fragment
+package com.example.tutorial_example.Fragment
 
-import android.media.MediaCodecInfo
 import android.media.MediaCodecList
-import android.os.Looper.prepare
 import android.util.Log
 import com.example.common.Base.BaseFragment
-import com.example.tutorial.databinding.FragmentStreamBinding
+import com.example.tutorial_example.databinding.FragmentStreamBinding
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.source.hls.HlsMediaSource
 import com.google.android.exoplayer2.source.rtsp.RtspMediaSource
-import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
-import com.google.android.exoplayer2.trackselection.TrackSelector
-import com.google.android.exoplayer2.ui.PlayerView
-import com.google.android.exoplayer2.upstream.BandwidthMeter
 import com.google.android.exoplayer2.upstream.DataSource
-import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.util.MimeTypes
 

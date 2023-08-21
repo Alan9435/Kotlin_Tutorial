@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/rxjavaFragment"
-        android:name="com.example.tutorial.Fragment.RxjavaFragment"
+        android:name="com.example.tutorial_example.Fragment.RxjavaFragment"
         android:label="RxjavaFragment" />
 </navigation>

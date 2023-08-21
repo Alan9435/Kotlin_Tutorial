@@ -1,4 +1,4 @@
-package com.example.tutorial.Fragment
+package com.example.tutorial_example.Fragment
 
 import org.junit.Assert.*
 

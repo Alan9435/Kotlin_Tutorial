@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.tutorial">
+    package="com.example.tutorial_example">
 
     <!--    API 30(含)以前的藍芽權限-->
     <uses-permission android:name="android.permission.BLUETOOTH"/>
@@ -18,7 +18,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <application>
         <service
-            android:name=".Fragment.Service.MusicService"
+            android:name="com.example.tutorial_example.Fragment.Service.MusicService"
             android:enabled="true"
             android:exported="true"></service>
     </application>

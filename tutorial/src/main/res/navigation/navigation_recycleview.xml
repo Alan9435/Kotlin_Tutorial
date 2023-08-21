@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/recycleViewFragment"
-        android:name="com.example.tutorial.Fragment.RecycleViewFragment"
+        android:name="com.example.tutorial_example.Fragment.RecycleViewFragment"
         android:label="RecycleViewFragment" />
 </navigation>

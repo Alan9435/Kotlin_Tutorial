@@ -1,4 +1,4 @@
-package com.example.tutorial.ViewModel
+package com.example.tutorial_example.ViewModel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.bot.ibank.presentation.common.utility.SingleMutableLiveData
 import com.example.common.Base.DataClass.QuoteList
 import com.example.common.Base.InterfaceApi.InterfaceApiService
-import com.example.tutorial.Fragment.ConnectAPIFragment
+import com.example.tutorial_example.Fragment.ConnectAPIFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

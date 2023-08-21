@@ -1,4 +1,4 @@
-package com.example.tutorial.Epoxy
+package com.example.tutorial_example.Epoxy
 
 import android.view.View
 import android.widget.ImageView
@@ -9,7 +9,7 @@ import com.airbnb.epoxy.EpoxyHolder
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.example.common.Base.InterfaceCallback
-import com.example.tutorial.R
+import com.example.tutorial_example.R
 
 @EpoxyModelClass
 abstract class HeadItemModel: EpoxyModelWithHolder<HeadItemModel.Holder>() {

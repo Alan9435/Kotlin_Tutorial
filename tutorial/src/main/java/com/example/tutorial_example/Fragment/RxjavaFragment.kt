@@ -1,10 +1,10 @@
-package com.example.tutorial.Fragment
+package com.example.tutorial_example.Fragment
 
 import android.util.Log
 import com.example.common.Base.BaseFragment
 import com.example.common.Base.Util.RxSchedulers
 import com.example.common.Base.Util.RxSubscriber
-import com.example.tutorial.databinding.FragmentRxjavaBinding
+import com.example.tutorial_example.databinding.FragmentRxjavaBinding
 import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -78,7 +78,7 @@ class RxjavaFragment: BaseFragment<FragmentRxjavaBinding>() {
 
     /** 模擬api回傳 這段正常寫在viewModel 或 presenter*/
     private fun getInfo() {
-        val data: Flowable<*> = Flowable.just("my test title").map { TestData(title = it)}
+        val data: Flowable<*> = Flowable.just("my test title").map { TestData(title = it) }
         data.onBackpressureBuffer() //背壓 平衡二者之間壓力的機制，避免Subscriber被淹沒(內存溢出 系統崩潰)
             //用於將一個 Observable 或 Flowable 與一個或多個 ObservableTransformer 或
             // FlowableTransformer 組合在一起，以形成一個新的 Observable 或 Flowable。

@@ -1,4 +1,4 @@
-package com.example.tutorial.Fragment.Service
+package com.example.tutorial_example.Fragment.Service
 
 import android.app.Service
 import android.content.Intent

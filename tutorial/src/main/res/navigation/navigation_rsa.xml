@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/rsaFragment"
-        android:name="com.example.tutorial.Fragment.RsaFragment"
+        android:name="com.example.tutorial_example.Fragment.RsaFragment"
         android:label="RsaFragment" />
 </navigation>

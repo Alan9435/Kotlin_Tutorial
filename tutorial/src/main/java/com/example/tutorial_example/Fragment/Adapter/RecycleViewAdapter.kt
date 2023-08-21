@@ -1,4 +1,4 @@
-package com.example.tutorial.Fragment.Adapter
+package com.example.tutorial_example.Fragment.Adapter
 
 import android.text.Layout
 import android.util.Log
@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.common.Base.InterfaceCallback
-import com.example.tutorial.R
+import com.example.tutorial_example.R
 
 class RecycleViewAdapter(
     private val dataList: List<ItemData>

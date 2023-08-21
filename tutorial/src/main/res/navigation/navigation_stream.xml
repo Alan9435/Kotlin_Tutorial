@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/steamFragment"
-        android:name="com.example.tutorial.Fragment.SteamFragment"
+        android:name="com.example.tutorial_example.Fragment.SteamFragment"
         android:label="SteamFragment" />
 </navigation>
