@@ -57,10 +57,10 @@ commands:
       - run:
           name: Build Release APK
           command: ./gradlew assembleRelease 
-              # -Pandroid.injected.signing.store.file=../1691/MyKeyStore/keyStore
-              # -Pandroid.injected.signing.store.password=rfe666
-              # -Pandroid.injected.signing.key.alias=KotlinTutorialKey
-              # -Pandroid.injected.signing.key.password=rfe666
+              -Pandroid.injected.signing.store.file=/Users/1691/MyKeyStore/keyStore
+              -Pandroid.injected.signing.store.password=rfe666
+              -Pandroid.injected.signing.key.alias=KotlinTutorialKey
+              -Pandroid.injected.signing.key.password=rfe666
               
       - store_artifacts:
           path: app/build/outputs/apk/release/app-release-unsigned.apk
