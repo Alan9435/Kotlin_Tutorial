@@ -3,6 +3,8 @@ orbs:
   android: circleci/android@2.0
 jobs:
   build:
+    docker:
+      - image: cimg/openjdk:20.0.1
     executor:
       name: android/android-machine
       resource-class: large
