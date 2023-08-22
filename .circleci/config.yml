@@ -7,6 +7,11 @@ jobs:
       name: android/android-machine
       resource-class: large
       tag: 2021.10.1
+    environment:
+              KEYSTORE_FILE: /Users/1691/MyKeyStore/keyStore.jks
+              KEYSTORE_PASSWORD: rfe666
+              KEY_ALIAS: KotlinTutorialKey
+              KEY_PASSWORD: rfe666
     steps:
       - checkout
       - run:
@@ -57,17 +62,10 @@ commands:
       - run:
           name: Build Release APK
           command: ./gradlew assembleRelease 
-              -Pandroid.injected.signing.store.file=${KEYSTORE_FILE}
-              -Pandroid.injected.signing.store.password=${KEYSTORE_PASSWORD}
-              -Pandroid.injected.signing.key.alias=${KEY_ALIAS}
-              -Pandroid.injected.signing.key.password=${KEY_PASSWORD}
-          environment:
-              KEYSTORE_FILE: /Users/1691/MyKeyStore/keyStore
-              KEYSTORE_PASSWORD: rfe666
-              KEY_ALIAS: KotlinTutorialKey
-              KEY_PASSWORD: rfe666
-
-
+              -Pandroid.injected.signing.store.file=$KEYSTORE_FILE
+              -Pandroid.injected.signing.store.password=$KEYSTORE_PASSWORD
+              -Pandroid.injected.signing.key.alias=$KEY_ALIAS
+              -Pandroid.injected.signing.key.password=$KEY_PASSWORD
               
       - store_artifacts:
           path: app/build/outputs/apk/release/app-release-unsigned.apk
