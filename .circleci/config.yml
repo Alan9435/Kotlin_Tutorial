@@ -29,9 +29,6 @@ jobs:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       # - build-debug-apk
       # - build-debug-aab
-      - run:
-          name: Check path
-          command: ls -l app/build
       - build-release-apk
 
 workflows:
