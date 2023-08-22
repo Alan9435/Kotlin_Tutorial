@@ -29,10 +29,6 @@ jobs:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       # - build-debug-apk
       # - build-debug-aab
-      - run:
-          name: Check Keystore File
-          command: ls ./app/build/MyKeyStore/
-
       - build-release-apk
 
 workflows:
