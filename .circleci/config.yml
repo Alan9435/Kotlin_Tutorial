@@ -34,7 +34,7 @@ jobs:
           command: pwd  # 顯示當前工作目錄
       - run:
           name: Check
-          command: ls ${HOME}/Kotlin_Tutorial/app/build/MyKeyStore/
+          command: ls app/build/MyKeyStore/
       - build-release-apk
 
 workflows:
