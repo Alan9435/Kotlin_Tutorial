@@ -8,7 +8,7 @@ jobs:
       resource-class: large
       tag: 2021.10.1
     environment:
-              KEYSTORE_FILE: /Users/1691/MyKeyStore/keyStore
+              KEYSTORE_FILE: $CIRCLE_WORKING_DIRECTORY/MyKeyStore/keyStore
               KEYSTORE_PASSWORD: rfe666
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
@@ -17,9 +17,9 @@ jobs:
       - run:
           name: Set execute permission for gradlew
           command: chmod +x gradlew  # 設定執行權限
-      - run:
-          name: Change Keystore Directory Permissions
-          command: chmod -R 755 /Users/1691/MyKeyStore  # 修改資料夾權限
+      # - run:
+      #     name: Change Keystore Directory Permissions
+      #     command: chmod -R 755 /Users/1691/MyKeyStore  # 修改資料夾權限
       - run:
           name: Download Dependencies # 確保項目的依賴庫是否正確,確保在不同環境都能編譯
           command: ./gradlew androidDependencies
