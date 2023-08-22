@@ -2,8 +2,6 @@ version: 2.1
 orbs:
   android: circleci/android@2.0
 jobs:
-  docker:
-      - image: circleci/openjdk:11-jdk  # 或其他支援的 JDK 版本
   build:
     executor:
       name: android/android-machine
@@ -22,6 +20,8 @@ jobs:
       # - run:
       #     name: Change Keystore Directory Permissions
       #     command: chmod -R 755 /Users/1691/MyKeyStore  # 修改資料夾權限
+      - setup-java:
+          version: 11  # 指定使用 JDK 11
       - run:
           name: Download Dependencies # 確保項目的依賴庫是否正確,確保在不同環境都能編譯
           command: ./gradlew androidDependencies
