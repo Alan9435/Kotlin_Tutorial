@@ -31,7 +31,7 @@ jobs:
       # - build-debug-aab
       - run:
           name: Check
-          command: ls /Users/1691/Kotlin_Tutorial/app/build/MyKeyStore/
+          command: ls ${HOME}/Kotlin_Tutorial/app/build/MyKeyStore/
       - build-release-apk
 
 workflows:
