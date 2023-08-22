@@ -8,7 +8,7 @@ jobs:
       resource-class: large
       tag: 2021.10.1
     environment:
-              KEYSTORE_FILE: /home/circleci/project/app/MyKeyStore/keyStore.jks
+              KEYSTORE_FILE: /home/circleci/project/app/MyKeyStore/keyStore
               KEYSTORE_PASSWORD: rfe666
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
@@ -32,6 +32,10 @@ jobs:
       - run:
           name: ls
           command: ls app/MyKeyStore
+      - run:
+          name: storetype
+          command: keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload -storetype JKS
+
       - build-release-apk
 
 workflows:
