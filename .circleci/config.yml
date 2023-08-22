@@ -32,10 +32,6 @@ jobs:
       - run:
           name: ls
           command: ls app/MyKeyStore
-      - run:
-          name: storetype
-          command: keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload -storetype JKS
-
       - build-release-apk
 
 workflows:
