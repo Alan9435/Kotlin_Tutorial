@@ -5,10 +5,11 @@ jobs:
   build:
     docker:
       - image: cimg/openjdk:20.0.1
-    # executor:
-    #   name: android/android-machine
-    #   resource-class: large
-    #   tag: 2021.10.1
+  build:
+    executor:
+      name: android/android-machine
+      resource-class: large
+      tag: 2021.10.1
     environment:
               KEYSTORE_FILE: /home/circleci/project/app/MyKeyStore/keyStore
               KEYSTORE_PASSWORD: rfe666
