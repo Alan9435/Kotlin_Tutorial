@@ -29,6 +29,9 @@ jobs:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       # - build-debug-apk
       # - build-debug-aab
+      - run:
+          name: Check
+          command: chmod +r /Users/1691/Kotlin_Tutorial/app/build/MyKeyStore
       - build-release-apk
 
 workflows:
@@ -59,8 +62,8 @@ commands:
 
   build-release-apk:
     steps:
-      - android/restore-gradle-cache
-      - android/restore-build-cache
+      # - android/restore-gradle-cache
+      # - android/restore-build-cache
       #建構release版本apk
       - run:
           name: Build Release APK
