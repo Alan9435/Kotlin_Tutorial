@@ -17,9 +17,6 @@ jobs:
       - run:
           name: Set execute permission for gradlew
           command: chmod +x gradlew  # 設定執行權限
-      # - run:
-      #     name: Change Keystore Directory Permissions
-      #     command: chmod -R 755 /Users/1691/MyKeyStore  # 修改資料夾權限
       - setup-java:
           version: 11  # 指定使用 JDK 11
       - run:
