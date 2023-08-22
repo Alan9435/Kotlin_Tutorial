@@ -33,6 +33,12 @@ jobs:
           name: Print Working Directory
           command: pwd  # 顯示當前工作目錄
       - run:
+          name: Print Working Directory
+          command:  |
+           cd  cd app/build/MyKeyStore/
+           ls
+
+      - run:
           name: Home
           command: echo ${Home}
       - run:
