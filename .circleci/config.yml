@@ -36,8 +36,6 @@ workflows:
   version: 2
   build-apk-workflow:
     jobs:
-      docker:
-        - image: cimg/openjdk:20.0.1
       - build
 
 commands:
