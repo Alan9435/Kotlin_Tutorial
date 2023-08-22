@@ -24,9 +24,6 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - run:
-          name: Set JDK Version
-          command: echo "export JAVA_HOME=/usr/local/openjdk-11" >> $BASH_ENV
       # - build-debug-apk
       # - build-debug-aab
       - run:
@@ -65,6 +62,9 @@ commands:
       # - android/restore-gradle-cache
       # - android/restore-build-cache
       #建構release版本apk
+      - run: 
+          name: test
+          command: keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload -storetype JKS
       - run:
           name: Build Release APK
           command: ./gradlew assembleRelease 
