@@ -63,9 +63,6 @@ commands:
       # - android/restore-gradle-cache
       # - android/restore-build-cache
       #建構release版本apk
-      - run: 
-          name: test
-          command: keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload -storetype JKS
       - run:
           name: Build Release APK
           command: ./gradlew assembleRelease 
