@@ -31,7 +31,7 @@ jobs:
       # - build-debug-aab
       - run:
           name: Check path
-          command: ls app/build/MyKeyStore
+          command: ls -l app/build
       - build-release-apk
 
 workflows:
