@@ -17,8 +17,6 @@ jobs:
       - run:
           name: Set execute permission for gradlew
           command: chmod +x gradlew  # 設定執行權限
-      - setup-java:
-          version: 11  # 指定使用 JDK 11
       - run:
           name: Download Dependencies # 確保項目的依賴庫是否正確,確保在不同環境都能編譯
           command: ./gradlew androidDependencies
@@ -26,6 +24,9 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - run:
+          name: Set JDK Version
+          command: echo "export JAVA_HOME=/usr/local/openjdk-11" >> $BASH_ENV
       # - build-debug-apk
       # - build-debug-aab
       - run:
