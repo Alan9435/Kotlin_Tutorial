@@ -8,7 +8,7 @@ jobs:
       resource-class: large
       tag: 2021.10.1
     environment:
-              KEYSTORE_FILE: /Users/1691/Kotlin_Tutorial/app/build/MyKeyStore/keyStore
+              KEYSTORE_FILE: /home/circleci/project/app/build/MyKeyStore/keyStore
               KEYSTORE_PASSWORD: rfe666
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
@@ -40,7 +40,7 @@ jobs:
           command: echo ${CIRCLE_WORKING_DIRECTORY}
       - run:
           name: ls
-          command: ls
+          command: ls /home/circleci/project/app/build/MyKeyStore
       - build-release-apk
 
 workflows:
