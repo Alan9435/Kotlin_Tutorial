@@ -59,8 +59,8 @@ commands:
 
   build-release-apk:
     steps:
-      # - android/restore-gradle-cache
-      # - android/restore-build-cache
+      - android/restore-gradle-cache
+      - android/restore-build-cache
       #建構release版本apk
       - run:
           name: Build Release APK
