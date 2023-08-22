@@ -8,7 +8,7 @@ jobs:
       resource-class: large
       tag: 2021.10.1
     environment:
-              KEYSTORE_FILE: $CIRCLE_WORKING_DIRECTORY/MyKeyStore/keyStore
+              KEYSTORE_FILE: /Users/1691/MyKeyStore/keyStore
               KEYSTORE_PASSWORD: rfe666
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
@@ -29,6 +29,10 @@ jobs:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       # - build-debug-apk
       # - build-debug-aab
+      - run:
+          name: Check Keystore File
+          command: ls /Users/1691/MyKeyStore/
+
       - build-release-apk
 
 workflows:
