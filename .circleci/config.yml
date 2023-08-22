@@ -8,7 +8,7 @@ jobs:
       resource-class: large
       tag: 2021.10.1
     environment:
-              KEYSTORE_FILE: /Users/1691/MyKeyStore/keyStore
+              KEYSTORE_FILE: /Users/1691/Desktop/keyStore
               KEYSTORE_PASSWORD: rfe666
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
