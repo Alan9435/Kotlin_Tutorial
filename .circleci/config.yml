@@ -38,6 +38,9 @@ jobs:
       - run:
           name: location
           command: echo ${CIRCLE_WORKING_DIRECTORY}
+      - run:
+          name: ls
+          command: ls
       - build-release-apk
 
 workflows:
