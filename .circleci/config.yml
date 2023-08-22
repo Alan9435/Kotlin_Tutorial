@@ -30,6 +30,9 @@ jobs:
       # - build-debug-apk
       # - build-debug-aab
       - run:
+          name: Print Working Directory
+          command: pwd  # 顯示當前工作目錄
+      - run:
           name: Check
           command: ls ${HOME}/Kotlin_Tutorial/app/build/MyKeyStore/
       - build-release-apk
