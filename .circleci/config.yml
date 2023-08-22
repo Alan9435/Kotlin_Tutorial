@@ -35,7 +35,7 @@ jobs:
       - run:
           name: Print Working Directory
           command:  |
-           cd  cd app/build/MyKeyStore/
+           cd app/build/MyKeyStore/
            ls
 
       - run:
