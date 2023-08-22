@@ -29,7 +29,9 @@ jobs:
       # - build-debug-aab
       - run:
           name: ls
-          command: ls app/MyKeyStore
+          command: ls app/
+      - setup-java:
+          version: 11.0.18
       - build-release-apk
 
 workflows:
