@@ -3,9 +3,6 @@ orbs:
   android: circleci/android@2.0
 jobs:
   build:
-    docker:
-      - image: cimg/openjdk:20.0.1
-  build:
     executor:
       name: android/android-machine
       resource-class: large
@@ -39,6 +36,8 @@ workflows:
   version: 2
   build-apk-workflow:
     jobs:
+      docker:
+        - image: cimg/openjdk:20.0.1
       - build
 
 commands:
