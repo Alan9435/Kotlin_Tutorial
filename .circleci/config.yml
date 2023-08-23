@@ -17,7 +17,7 @@ jobs:
       - run:
           name: Generate Keystore
           command: |
-            keytool -genkey -v -keystore /home/circleci/project/app/MyKeyStore/keyStore -keyalg RSA -keysize 2048 -validity 10000 -alias KotlinTutorialKey -storetype JKS -storepass rfe666 -keypass rfe666 \
+            keytool -genkey -v -keystore /home/circleci/project/app/MyKeyStore/keyStore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias KotlinTutorialKey -storetype JKS -storepass rfe666 -keypass rfe666 \
             -dname "CN=Your Name, OU=Your Organizational Unit, O=Your Organization, L=Your City, ST=Your State, C=Your Country"
       - run: java --version
       - run: gradle --version
