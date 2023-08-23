@@ -16,7 +16,7 @@ jobs:
       - checkout
       - run:
           name: Generate Keystore
-          command: keytool -genkey -v -keystore /home/circleci/project/upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload -storetype JKS
+          command: keytool -genkey -v -keystore ${KEYSTORE_FILE} -keyalg RSA -keysize 2048 -validity 10000 -alias upload -storetype JKS -storepass ${KEYSTORE_PASSWORD} -keypass ${KEY_PASSWORD}
       - run: java --version
       - run:
           name: Set execute permission for gradlew
