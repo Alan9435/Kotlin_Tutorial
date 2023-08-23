@@ -76,7 +76,9 @@ commands:
               -Pandroid.injected.signing.store.password=$KEYSTORE_PASSWORD
               -Pandroid.injected.signing.key.alias=$KEY_ALIAS
               -Pandroid.injected.signing.key.password=$KEY_PASSWORD
-              
+      - run:
+          name: ls
+          command: ls app/build/outputs/apk/release/       
       - store_artifacts:
           path: app/build/outputs/apk/release/app-release-unsigned.apk
           destination: app-release-testName.apk
