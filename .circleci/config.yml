@@ -8,7 +8,7 @@ jobs:
       resource-class: large
       tag: 2021.10.1
     environment:
-              KEYSTORE_FILE: /home/circleci/project/app/MyKeyStore/keyStore
+              KEYSTORE_FILE: /home/circleci/project/app/MyKeyStore/keyStore.jks
               KEYSTORE_PASSWORD: rfe666
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
