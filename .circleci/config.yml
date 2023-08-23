@@ -16,8 +16,9 @@ jobs:
       - checkout
       - run:
           name: Generate Keystore
-          command: keytool -genkey -v -keystore /home/circleci/project/app/MyKeyStore/keyStore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload -storetype JKS -storepass rfe666 -keypass rfe666
+          command: keytool -genkey -v -keystore /home/circleci/project/app/MyKeyStore/keyStore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias KotlinTutorialKey -storetype JKS -storepass rfe666 -keypass rfe666
       - run: java --version
+      - run: gradle --version
       - run:
           name: Set execute permission for gradlew
           command: chmod +x gradlew  # 設定執行權限
