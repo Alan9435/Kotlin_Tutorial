@@ -25,13 +25,8 @@ jobs:
           command: chmod +x gradlew  # 設定執行權限
       # - run: gradle --version
       - run:
-          name: Set up environment
-          command: |
-            export VERSION_NAME=$(./gradlew -q versionNameFromGradle)
-            echo "VERSION_NAME=$VERSION_NAME" >> $BASH_ENV
-      - run:
-          name: Show Version Name
-          command: echo $VERSION_NAME
+          name: Run custom Gradle task
+          command: ./gradlew customTask
       - run:
           name: Download Dependencies # 確保項目的依賴庫是否正確,確保在不同環境都能編譯
           command: ./gradlew androidDependencies
