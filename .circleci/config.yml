@@ -21,7 +21,6 @@ jobs:
       #     command: |
       #       keytool -genkey -v -keystore /home/circleci/project/app/MyKeyStore/keyStore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias KotlinTutorialKey -storetype JKS -storepass rfe666 -keypass rfe666 \
       #       -dname "CN=Your Name, OU=Your Organizational Unit, O=Your Organization, L=Your City, ST=Your State, C=Your Country"
-      - image: cimg/openjdk:11.0.12
       - run: java --version
       - run:
           name: Set execute permission for gradlew
@@ -37,9 +36,10 @@ jobs:
       # - build-debug-apk
       # - build-debug-aab
       - run:
-          name: ls
+          name: ls app/MyKeyStore/
           command: ls app/MyKeyStore/
       - build-release-apk
+      - build-release-aab
 
 workflows:
   version: 2
@@ -69,8 +69,6 @@ commands:
 
   build-release-apk:
     steps:
-      # - android/restore-gradle-cache
-      # - android/restore-build-cache
       #建構release版本apk
       - run:
           name: Build Release APK
@@ -80,15 +78,25 @@ commands:
               -Pandroid.injected.signing.key.alias=$KEY_ALIAS
               -Pandroid.injected.signing.key.password=$KEY_PASSWORD
       - run:
-          name: ls
-          command: ls app/build/outputs/apk/release/
-      # - run:
-      #     name: 印出演算法 new
-      #     command: keytool -list -keystore /home/circleci/project/app/MyKeyStore/keyStore.jks -storepass rfe666
-      - run:
-          name: 印出演算法 old
-          command: keytool -list -keystore /home/circleci/project/app/MyKeyStore/keyStore -storepass rfe666           
+          name: ls app/build/outputs/apk/release/ 
+          command: ls app/build/outputs/apk/release/       
       - store_artifacts:
           path: app/build/outputs/apk/release/app-release.apk
           destination: app-release-testName.apk
 
+  build-release-aab:
+    steps:
+      #建構release版本apk
+      - run:
+          name: Build Release AAB
+          command: ./gradlew bundleRelease 
+              -Pandroid.injected.signing.store.file=$KEYSTORE_FILE
+              -Pandroid.injected.signing.store.password=$KEYSTORE_PASSWORD
+              -Pandroid.injected.signing.key.alias=$KEY_ALIAS
+              -Pandroid.injected.signing.key.password=$KEY_PASSWORD
+      - run:
+          name: ls app/build/outputs/apk/release/ 
+          command: ls app/build/outputs/apk/release/       
+      - store_artifacts:
+          path: app/build/outputs/apk/release/app-release.aab
+          destination: app-release-testName.aab
