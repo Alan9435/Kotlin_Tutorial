@@ -9,6 +9,7 @@ jobs:
     #   name: android/android-machine
     #   resource-class: large
     #   tag: 2021.10.1
+    # 確保路徑是相同的 可先執行pwd 
     environment: #確保自己產的keyStore所用加密法在circleci環境主機存在 
               KEYSTORE_FILE: /home/circleci/project/app/MyKeyStore/keyStore
               KEYSTORE_PASSWORD: rfe666
@@ -65,9 +66,9 @@ commands:
           path: app/build/outputs/bundle/debug/app-debug.aab
           destination: debug-app-testName.aab
 
+ #建構release版本apk
   build-release-apk:
     steps:
-      #建構release版本apk
       - run:
           name: Build Release APK
           command: ./gradlew assembleRelease 
@@ -82,9 +83,9 @@ commands:
           path: app/build/outputs/apk/release/app-release.apk
           destination: app-release-testName.apk
 
+#建構release版本aab
   build-release-aab:
     steps:
-      #建構release版本apk
       - run:
           name: Build Release AAB
           command: ./gradlew bundleRelease 
