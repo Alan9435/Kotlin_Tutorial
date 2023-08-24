@@ -1,4 +1,3 @@
-# 本地路徑跟circleCI 一定不同 可先pwd印出路徑
 version: 2.1
 orbs:
   android: circleci/android@2.0
@@ -22,6 +21,9 @@ jobs:
           name: Set execute permission for gradlew
           command: chmod +x gradlew  # 設定執行權限
       # - run: gradle --version
+      - run:
+          name: test
+          command: ./gradlew test
       - run:
           name: Download Dependencies # 確保項目的依賴庫是否正確,確保在不同環境都能編譯
           command: ./gradlew androidDependencies
@@ -69,7 +71,7 @@ commands:
       - run:
           name: Build Release APK
           command: ./gradlew assembleRelease 
-              -Pandroid.injected.signing.store.file=$KEYSTORE_FILE #設定keyStore
+              -Pandroid.injected.signing.store.file=$KEYSTORE_FILE
               -Pandroid.injected.signing.store.password=$KEYSTORE_PASSWORD
               -Pandroid.injected.signing.key.alias=$KEY_ALIAS
               -Pandroid.injected.signing.key.password=$KEY_PASSWORD
@@ -82,11 +84,11 @@ commands:
 
   build-release-aab:
     steps:
-      #建構release版本aab
+      #建構release版本apk
       - run:
           name: Build Release AAB
           command: ./gradlew bundleRelease 
-              -Pandroid.injected.signing.store.file=$KEYSTORE_FILE #設定keyStore
+              -Pandroid.injected.signing.store.file=$KEYSTORE_FILE
               -Pandroid.injected.signing.store.password=$KEYSTORE_PASSWORD
               -Pandroid.injected.signing.key.alias=$KEY_ALIAS
               -Pandroid.injected.signing.key.password=$KEY_PASSWORD
