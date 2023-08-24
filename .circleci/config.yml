@@ -15,8 +15,6 @@ jobs:
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
     steps:
-      - setup-java:
-          version: 11.0.12
       - checkout
       - run:
           name: Generate Keystore
