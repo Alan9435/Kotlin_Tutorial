@@ -15,6 +15,8 @@ jobs:
               KEYSTORE_PASSWORD: rfe666
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
+              VERSION_NAME: ""
+
     steps:
       - checkout
       - run: java --version
@@ -23,8 +25,11 @@ jobs:
           command: chmod +x gradlew  # 設定執行權限
       # - run: gradle --version
       - run:
-          name: test
-          command: ./gradlew test
+          name: Set Environment Variable
+          command: echo "export VERSION_NAME=$(/bin/bash -c 'source ./gradlew properties && echo $versionNameFromGradle')" >> $BASH_ENV
+      - run:
+          name: Show Version Name
+          command: echo $VERSION_NAME
       - run:
           name: Download Dependencies # 確保項目的依賴庫是否正確,確保在不同環境都能編譯
           command: ./gradlew androidDependencies
