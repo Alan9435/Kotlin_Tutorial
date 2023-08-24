@@ -26,7 +26,7 @@ jobs:
       # - run: gradle --version
       - run:
           name: Run custom Gradle task
-          command: VERSION_NAME=$(./gradlew customTask)
+          command: VERSION_NAME=$(./gradlew -q customTask)
       - run:
           name: Print version
           command: echo "v = ${VERSION_NAME}"
