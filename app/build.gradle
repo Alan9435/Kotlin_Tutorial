@@ -41,7 +41,7 @@ ext {
 
 task customTask {
     doLast {
-        println versionName
+        return versionName
         // 在這裡添加您的自訂邏輯
     }
 }
