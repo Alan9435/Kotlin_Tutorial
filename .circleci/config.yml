@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   android: circleci/android@2.0
+  openjdk-install: cloudesire/openjdk-install@11.0.12
 jobs:
   build:
     executor:
