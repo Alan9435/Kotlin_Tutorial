@@ -4,10 +4,12 @@ orbs:
   openjdk-install: cloudesire/openjdk-install@11.0.12
 jobs:
   build:
-    executor:
-      name: android/android-machine
-      resource-class: large
-      tag: 2021.10.1
+    docker:
+      - image: circleci/android:api-30
+    # executor:
+    #   name: android/android-machine
+    #   resource-class: large
+    #   tag: 2021.10.1
     environment:
               KEYSTORE_FILE: /home/circleci/project/app/MyKeyStore/keyStore.jks
               KEYSTORE_PASSWORD: rfe666
