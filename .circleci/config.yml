@@ -25,8 +25,10 @@ jobs:
           command: chmod +x gradlew  # 設定執行權限
       # - run: gradle --version
       - run:
-          name: Set Environment Variable
-          command: ./gradlew properties
+          name: Set up environment
+          command: |
+            export VERSION_NAME=$(./gradlew -q printVersionName)
+            echo "VERSION_NAME=$VERSION_NAME" >> $BASH_ENV
       - run:
           name: Show Version Name
           command: echo $VERSION_NAME
