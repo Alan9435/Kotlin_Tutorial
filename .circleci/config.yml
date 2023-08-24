@@ -26,17 +26,17 @@ jobs:
       # - run: gradle --version
       - run:
           name: Run custom Gradle task
-          command: VERSION_NAME=$(./gradlew -q customTask)
+          command: echo "VERSION_NAME=$(cat version.txt)" >> $BASH_ENV
       - run:
           name: Print version
           command: echo "v = ${VERSION_NAME}"
-      - run:
-          name: Download Dependencies # 確保項目的依賴庫是否正確,確保在不同環境都能編譯
-          command: ./gradlew androidDependencies
-      - save_cache: #將gradle結果暫存至circleCI快取中 如果沒有變化就不需要重新下載和解析依賴庫
-          paths:
-            - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      # - run:
+      #     name: Download Dependencies # 確保項目的依賴庫是否正確,確保在不同環境都能編譯
+      #     command: ./gradlew androidDependencies
+      # - save_cache: #將gradle結果暫存至circleCI快取中 如果沒有變化就不需要重新下載和解析依賴庫
+      #     paths:
+      #       - ~/.gradle
+      #     key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       # - build-debug-apk
       # - build-debug-aab
       - run:

@@ -41,7 +41,7 @@ ext {
 
 task customTask {
     doLast {
-        return versionName
+        file('version.txt').text = versionName
         // 在這裡添加您的自訂邏輯
     }
 }
