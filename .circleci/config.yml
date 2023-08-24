@@ -22,7 +22,7 @@ jobs:
       #     command: |
       #       keytool -genkey -v -keystore /home/circleci/project/app/MyKeyStore/keyStore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias KotlinTutorialKey -storetype JKS -storepass rfe666 -keypass rfe666 \
       #       -dname "CN=Your Name, OU=Your Organizational Unit, O=Your Organization, L=Your City, ST=Your State, C=Your Country"
-      # - run: java --version
+      - run: java --version
       - run:
           name: Set execute permission for gradlew
           command: chmod +x gradlew  # 設定執行權限
@@ -82,9 +82,9 @@ commands:
       - run:
           name: ls
           command: ls app/build/outputs/apk/release/
-      - run:
-          name: 印出演算法 new
-          command: keytool -list -keystore /home/circleci/project/app/MyKeyStore/keyStore.jks -storepass rfe666
+      # - run:
+      #     name: 印出演算法 new
+      #     command: keytool -list -keystore /home/circleci/project/app/MyKeyStore/keyStore.jks -storepass rfe666
       - run:
           name: 印出演算法 old
           command: keytool -list -keystore /home/circleci/project/app/MyKeyStore/keyStore -storepass rfe666           
