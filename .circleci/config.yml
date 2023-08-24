@@ -26,10 +26,12 @@ jobs:
       # - run: gradle --version
       - run:
           name: Run custom Gradle task
-          command: VERSION_NAME=$(cat version.txt)
-      - run:
-          name: Print version
-          command: echo "v = ${VERSION_NAME}"
+          command: |
+            ./gradlew customTask
+            echo "VERSION_NAME=$(cat version.txt)" >> $BASH_ENV
+          environment:
+            GRADLE_USER_HOME: /gradle
+
       # - run:
       #     name: Download Dependencies # 確保項目的依賴庫是否正確,確保在不同環境都能編譯
       #     command: ./gradlew androidDependencies
