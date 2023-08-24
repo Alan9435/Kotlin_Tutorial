@@ -9,19 +9,19 @@ jobs:
     #   name: android/android-machine
     #   resource-class: large
     #   tag: 2021.10.1
-    environment:
+    environment: #確保自己產的keyStore所用加密法在circleci環境主機存在 
               KEYSTORE_FILE: /home/circleci/project/app/MyKeyStore/keyStore
               KEYSTORE_PASSWORD: rfe666
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
     steps:
       - checkout
-      - run:
-          name: Generate Keystore
-          command: |
-            keytool -genkey -v -keystore /home/circleci/project/app/MyKeyStore/keyStore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias KotlinTutorialKey -storetype JKS -storepass rfe666 -keypass rfe666 \
-            -dname "CN=Your Name, OU=Your Organizational Unit, O=Your Organization, L=Your City, ST=Your State, C=Your Country"
-      - run: java --version
+      # - run:
+      #     name: Generate Keystore
+      #     command: |
+      #       keytool -genkey -v -keystore /home/circleci/project/app/MyKeyStore/keyStore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias KotlinTutorialKey -storetype JKS -storepass rfe666 -keypass rfe666 \
+      #       -dname "CN=Your Name, OU=Your Organizational Unit, O=Your Organization, L=Your City, ST=Your State, C=Your Country"
+      # - run: java --version
       - run:
           name: Set execute permission for gradlew
           command: chmod +x gradlew  # 設定執行權限
