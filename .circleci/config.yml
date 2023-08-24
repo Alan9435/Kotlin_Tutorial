@@ -36,7 +36,7 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      # - build-debug-apk
+      # - build-debug-apk 
       # - build-debug-aab
       - run:
           name: ls app/MyKeyStore/
