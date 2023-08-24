@@ -20,10 +20,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    ext {
-        versionNameFromGradle = defaultConfig.versionName
-    }
-
     buildTypes {
         release {
             minifyEnabled false
