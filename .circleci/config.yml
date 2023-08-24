@@ -26,7 +26,7 @@ jobs:
       # - run: gradle --version
       - run:
           name: Run custom Gradle task
-          command: echo "VERSION_NAME=$(cat version.txt)" >> $BASH_ENV
+          command: VERSION_NAME=$(cat version.txt)
       - run:
           name: Print version
           command: echo "v = ${VERSION_NAME}"
