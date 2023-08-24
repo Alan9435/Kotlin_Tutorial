@@ -26,7 +26,7 @@ jobs:
       # - run: gradle --version
       - run:
           name: Set Environment Variable
-          command: echo "export VERSION_NAME=$(/bin/bash -c 'source ./gradlew properties && echo $versionNameFromGradle')" >> $BASH_ENV
+          command: ./gradlew properties
       - run:
           name: Show Version Name
           command: echo $VERSION_NAME
