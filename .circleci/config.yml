@@ -29,7 +29,7 @@ jobs:
           command: VERSION_NAME=$(./gradlew customTask)
       - run:
           name: Print version
-          command: echo ${VERSION_NAME}
+          command: ${VERSION_NAME}
       - run:
           name: Download Dependencies # 確保項目的依賴庫是否正確,確保在不同環境都能編譯
           command: ./gradlew androidDependencies
