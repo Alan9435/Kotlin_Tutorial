@@ -27,7 +27,7 @@ jobs:
       - run:
           name: Set up environment
           command: |
-            export VERSION_NAME=$(./gradlew -q printVersionName)
+            export VERSION_NAME=$(./gradlew -q versionNameFromGradle)
             echo "VERSION_NAME=$VERSION_NAME" >> $BASH_ENV
       - run:
           name: Show Version Name
@@ -44,8 +44,8 @@ jobs:
       - run:
           name: ls app/MyKeyStore/
           command: ls app/MyKeyStore/
-      - build-release-apk
-      - build-release-aab
+      # - build-release-apk
+      # - build-release-aab
 
 workflows:
   version: 2
