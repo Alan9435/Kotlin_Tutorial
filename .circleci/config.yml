@@ -3,18 +3,18 @@ orbs:
   android: circleci/android@2.0
 jobs:
   build:
-    docker:
-      - image: openjdk:11.0.12
-    # executor:
-    #   name: android/android-machine
-    #   resource-class: large
-    #   tag: 2021.10.1
+    executor:
+      name: android/android-machine
+      resource-class: large
+      tag: 2021.10.1
     environment:
               KEYSTORE_FILE: /home/circleci/project/app/MyKeyStore/keyStore.jks
               KEYSTORE_PASSWORD: rfe666
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
     steps:
+      - setup-java:
+          version: 11.0.12
       - checkout
       - run:
           name: Generate Keystore
