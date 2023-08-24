@@ -4,13 +4,13 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/android:api-30
+      - image: circleci/android:api-33
     # executor:
     #   name: android/android-machine
     #   resource-class: large
     #   tag: 2021.10.1
     environment:
-              KEYSTORE_FILE: /home/circleci/project/app/MyKeyStore/keyStore.jks
+              KEYSTORE_FILE: /home/circleci/project/app/MyKeyStore/keyStore
               KEYSTORE_PASSWORD: rfe666
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
