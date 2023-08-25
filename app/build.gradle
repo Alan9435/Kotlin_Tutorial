@@ -41,7 +41,8 @@ ext {
 
 task customTask {
     doLast {
-        file('version.txt').text = versionName
+        def versionName = "1.5.6" // 這裡是您的版本號邏輯
+        file("version.txt").text = versionName
         // 在這裡添加您的自訂邏輯
     }
 }
