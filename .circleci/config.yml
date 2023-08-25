@@ -15,7 +15,7 @@ jobs:
               KEYSTORE_PASSWORD: rfe666
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
-              VERSION_NAME: "t"
+              VERSION_NAME: t
 
     steps:
       - checkout
