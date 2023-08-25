@@ -96,7 +96,7 @@ commands:
           name: ls 
           command: ls        
       - store_artifacts:
-          path: app-release-$VERSION_NAME.apk
+          path: app-release-*.apk
           # destination: "app-release-testName.apk"
 
 #建構release版本aab
