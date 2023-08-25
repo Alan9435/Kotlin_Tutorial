@@ -32,7 +32,7 @@ jobs:
             source $BASH_ENV
       - run:
           name: Print CircleCI Environment Variable
-          command: echo $VERSION_NAME
+          command: $VERSION_NAME
 
 
       # - run:
@@ -47,7 +47,7 @@ jobs:
       - run:
           name: ls app/MyKeyStore/
           command: ls app/MyKeyStore/
-      - build-release-apk
+      # - build-release-apk
       # - build-release-aab
 
 workflows:
