@@ -26,7 +26,10 @@ jobs:
       # - run: gradle --version
       - run:
           name: Set CircleCI Environment Variable
-          command: export VERSION_NAME=$(./gradlew getVersionName | tail -n 1)
+          command: |
+            export VERSION_NAME=$(./gradlew getVersionName | tail -n 1)
+            echo "export VERSION_NAME=${VERSION_NAME}" >> $BASH_ENV
+            source $BASH_ENV
       - run:
           name: Print CircleCI Environment Variable
           command: echo $VERSION_NAME
