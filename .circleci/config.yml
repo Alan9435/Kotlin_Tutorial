@@ -24,15 +24,15 @@ jobs:
           name: Set execute permission for gradlew
           command: chmod +x gradlew  # 設定執行權限
       # - run: gradle --version
-      - run:
-          name: Set CircleCI Environment Variable
-          command: |
-            export VERSION_NAME=$(./gradlew getVersionName | tail -n 1)
-            echo "export VERSION_NAME='${VERSION_NAME}'" >> $BASH_ENV
-            source $BASH_ENV
-      - run:
-          name: Print CircleCI Environment Variable
-          command: $VERSION_NAME
+      # - run:
+      #     name: Set CircleCI Environment Variable
+      #     command: |
+      #       export VERSION_NAME=$(./gradlew getVersionName | tail -n 1)
+      #       echo "export VERSION_NAME='${VERSION_NAME}'" >> $BASH_ENV
+      #       source $BASH_ENV
+      # - run:
+      #     name: Print CircleCI Environment Variable
+      #     command: $VERSION_NAME
 
 
       # - run:
