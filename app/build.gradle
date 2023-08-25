@@ -39,13 +39,13 @@ ext {
     varVersionName = "1.5.6"
 }
 
-task customTask {
+task getVersionName {
     doLast {
-        def versionName = "1.5.6" // 這裡是您的版本號邏輯
-        file("version.txt").text = versionName
-        // 在這裡添加您的自訂邏輯
+        def versionName = '1.5.6'  // 實際的版本號
+        println versionName
     }
 }
+
 
 dependencies {
     implementation project(':common')
