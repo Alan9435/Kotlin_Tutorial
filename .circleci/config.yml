@@ -25,8 +25,13 @@ jobs:
           command: chmod +x gradlew  # 設定執行權限
       # - run: gradle --version
       - run:
-          name: Export Gradle Variable
-          command: echo "VERSION_NAME=${varVersionName}" >> $BASH_ENV
+          name: Set Gradle Variable as CircleCI Environment Variable
+          command: |
+            varVersionName=$(grep -oP "varVersionName = '\K[^']+" build.gradle)
+            echo "export VERSION_NAME=${varVersionName}" >> $BASH_ENV
+      - run:
+          name: Print CircleCI Environment Variable
+          command: echo $VERSION_NAME
 
       # - run:
       #     name: Download Dependencies # 確保項目的依賴庫是否正確,確保在不同環境都能編譯
