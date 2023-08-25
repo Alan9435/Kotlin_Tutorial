@@ -91,7 +91,10 @@ commands:
           command: ls app/build/outputs/apk/release/
       - run:
           name: Rename APK
-          command: mv app/build/outputs/apk/release/app-release.apk app-release-${VERSION_NAME}.apk        
+          command: mv app/build/outputs/apk/release/app-release.apk app-release-${VERSION_NAME}.apk
+      - run:
+          name: ls 
+          command: ls        
       - store_artifacts:
           path: app-release-${VERSION_NAME}.apk
           # destination: "app-release-testName.apk"
