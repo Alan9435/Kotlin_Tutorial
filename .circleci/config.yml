@@ -101,13 +101,13 @@ commands:
       - run:
           name: Upload APK to Google Drive
           command: |
-            ACCESS_TOKEN=637273925223-962i7remuf14hl4h3e06rb4v676u57gt.apps.googleusercontent.com
+            ACCESS_TOKEN=ya29.a0AfB_byDGmWaR58VA2zOXB5mjhB7xifk9JUjKmdvprPGBSxsBrrjCfPUOfxvg-5bZowg23cDPr1aZMIhpRH0M47kMv-EBkNKMZNRYlpQWaxOSAQcdjWRtIi-A1U7Z18cL-ngSf69FsJeBbP_k5rFwuhOFWnsg2BUSNVKjIgaCgYKAbwSARASFQHsvYlskPiDJ8wsOqDs5pyvmLU1tA0173
             FILE_ID="1UDfduQx7jPtw_j0zaVwJiBCR9jt4QV1q"
             APK_PATH="app-release-myName.apk"
             
             # 建構 HTTP 請求並上傳 APK
             curl -X POST \
-              -H "Authorization: Bearer ya29.a0AfB_byDGmWaR58VA2zOXB5mjhB7xifk9JUjKmdvprPGBSxsBrrjCfPUOfxvg-5bZowg23cDPr1aZMIhpRH0M47kMv-EBkNKMZNRYlpQWaxOSAQcdjWRtIi-A1U7Z18cL-ngSf69FsJeBbP_k5rFwuhOFWnsg2BUSNVKjIgaCgYKAbwSARASFQHsvYlskPiDJ8wsOqDs5pyvmLU1tA0173" \
+              -H "Authorization: Bearer $ACCESS_TOKEN" \
               -F "metadata={name:'app-release.apk'};type=application/json;charset=UTF-8" \
               -F "file=@$APK_PATH;type=application/vnd.android.package-archive" \
               "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart"
