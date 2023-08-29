@@ -91,13 +91,13 @@ commands:
           command: ls app/build/outputs/apk/release/
       - run:
           name: Rename APK
-          command: mv app/build/outputs/apk/release/app-release.apk app-release-${VERSION_NAME}.apk
+          command: mv app/build/outputs/apk/release/app-release.apk app-release-myName.apk
       - run:
           name: ls 
           command: ls        
       - store_artifacts:
-          path: app-release-*.apk
-          # destination: "app-release-testName.apk"
+          path: app-release-myName.apk
+          destination: "app-release-testName.apk"
 
 #建構release版本aab
   build-release-aab:
