@@ -101,7 +101,7 @@ commands:
       - run:
           name: Upload APK to Google Drive
           command: |
-            ACCESS_TOKEN=ya29.a0AfB_byDGmWaR58VA2zOXB5mjhB7xifk9JUjKmdvprPGBSxsBrrjCfPUOfxvg-5bZowg23cDPr1aZMIhpRH0M47kMv-EBkNKMZNRYlpQWaxOSAQcdjWRtIi-A1U7Z18cL-ngSf69FsJeBbP_k5rFwuhOFWnsg2BUSNVKjIgaCgYKAbwSARASFQHsvYlskPiDJ8wsOqDs5pyvmLU1tA0173
+            ACCESS_TOKEN=ya29.a0AfB_byBET0w4J_SZ8MZBDVPKHNRul9M5NBtI_2Ckezz6P3zpaFWtTqf848IKfAJwJ7SWCPCDuz9PSF9fEOveRWGUJO6J6axqhcP1C235J4Z2tgy0WjwbXdZqQfivWs4S58Nb_6nqHD49oGTjpR77nkVXsIfjT34xTWIeGQaCgYKAccSARASFQHsvYlsiSQpeniaNf1YBwQg_N30wg0173
             FILE_ID="1UDfduQx7jPtw_j0zaVwJiBCR9jt4QV1q"
             APK_PATH="app-release-myName.apk"
             
