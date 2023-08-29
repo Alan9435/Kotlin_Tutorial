@@ -98,10 +98,10 @@ commands:
       - store_artifacts:
           path: app-release-myName.apk
           destination: "app-release-testName.apk"
-      - post:
-          - mkdir $CIRCLE_ARTIFACTS/
-          - curl -L -o gdrive "https://drive.google.com/drive/u/0/folders/1UDfduQx7jPtw_j0zaVwJiBCR9jt4QV1q"; chmod 755 gdrive
-          - ./gdrive --refresh-token "refresh_token_value" upload --parent "parent_id" app-release-testName.apk
+      # - post:
+      #     - mkdir $CIRCLE_ARTIFACTS/
+      #     - curl -L -o gdrive "https://drive.google.com/drive/u/0/folders/1UDfduQx7jPtw_j0zaVwJiBCR9jt4QV1q"; chmod 755 gdrive
+      #     - ./gdrive --refresh-token "refresh_token_value" upload --parent "parent_id" app-release-testName.apk
 
 #建構release版本aab
   build-release-aab:
