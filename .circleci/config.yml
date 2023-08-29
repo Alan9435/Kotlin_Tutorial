@@ -98,10 +98,19 @@ commands:
       - store_artifacts:
           path: app-release-myName.apk
           destination: "app-release-testName.apk"
-      # - post:
-      #     - mkdir $CIRCLE_ARTIFACTS/
-      #     - curl -L -o gdrive "https://drive.google.com/drive/u/0/folders/1UDfduQx7jPtw_j0zaVwJiBCR9jt4QV1q"; chmod 755 gdrive
-      #     - ./gdrive --refresh-token "refresh_token_value" upload --parent "parent_id" app-release-testName.apk
+      - run:
+          name: Upload APK to Google Drive
+          command: |
+            ACCESS_TOKEN=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
+            FILE_ID="1UDfduQx7jPtw_j0zaVwJiBCR9jt4QV1q"
+            APK_PATH="app-release-myName.apk"
+            
+            # 建構 HTTP 請求並上傳 APK
+            curl -X POST \
+              -H "Authorization: Bearer $ACCESS_TOKEN" \
+              -F "metadata={name:'app-release.apk'};type=application/json;charset=UTF-8" \
+              -F "file=@$APK_PATH;type=application/vnd.android.package-archive" \
+              "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart"
 
 #建構release版本aab
   build-release-aab:
