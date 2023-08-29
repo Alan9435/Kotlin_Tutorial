@@ -107,7 +107,7 @@ commands:
             
             # 建構 HTTP 請求並上傳 APK
             curl -X POST \
-              -H "Authorization: Bearer 637273925223-962i7remuf14hl4h3e06rb4v676u57gt.apps.googleusercontent.com" \
+              -H "Authorization: Bearer ya29.a0AfB_byDGmWaR58VA2zOXB5mjhB7xifk9JUjKmdvprPGBSxsBrrjCfPUOfxvg-5bZowg23cDPr1aZMIhpRH0M47kMv-EBkNKMZNRYlpQWaxOSAQcdjWRtIi-A1U7Z18cL-ngSf69FsJeBbP_k5rFwuhOFWnsg2BUSNVKjIgaCgYKAbwSARASFQHsvYlskPiDJ8wsOqDs5pyvmLU1tA0173" \
               -F "metadata={name:'app-release.apk'};type=application/json;charset=UTF-8" \
               -F "file=@$APK_PATH;type=application/vnd.android.package-archive" \
               "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart"
