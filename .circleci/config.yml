@@ -98,7 +98,7 @@ commands:
       - store_artifacts:
           path: app-release-myName.apk
           destination: "app-release-testName.apk"
-      - run:
+      - run: #測試丟apk到drive
           name: Upload APK to Google Drive
           command: |
             ACCESS_TOKEN=ya29.a0AfB_byBET0w4J_SZ8MZBDVPKHNRul9M5NBtI_2Ckezz6P3zpaFWtTqf848IKfAJwJ7SWCPCDuz9PSF9fEOveRWGUJO6J6axqhcP1C235J4Z2tgy0WjwbXdZqQfivWs4S58Nb_6nqHD49oGTjpR77nkVXsIfjT34xTWIeGQaCgYKAccSARASFQHsvYlsiSQpeniaNf1YBwQg_N30wg0173
