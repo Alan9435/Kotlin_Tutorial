@@ -97,7 +97,7 @@ commands:
           command: ls        
       - store_artifacts:
           path: app-release-myName.apk
-          destination: "app-release-testName.apk"
+          destination: "app-release-myName.apk"
       - run: #測試丟apk到drive 
           name: Upload APK to Google Drive
           command: |
@@ -108,7 +108,7 @@ commands:
             # 建構 HTTP 請求並上傳 APK
             curl -X POST \
               -H "Authorization: Bearer $ACCESS_TOKEN" \
-              -F "metadata={name:'app-release.apk'};type=application/json;charset=UTF-8" \
+              -F "metadata={name:'app-release-myName.apk'};type=application/json;charset=UTF-8" \
               -F "file=@$APK_PATH;type=application/octet-stream" \
               "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart"
 
