@@ -101,7 +101,7 @@ commands:
       - run: #測試丟apk到drive 
           name: Upload APK to Google Drive
           command: |
-            ACCESS_TOKEN=ya29.a0AfB_byBET0w4J_SZ8MZBDVPKHNRul9M5NBtI_2Ckezz6P3zpaFWtTqf848IKfAJwJ7SWCPCDuz9PSF9fEOveRWGUJO6J6axqhcP1C235J4Z2tgy0WjwbXdZqQfivWs4S58Nb_6nqHD49oGTjpR77nkVXsIfjT34xTWIeGQaCgYKAccSARASFQHsvYlsiSQpeniaNf1YBwQg_N30wg0173
+            ACCESS_TOKEN=ya29.a0AfB_byC6kmq7D7SZn-s3R09gOHr90huIxlUDXRB2zoRrxWzQmlVlgAXSbwyYxCRkZ9RVC7X5ByLvXdmVJ5sbdoXgECNZoanQl7s49L354yv_vItURuHHGZQO5L4kJsMTyYqSUOnwMqM-j_62HGcbWEXI8gJNT4unGttmmwaCgYKAUcSARASFQHsvYlslhw4PQH1ncIX3hEM6pnEqg0173
             FILE_ID="1UDfduQx7jPtw_j0zaVwJiBCR9jt4QV1q"
             APK_PATH="app-release-myName.apk"
             
