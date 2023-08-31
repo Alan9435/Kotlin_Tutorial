@@ -98,19 +98,24 @@ commands:
       - store_artifacts:
           path: app-release-myName.apk
           destination: "app-release-myName.apk"
-      - run: #測試丟apk到drive
-          name: Upload APK to Google Drive
+      - run:
+          name: Print env
           command: |
-            ACCESS_TOKEN=ya29.a0AfB_byC6kmq7D7SZn-s3R09gOHr90huIxlUDXRB2zoRrxWzQmlVlgAXSbwyYxCRkZ9RVC7X5ByLvXdmVJ5sbdoXgECNZoanQl7s49L354yv_vItURuHHGZQO5L4kJsMTyYqSUOnwMqM-j_62HGcbWEXI8gJNT4unGttmmwaCgYKAUcSARASFQHsvYlslhw4PQH1ncIX3hEM6pnEqg0173
-            FILE_ID="1UDfduQx7jPtw_j0zaVwJiBCR9jt4QV1q"
-            APK_PATH="app-release-myName.apk"
+            echo "gmail $gmail_addres"
+            echo "pwd $gmail_pwd"
+      # - run: #測試丟apk到drive 
+      #     name: Upload APK to Google Drive
+      #     command: |
+      #       ACCESS_TOKEN=ya29.a0AfB_byC6kmq7D7SZn-s3R09gOHr90huIxlUDXRB2zoRrxWzQmlVlgAXSbwyYxCRkZ9RVC7X5ByLvXdmVJ5sbdoXgECNZoanQl7s49L354yv_vItURuHHGZQO5L4kJsMTyYqSUOnwMqM-j_62HGcbWEXI8gJNT4unGttmmwaCgYKAUcSARASFQHsvYlslhw4PQH1ncIX3hEM6pnEqg0173
+      #       FILE_ID="1UDfduQx7jPtw_j0zaVwJiBCR9jt4QV1q"
+      #       APK_PATH="app-release-myName.apk"
             
-            # 建構 HTTP 請求並上傳 APK
-            curl -X POST \
-              -H "Authorization: Bearer $ACCESS_TOKEN" \
-              -F "metadata={name:'app-release-myName.apk'};type=application/json;charset=UTF-8" \
-              -F "file=@$APK_PATH;type=application/octet-stream" \
-              "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart"
+      #       # 建構 HTTP 請求並上傳 APK
+      #       curl -X POST \
+      #         -H "Authorization: Bearer $ACCESS_TOKEN" \
+      #         -F "metadata={name:'app-release-myName.apk'};type=application/json;charset=UTF-8" \
+      #         -F "file=@$APK_PATH;type=application/octet-stream" \
+      #         "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart"
 
 #建構release版本aab
   build-release-aab:
