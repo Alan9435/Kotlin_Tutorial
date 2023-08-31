@@ -1,11 +1,5 @@
 version: 2.1
 
-# workflows:
-#   test-env:
-#     jobs:
-#       - build:
-#         context: email
-
 orbs:
   android: circleci/android@2.0
 
@@ -109,8 +103,8 @@ commands:
       - run:
           name: Print env
           command: |
-            echo "gmail $gmail_addres"
-            echo "pwd $gmail_pwd"
+            echo "gmail $EMAIL_ADDRES"
+            echo "pwd $EMAIL_PWD"
       # - run: #測試丟apk到drive 
       #     name: Upload APK to Google Drive
       #     command: |
