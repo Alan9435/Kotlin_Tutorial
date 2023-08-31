@@ -1,13 +1,11 @@
 version: 2.1
-orbs:
-  android: circleci/android@2.0
-
 workflows:
   test-env:
     jobs:
       - build:
         context: email
-
+orbs:
+  android: circleci/android@2.0
 jobs:
   build:
     docker:
