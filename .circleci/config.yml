@@ -110,7 +110,7 @@ commands:
       #       echo "pwd $EMAIL_PWD"
 
       - email/send:
-          body: 測試${EMAIL_ADDRESS}
+          body: "測試${EMAIL_ADDRESS}"
           subject: APK包版信
           to: alan.lee@gomaji.com
       # - mailer-orb/mail:
