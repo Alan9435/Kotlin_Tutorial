@@ -21,16 +21,6 @@ jobs:
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
               VERSION_NAME: 1.6.5
-    parameters:
-            body:
-                description: Email body
-                type: string
-            subject:
-                description: Email subject
-                type: string
-            to:
-                description: Email recipient
-                type: string
 
     steps:
       - checkout
@@ -120,7 +110,7 @@ commands:
       #       echo "pwd $EMAIL_PWD"
 
       - email/send:
-          body: <<parameters.body>>
+          body: {${VERSION_NAME}}
           subject: APK包版信
           to: alan.lee@gomaji.com
       # - mailer-orb/mail:
