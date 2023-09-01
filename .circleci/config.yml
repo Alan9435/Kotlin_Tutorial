@@ -109,8 +109,8 @@ commands:
       #       echo "gmail $EMAIL_ADDRESS"
       #       echo "pwd $EMAIL_PWD"
       - run:
-        name: Set Email Body
-        command: echo "測試body網址 $VERSION_NAME" > email_body.txt
+          name: Set Email Body
+          command: echo "測試body網址 $VERSION_NAME" > email_body.txt
       - email/send:
           body: $(cat email_body.txt)
           subject: APK包版信
