@@ -105,6 +105,15 @@ commands:
           command: |
             echo "gmail $EMAIL_ADDRESS"
             echo "pwd $EMAIL_PWD"
+      - run:
+          name: send email
+          command: |
+            echo "Subject: CircleCI Title" > email.txt
+            echo "This is the email content" >> email.txt
+            cat email.txt | sendmail -f $EMAIL_ADDRESS
+          env:
+            EMAIL_ADDRESS: $EMAIL_ADDRESS
+            
       # - run: #測試丟apk到drive 
       #     name: Upload APK to Google Drive
       #     command: |
