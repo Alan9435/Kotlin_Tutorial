@@ -22,15 +22,15 @@ jobs:
               KEY_PASSWORD: rfe666
               VERSION_NAME: 1.6.5
     parameters:
-              body:
-                  description: Email body
-                  type: string
-              subject:
-                  description: Email subject
-                  type: string
-              to:
-                  description: Email recipient
-                  type: string
+            body:
+                description: Email body
+                type: string
+            subject:
+                description: Email subject
+                type: string
+            to:
+                description: Email recipient
+                type: string
 
     steps:
       - checkout
