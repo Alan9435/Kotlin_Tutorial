@@ -84,25 +84,25 @@ commands:
  #建構release版本apk
   build-release-apk:
     steps:
-      - run:
-          name: Build Release APK
-          command: ./gradlew assembleRelease 
-              -Pandroid.injected.signing.store.file=$KEYSTORE_FILE
-              -Pandroid.injected.signing.store.password=$KEYSTORE_PASSWORD
-              -Pandroid.injected.signing.key.alias=$KEY_ALIAS
-              -Pandroid.injected.signing.key.password=$KEY_PASSWORD
-      - run:
-          name: ls app/build/outputs/apk/release/ 
-          command: ls app/build/outputs/apk/release/
-      - run:
-          name: Rename APK
-          command: mv app/build/outputs/apk/release/app-release.apk app-release-myName.apk
-      - run:
-          name: ls 
-          command: ls        
-      - store_artifacts:
-          path: app-release-myName.apk
-          destination: "app-release-myName.apk"
+      # - run:
+      #     name: Build Release APK
+      #     command: ./gradlew assembleRelease 
+      #         -Pandroid.injected.signing.store.file=$KEYSTORE_FILE
+      #         -Pandroid.injected.signing.store.password=$KEYSTORE_PASSWORD
+      #         -Pandroid.injected.signing.key.alias=$KEY_ALIAS
+      #         -Pandroid.injected.signing.key.password=$KEY_PASSWORD
+      # - run:
+      #     name: ls app/build/outputs/apk/release/ 
+      #     command: ls app/build/outputs/apk/release/
+      # - run:
+      #     name: Rename APK
+      #     command: mv app/build/outputs/apk/release/app-release.apk app-release-myName.apk
+      # - run:
+      #     name: ls 
+      #     command: ls        
+      # - store_artifacts:
+      #     path: app-release-myName.apk
+      #     destination: "app-release-myName.apk"
       - run:
           name: Print env
           command: |
@@ -114,8 +114,8 @@ commands:
           to: alan.lee@gomaji.com
       - mailer-orb/mail:
           body: |-
-            Sample Mail ${VERSION_NAME}
-            Regards, $VERSION_NAME
+            Sample Mail
+            Regards,
             Circle CI 
           from: admin@ghosh.pro
           subject: Example mail from mailer-orb
