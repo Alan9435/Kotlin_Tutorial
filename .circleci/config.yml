@@ -3,8 +3,7 @@ version: 2.1
 orbs:
   android: circleci/android@2.0
   email: cinotify/email@1.2.1
-  mailer-orb: sudiptog81/mailer-orb@1.0.0
-
+  email: circleci/email@0.2.0
 
 jobs:
   build:
