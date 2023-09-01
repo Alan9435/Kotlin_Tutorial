@@ -103,11 +103,11 @@ commands:
       # - store_artifacts:
       #     path: app-release-myName.apk
       #     destination: "app-release-myName.apk"
-      - run:
-          name: Print env
-          command: |
-            echo "gmail $EMAIL_ADDRESS"
-            echo "pwd $EMAIL_PWD"
+      # - run:
+      #     name: Print env
+      #     command: |
+      #       echo "gmail $EMAIL_ADDRESS"
+      #       echo "pwd $EMAIL_PWD"
       - email/send:
           body: 測試body網址 ${VERSION_NAME}
           subject: APK包版信
