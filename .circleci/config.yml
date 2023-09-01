@@ -108,11 +108,10 @@ commands:
       #     command: |
       #       echo "gmail $EMAIL_ADDRESS"
       #       echo "pwd $EMAIL_PWD"
-      - run:
-          name: Set Email Body
-          command: echo 測試body網址 $VERSION_NAME > email_body.txt
+      
       - email/send:
-          body: $(cat email_body.txt)
+          body: |
+            測試文字:$VERSION_NAME
           subject: APK包版信
           to: alan.lee@gomaji.com
       # - mailer-orb/mail:
