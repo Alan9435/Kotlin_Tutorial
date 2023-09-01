@@ -117,7 +117,7 @@ commands:
             Sample Mail
             Regards,
             Circle CI 
-          from: admin@ghosh.pro
+          from: test@tt.ty
           subject: Example mail from mailer-orb
           to: alan.lee@gomaji.com
 
