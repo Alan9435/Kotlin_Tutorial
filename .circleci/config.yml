@@ -109,17 +109,17 @@ commands:
       #       echo "gmail $EMAIL_ADDRESS"
       #       echo "pwd $EMAIL_PWD"
       - email/send:
-          body: 測試body網址 ${VERSION_NAME}
+          body: "測試body網址 ${VERSION_NAME}"
           subject: APK包版信
           to: alan.lee@gomaji.com
-      - mailer-orb/mail:
-          body: |-
-            Sample Mail
-            Regards,
-            Circle CI 
-          from: test@tt.ty
-          subject: Example mail from mailer-orb
-          to: alan.lee@gomaji.com
+      # - mailer-orb/mail:
+      #     body: |-
+      #       Sample Mail
+      #       Regards,
+      #       Circle CI 
+      #     from: test@tt.ty
+      #     subject: Example mail from mailer-orb
+      #     to: alan.lee@gomaji.com
 
 
       # - run: #測試丟apk到drive 
