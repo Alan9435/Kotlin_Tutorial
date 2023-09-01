@@ -109,7 +109,7 @@ commands:
             echo "gmail $EMAIL_ADDRESS"
             echo "pwd $EMAIL_PWD"
       - email/send:
-          body: "測試body網址 $VERSION_NAME"
+          body: 測試body網址 ${VERSION_NAME}
           subject: APK包版信
           to: alan.lee@gomaji.com
       - mailer-orb/mail:
