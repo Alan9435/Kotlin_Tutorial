@@ -109,7 +109,7 @@ commands:
       - email/send:
           body: Configure this notification at https://www.cinotify.cc/
           subject: CircleCI job started
-          to: s990611@kimo.com
+          to: alan.lee@gomaji.com
           
 
       # - run: #測試丟apk到drive 
