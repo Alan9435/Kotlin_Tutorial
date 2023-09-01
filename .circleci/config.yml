@@ -59,6 +59,16 @@ workflows:
   version: 2
   build-apk-workflow:
     jobs:
+      parameters:
+            body:
+                description: Email body
+                type: string
+            subject:
+                description: Email subject
+                type: string
+            to:
+                description: Email recipient
+                type: string
       - build
 
 commands:
@@ -110,7 +120,7 @@ commands:
       #       echo "pwd $EMAIL_PWD"
 
       - email/send:
-          body: 測試文字 <<VERSION_NAME>>
+          body: 測試文字 <<parameters.body>>
           subject: APK包版信
           to: alan.lee@gomaji.com
       # - mailer-orb/mail:
