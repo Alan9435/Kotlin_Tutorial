@@ -50,8 +50,9 @@ jobs:
       - run:
           name: ls app/MyKeyStore/
           command: ls app/MyKeyStore/
-      - build-release-apk
+      # - build-release-apk
       # - build-release-aab
+      - execute-firebase
 
 workflows:
   version: 2
@@ -60,6 +61,11 @@ workflows:
       - build
 
 commands:
+  execute-firebase:
+    steps:
+      - run:
+        name: install tool
+        command: npm install --save-dev firebase-tools
   build-debug-apk:
     steps:
       - run:
