@@ -3,6 +3,8 @@ version: 2.1
 orbs:
   android: circleci/android@2.0
   email: cinotify/email@1.2.1
+  mailer-orb: sudiptog81/mailer-orb@1.0.0
+
 
 jobs:
   build:
@@ -110,7 +112,15 @@ commands:
           body: "測試body網址 $VERSION_NAME"
           subject: APK包版信
           to: alan.lee@gomaji.com
-          
+      - mailer-orb/mail:
+          body: |-
+            Sample Mail ${VERSION_NAME}
+            Regards, $VERSION_NAME
+            Circle CI 
+          from: admin@ghosh.pro
+          subject: Example mail from mailer-orb
+          to: alan.lee@gomaji.com
+
 
       # - run: #測試丟apk到drive 
       #     name: Upload APK to Google Drive
