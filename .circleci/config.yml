@@ -50,7 +50,7 @@ jobs:
       - run:
           name: ls app/MyKeyStore/
           command: ls app/MyKeyStore/
-      # - build-release-apk
+      - build-release-apk
       # - build-release-aab
 
 workflows:
