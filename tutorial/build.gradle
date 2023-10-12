@@ -14,6 +14,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        compose true
     }
     buildscript {
         ext.kotlin_version = '1.5.20'
@@ -32,6 +33,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
     }
 
     buildTypes {
@@ -46,6 +50,14 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.2.0-beta03'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
 }
 
@@ -81,7 +93,19 @@ dependencies {
     //Epoxy
     implementation "com.airbnb.android:epoxy:5.0.0-beta03"
     implementation 'com.google.android.gms:play-services-nearby:18.1.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
+    implementation 'androidx.activity:activity-compose:1.5.1'
+    implementation platform('androidx.compose:compose-bom:2022.10.00')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.ui:ui-graphics'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation 'androidx.compose.material3:material3'
+    androidTestImplementation platform('androidx.compose:compose-bom:2022.10.00')
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
     kapt "com.airbnb.android:epoxy-processor:5.0.0-beta03"
+    implementation "androidx.navigation:navigation-compose:2.5.3"
 
     //cardview
     implementation "androidx.cardview:cardview:1.0.0"

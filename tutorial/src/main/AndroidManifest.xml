@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tutorial_example">
-
-    <!--    API 30(含)以前的藍芽權限-->
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <!--    如果app需要尋找藍芽設備 才需加入-->
-    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
-    <!--    如果app需要被其他藍芽設備搜尋到 才需加入-->
-    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
-    <!--    app需要與以配對的藍芽通信 才需加入-->
-    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-    <!--    如果app需要獲取藍芽裝置的位址 才需加入-->
+    <!-- API 30(含)以前的藍芽權限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /> <!-- 如果app需要尋找藍芽設備 才需加入 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" /> <!-- 如果app需要被其他藍芽設備搜尋到 才需加入 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" /> <!-- app需要與以配對的藍芽通信 才需加入 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" /> <!-- 如果app需要獲取藍芽裝置的位址 才需加入 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
     <application>
+        <activity
+            android:name=".Compose.ComposeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_compose"
+            android:theme="@style/Theme.Tutorial" />
+
         <service
-            android:name="com.example.tutorial_example.Fragment.Service.MusicService"
+            android:name=".Fragment.Service.MusicService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
     </application>
 
 </manifest>
