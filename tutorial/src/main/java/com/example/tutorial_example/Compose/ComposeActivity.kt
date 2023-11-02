@@ -3,6 +3,7 @@ package com.example.tutorial_example.Compose
 import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.app.TaskStackBuilder
+import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.os.Bundle
@@ -52,6 +53,9 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
+import androidx.navigation.NavController
+import androidx.navigation.NavGraph
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -59,14 +63,18 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import androidx.navigation.navDeepLink
+import androidx.navigation.navigation
 import com.example.tutorial_example.Compose.ui.theme.Pink40
 import com.example.tutorial_example.Compose.ui.theme.Purple80
 import com.example.tutorial_example.Compose.ui.theme.TutorialTheme
 import com.example.tutorial_example.R
+import ir.kaaveh.sdpcompose.sdp
+import ir.kaaveh.sdpcompose.ssp
 import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
-/** 參考: https://developer.android.com/jetpack/compose/navigation?hl=zh-tw */
+/** 參考: https://developer.android.com/jetpack/compose/navigation?hl=zh-tw
+ * Activity for test*/
 class ComposeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,11 +82,9 @@ class ComposeActivity : ComponentActivity() {
             val navController = rememberNavController()
 
             TutorialTheme {
-                // A surface container using the 'background' color from the theme
+//                 A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Column {
-                        MyAppNavHost(navController = navController, startDestination = "home")
-                    }
+                    MyAppNavHost(navController = navController, startDestination = "home")
                 }
             }
         }
@@ -92,18 +98,18 @@ fun MyAppNavHost(
     navController: NavHostController = rememberNavController(),
     startDestination: String = "home"
 ) {
-    val id = "testId"
     val context = LocalContext.current
-    val deepLinkIntent = Intent(
-        Intent.ACTION_VIEW,
-        "https://www.alan9435.com?$id?name=alan".toUri(),
-        context,
-        ComposeActivity:: class.java
-    )
 
     NavHost(navController = navController, startDestination = startDestination) {
+        val id = "testId"
+        val deepLinkIntent = Intent(
+            Intent.ACTION_VIEW,
+            "https://www.alan9435.com?$id?name=alan".toUri(),
+            context,
+            ComposeActivity::class.java
+        )
         val baseUri = "https://www.alan9435.com"
-        val data = enCodeUri(TestData("123test",1))
+        val data = enCodeUri(TestData("123test", 1))
 
         composable(route = "home") {
             RowAlignmentBottom(onClick = {
@@ -212,7 +218,7 @@ fun RowAlignmentBottom(onClick: () -> Unit = {}) {
     var selectedTabIndex by rememberSaveable { mutableStateOf(0) }
 
     val shapeCorner by animateDpAsState(
-        targetValue = if (selectedTabIndex == 0) 18.dp else 50.dp,
+        targetValue = if (selectedTabIndex == 0) 18.sdp else 50.sdp,
         animationSpec = tween(durationMillis = 1000)
     )
     val shape = RoundedCornerShape(shapeCorner)
@@ -227,9 +233,9 @@ fun RowAlignmentBottom(onClick: () -> Unit = {}) {
         modifier = Modifier
             .background(color = Color.DarkGray)
 //            .height(dimensionResource(id = com.intuit.sdp.R.dimen._150sdp))
-            .padding(5.dp)
-            .border(3.dp, Color.Blue)
-            .padding(15.dp)
+            .padding(5.sdp)
+            .border(3.sdp, Color.Blue)
+            .padding(15.sdp)
             .fillMaxWidth()
     ) {
         Row(
@@ -245,7 +251,7 @@ fun RowAlignmentBottom(onClick: () -> Unit = {}) {
                     .setBtnModifier()
             ) {
                 Text(
-                    text = "button $selectedTabIndex", fontSize = 25.sp,
+                    text = "button $selectedTabIndex", fontSize = 25.ssp,
                     modifier = Modifier
                         .horizontalScroll(rememberScrollState())
                 )
@@ -255,7 +261,7 @@ fun RowAlignmentBottom(onClick: () -> Unit = {}) {
         //讓她點btn 跳到對應
         ScrollableTabRow(
             selectedTabIndex = selectedTabIndex,
-            modifier = Modifier.padding(0.dp, 10.dp, 0.dp, 10.dp)
+            modifier = Modifier.padding(0.dp, 10.sdp, 0.dp, 10.sdp)
         ) {
             Button(onClick = { selectedTabIndex = 0 }) {
                 Text(text = "button Text")

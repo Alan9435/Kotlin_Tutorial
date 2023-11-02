@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Tutorial 中文測試</string>
     <string name="title_activity_compose">ComposeActivity</string>
+    <string name="title_activity_project_test">ProjectTestActivity</string>
+    <string name="compose_input_acct">請輸入帳號</string>
+    <string name="compose_input_pwd">請輸入密碼</string>
+    <string name="compose_login">登入</string>
+    <string name="compose_button_confirm">確認</string>
+    <string name="compose_input_acct_empty">帳號不可為空</string>
+    <string name="compose_input_acct_length">帳號長度不可小於6碼</string>
+    <string name="compose_input_pwd_empty">密碼不可為空</string>
+    <string name="compose_input_pwd_length">密碼長度不可小於6碼</string>
+    <string name="compose_network_error">連線錯誤</string>
 </resources>

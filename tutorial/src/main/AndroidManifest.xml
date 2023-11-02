@@ -18,6 +18,11 @@
             android:label="@string/title_activity_compose"
             android:theme="@style/Theme.Tutorial" />
 
+        <activity
+            android:name=".Compose.ProjectTestActivity"
+            android:exported="false"
+            android:label="@string/title_activity_project_test" />
+
         <service
             android:name=".Fragment.Service.MusicService"
             android:enabled="true"

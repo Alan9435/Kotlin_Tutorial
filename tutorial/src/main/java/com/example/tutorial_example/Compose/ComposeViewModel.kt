@@ -7,4 +7,8 @@ class ComposeViewModel(
 
 ): ViewModel() {
 
+    /** 模擬呼叫Api */
+    fun getApiRs() {
+
+    }
 }
