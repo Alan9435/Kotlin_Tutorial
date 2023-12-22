@@ -1,15 +1,18 @@
 package com.example.tutorial_example.Compose
 
+import android.os.Parcelable
 import androidx.lifecycle.viewModelScope
 import com.example.common.Base.Extensins.isNotNull
 import com.example.tutorial_example.Compose.common.base.BaseViewModel
 import com.example.tutorial_example.R
+import kotlinx.android.parcel.Parcelize
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.io.Serializable
 
 class ProjectTestViewModel : BaseViewModel() {
     //asStateFlow -> 將可變的（MutableStateFlow）轉換成不可變的（StateFlow）
@@ -96,11 +99,13 @@ data class LoginUiState(
     val errorState: ErrorState? = null,
 ) {
     /** 模擬api回傳的data格式 */
+    @Parcelize
     data class LoginResponseData(
         val title: String = "",
         val userName: String = "",
         val somethingFlag: Int = 0,
-    )
+        val allowNav: Boolean = true,
+    ): Parcelable, Serializable
 
     /** 錯誤時的data*/
     data class ErrorState(

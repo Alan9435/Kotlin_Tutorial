@@ -109,23 +109,23 @@ fun MyAppNavHost(
             ComposeActivity::class.java
         )
         val baseUri = "https://www.alan9435.com"
-        val data = enCodeUri(TestData("123test", 1))
-
+//        val data = enCodeUri(TestData("123test", 1))
+        val data = enCodeUri(LoginUiState.LoginResponseData("testttt","tttt"))
         composable(route = "home") {
             RowAlignmentBottom(onClick = {
                 /** 帶值跳頁*/
-//                navController.navigate("page1")
-//                navController.navigate(
-//                    route = "page2/$data"
-//                ) {
-//                    launchSingleTop = true
-//                }
-                /** deepLink */
-                val deepLinkPendingIntent: PendingIntent? = TaskStackBuilder.create(context).run {
-                    addNextIntentWithParentStack(deepLinkIntent)
-                    getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
+                navController.navigate("page1")
+                navController.navigate(
+                    route = "page2/$data"
+                ) {
+                    launchSingleTop = true
                 }
-                deepLinkPendingIntent?.send()
+                /** deepLink */
+//                val deepLinkPendingIntent: PendingIntent? = TaskStackBuilder.create(context).run {
+//                    addNextIntentWithParentStack(deepLinkIntent)
+//                    getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
+//                }
+//                deepLinkPendingIntent?.send()
             })
         }
         composable(
@@ -141,7 +141,7 @@ fun MyAppNavHost(
             route = "page2/{testValue}?{testValue2}",
             arguments = listOf(
                 navArgument("testValue") {
-                    type = TestDataParamType()
+                    type = LoginDataParamType()
                 },
                 navArgument("testValue2") {
                     type = NavType.StringType
@@ -149,7 +149,7 @@ fun MyAppNavHost(
                 }
             )) { backStackEntry ->
             Row {
-                backStackEntry.arguments?.serializable<TestData>("testValue")?.let { Greeting(it.title) }
+                backStackEntry.arguments?.serializable<LoginUiState.LoginResponseData>("testValue")?.let { Greeting(it.title) }
                 backStackEntry.arguments?.getString("testValue2")?.let { Greeting(it) }
             }
         }

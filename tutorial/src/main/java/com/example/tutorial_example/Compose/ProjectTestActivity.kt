@@ -6,6 +6,8 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -14,15 +16,20 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -36,8 +43,9 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 import com.example.tutorial_example.Compose.common.modifier.setLoginButton
 import com.example.tutorial_example.Compose.common.modifier.setLoginPageEditText
-import com.example.tutorial_example.Compose.common.route.RouteManager.Companion.LOGINCONTENT
-import com.example.tutorial_example.Compose.common.route.RouteManager.Companion.LOGINPAGE
+import com.example.tutorial_example.Compose.common.route.RouteManager.LoginContainer
+import com.example.tutorial_example.Compose.common.route.RouteManager.HomeContainer
+import com.example.tutorial_example.Compose.common.route.RouteManager.LoginPage
 import com.example.tutorial_example.Compose.common.view.BaseAlertDialog
 import com.example.tutorial_example.Compose.common.view.ButtonCompose
 import com.example.tutorial_example.Compose.common.view.EditTextCompose
@@ -46,6 +54,8 @@ import com.example.tutorial_example.Compose.common.view.SecretCheckBox
 import com.example.tutorial_example.Compose.ui.theme.Gray20
 import com.example.tutorial_example.Compose.ui.theme.Gray80
 import com.example.tutorial_example.R
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class ProjectTestActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,40 +64,46 @@ class ProjectTestActivity : ComponentActivity() {
         setContent {
             val navController = rememberNavController()
 
-            MyAppNavHost(navController = navController, startDestination = LOGINCONTENT)
+            MyAppNavHost(navController = navController, startDestination = LoginContainer.routeName)
         }
     }
 
     @Composable
     fun MyAppNavHost(
-        navController: NavHostController = rememberNavController(),
-        startDestination: String = LOGINCONTENT
+        navController: NavHostController,
+        startDestination: String = LoginContainer.routeName
     ) {
         val context = LocalContext.current
 
         NavHost(navController = navController, startDestination = startDestination) {
             loginGraph(navController = navController, context)
+            homeGraph(navController = navController, context = context)
             //增添home ,page01,page02
         }
     }
 
     private fun NavGraphBuilder.loginGraph(navController: NavController, context: Context) {
-        navigation(startDestination = LOGINPAGE, route = LOGINCONTENT) {
-            composable(route = LOGINPAGE) {
-                LoginPage()
+        navigation(startDestination = LoginPage.routeName, route = LoginContainer.routeName) {
+            composable(route = LoginPage.routeName) {
+                LoginPage(navController = navController)
             }
         }
     }
 
     //todo 可以把login的區塊在獨立出來成新的 Composable
+    @OptIn(ExperimentalComposeUiApi::class)
     @Preview
     @Composable
-    private fun LoginPage(projectViewModel: ProjectTestViewModel = viewModel()) {
+    private fun LoginPage(
+        navController: NavController = rememberNavController(),
+        projectViewModel: ProjectTestViewModel = viewModel()
+    ) {
         Log.d("render", "LoginPage: render")
 
         //collectAsState() 從stateFlow收集值 只要有新值發布至stateFlow 就會更新
         val loginUiState by projectViewModel.uiState.collectAsState()
         val loadingState by projectViewModel.loadingState.collectAsState()
+        val keyboardController = LocalSoftwareKeyboardController.current
 
         var acct by rememberSaveable { mutableStateOf("") }
         var pwd by rememberSaveable { mutableStateOf("") }
@@ -101,7 +117,19 @@ class ProjectTestActivity : ComponentActivity() {
             modifier = Modifier
                 .background(color = Gray20)
                 .fillMaxWidth()
-                .fillMaxHeight(),
+                .fillMaxHeight()
+                .clickable(
+                    onClick = {
+                        focusManager.clearFocus()
+                        keyboardController?.hide()
+                    }, //close keyboard
+                    indication = null, // 取消點擊波紋效果
+                    //interactionSource-> 追蹤交互事件 ex:點擊,拖曳
+                    interactionSource = remember {
+                        //用於追蹤事件的物件
+                        MutableInteractionSource()
+                    }
+                ),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -145,17 +173,20 @@ class ProjectTestActivity : ComponentActivity() {
                 },
                 keyboardOptions = KeyboardOptions.Default.copy(
                     keyboardType = KeyboardType.Password, //僅顯示英文與數字鍵盤 但無法擋控 ",!@#$%^" 等符號
-                    imeAction = ImeAction.Done //設定鍵盤選項=完成
+                    imeAction = ImeAction.Done, //設定鍵盤選項=完成
+
                 ),
                 //複寫鍵盤動作
                 keyboardActions = KeyboardActions(
-                    onDone = { focusManager.clearFocus() }  //clear focus
+                    onDone = {
+                        focusManager.clearFocus() //clear focus
+                    }
                 )
             )
             //登入按鈕
             ButtonCompose(
                 onClick = {
-                    //todo 成功->導航
+                    keyboardController?.hide() //close keyboard
                     projectViewModel.checkLoginInput(acct = acct, pwd = pwd)
                 },
                 buttonText = getString(R.string.compose_login),
@@ -163,7 +194,6 @@ class ProjectTestActivity : ComponentActivity() {
             )
         }
 
-        //todo 有必要用function包dialog 達到重複利用 或 直接放置2個dialog compose?
         loginUiState.errorState?.let {
             //顯示錯誤訊息用
             if (it.dialogFlag) {
@@ -176,8 +206,29 @@ class ProjectTestActivity : ComponentActivity() {
             }
         }
 
+        //loading遮罩
         if (loadingState) {
             LoadingMask()
         }
+
+        loginUiState.loginResponse?.let {
+            val data = enCodeUri(it).toString()
+
+            if(data.isNotEmpty()) {
+                //Unit -> 不可變的單位
+                //用來使 LaunchedEffect 僅執行一次
+                //通常用來執行非同步操作 withContext(Dispatchers.IO){...}
+                LaunchedEffect(Unit) {
+                    navController.navigate(route = HomeContainer.setSender(enCodeUri(it).toString())) //導航至home頁
+                }
+            }
+        }
     }
 }
+
+/**
+ * 自定義NavType
+ * Compose傳遞Data Class */
+class LoginDataParamType : JsonNavType<LoginUiState.LoginResponseData>(
+    clazz = LoginUiState.LoginResponseData::class.java
+)
