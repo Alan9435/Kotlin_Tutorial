@@ -17,3 +17,8 @@ val Blue20 = Color(0xEECCEEEE)
 val TransparentGray = Color(0x778E8E8E)
 
 val Purple20 = Color(0xFF9F35FF)
+
+val Green_93FF93 = Color(0xFF93FF93)
+val Green_00BB00 = Color(0xFF00BB00)
+val Green_CEFFCE = Color(0xFFCEFFCE)
+

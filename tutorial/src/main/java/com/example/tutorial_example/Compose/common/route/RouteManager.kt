@@ -7,10 +7,18 @@ enum class RouteManager(val routeName: String, val valueCanNull: String = "?", v
     LoginContainer(routeName = "LoginContainer"),
     /** 登入頁 */
     LoginPage(routeName = "LoginPage"),
+    /** 首頁Base*/
+    HomeBase(routeName = "HomeBase"),
     /** 首頁類的Graph */
     HomeContainer(routeName = "HomeContainer", valueCanNull = "/" , value = "passValue"),
     /** 首頁 */
-    HomePage(routeName = "HomePage");
+    HomePage(routeName = "HomePage"),
+    /** 設定頁 */
+    SettingPage(routeName = "SettingPage"),
+    /** 訊息頁 */
+    EmailPage(routeName = "EmailPage"),
+    /** 頁*/
+    StoreListPage(routeName = "StoreListPage");
 
     fun getRoute(): String {
         //HomeContainer/{passValue}

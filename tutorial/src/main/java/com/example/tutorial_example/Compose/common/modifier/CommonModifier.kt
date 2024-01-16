@@ -18,6 +18,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
+import com.example.tutorial_example.Compose.common.appbarHeight
 import com.example.tutorial_example.Compose.ui.theme.TransparentGray
 import ir.kaaveh.sdpcompose.sdp
 
@@ -75,4 +76,9 @@ fun Modifier.setLoadingIcon(): Modifier = composed {
         .padding(10.sdp)
         .background(Color.White)
         .size(250.sdp)
+}
+
+//appbar
+fun Modifier.setAppbar(): Modifier = composed {
+    this.height(appbarHeight.sdp)
 }

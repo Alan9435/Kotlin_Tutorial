@@ -35,10 +35,10 @@
      largeHeap="true" 表示app可以使用更多內存  -->
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/hedgehog"
         android:label="@string/app_name"
         android:hardwareAccelerated="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/hedgehog"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tutorial">
 

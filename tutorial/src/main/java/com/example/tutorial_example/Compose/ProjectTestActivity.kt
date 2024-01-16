@@ -1,5 +1,7 @@
 package com.example.tutorial_example.Compose
 
+import android.app.Activity
+import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -9,11 +11,15 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -21,7 +27,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -43,8 +48,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 import com.example.tutorial_example.Compose.common.modifier.setLoginButton
 import com.example.tutorial_example.Compose.common.modifier.setLoginPageEditText
-import com.example.tutorial_example.Compose.common.route.RouteManager.LoginContainer
 import com.example.tutorial_example.Compose.common.route.RouteManager.HomeContainer
+import com.example.tutorial_example.Compose.common.route.RouteManager.LoginContainer
 import com.example.tutorial_example.Compose.common.route.RouteManager.LoginPage
 import com.example.tutorial_example.Compose.common.view.BaseAlertDialog
 import com.example.tutorial_example.Compose.common.view.ButtonCompose
@@ -54,20 +59,18 @@ import com.example.tutorial_example.Compose.common.view.SecretCheckBox
 import com.example.tutorial_example.Compose.ui.theme.Gray20
 import com.example.tutorial_example.Compose.ui.theme.Gray80
 import com.example.tutorial_example.R
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 class ProjectTestActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+       "1123".toCharArray()
         setContent {
             val navController = rememberNavController()
-
             MyAppNavHost(navController = navController, startDestination = LoginContainer.routeName)
         }
     }
 
+    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun MyAppNavHost(
         navController: NavHostController,
@@ -78,7 +81,7 @@ class ProjectTestActivity : ComponentActivity() {
         NavHost(navController = navController, startDestination = startDestination) {
             loginGraph(navController = navController, context)
             homeGraph(navController = navController, context = context)
-            //增添home ,page01,page02
+            storeListGraph(navController = navController, context = context)
         }
     }
 
@@ -96,9 +99,9 @@ class ProjectTestActivity : ComponentActivity() {
     @Composable
     private fun LoginPage(
         navController: NavController = rememberNavController(),
-        projectViewModel: ProjectTestViewModel = viewModel()
+        projectViewModel: ProjectTestViewModel = viewModel(),
     ) {
-        Log.d("render", "LoginPage: render")
+        Log.d("***** ", "render Login page")
 
         //collectAsState() 從stateFlow收集值 只要有新值發布至stateFlow 就會更新
         val loginUiState by projectViewModel.uiState.collectAsState()
@@ -174,7 +177,6 @@ class ProjectTestActivity : ComponentActivity() {
                 keyboardOptions = KeyboardOptions.Default.copy(
                     keyboardType = KeyboardType.Password, //僅顯示英文與數字鍵盤 但無法擋控 ",!@#$%^" 等符號
                     imeAction = ImeAction.Done, //設定鍵盤選項=完成
-
                 ),
                 //複寫鍵盤動作
                 keyboardActions = KeyboardActions(
@@ -214,7 +216,7 @@ class ProjectTestActivity : ComponentActivity() {
         loginUiState.loginResponse?.let {
             val data = enCodeUri(it).toString()
 
-            if(data.isNotEmpty()) {
+            if (data.isNotEmpty()) {
                 //Unit -> 不可變的單位
                 //用來使 LaunchedEffect 僅執行一次
                 //通常用來執行非同步操作 withContext(Dispatchers.IO){...}
@@ -223,6 +225,10 @@ class ProjectTestActivity : ComponentActivity() {
                 }
             }
         }
+
+//        for test
+//        val data = LoginUiState.LoginResponseData(title = "API RS測試標題", userName = "Alan", somethingFlag = 1, allowNav = true)
+//        navController.navigate(route = HomeContainer.setSender(enCodeUri(data).toString())) //導航至home頁
     }
 }
 
