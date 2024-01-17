@@ -15,7 +15,7 @@ jobs:
     #   tag: 2021.10.1
     # 確保路徑是相同的 可先執行pwd 
     environment: #確保自己產的keyStore所用加密法在circleci環境主機存在 
-              KEYSTORE_FILE: /home/circleci/project/app/MyKeyStore/keyStore
+              KEYSTORE_FILE: /home/circleci/project/app/MyKeyStore/keyStore #確保keyStore不會外流 ex:git觀看權限
               KEYSTORE_PASSWORD: rfe666
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
@@ -48,10 +48,10 @@ jobs:
       #     key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       # - build-debug-apk
       # - build-debug-aab
-      - run:
-          name: ls app/MyKeyStore/
-          command: ls app/MyKeyStore/
-      # - build-release-apk
+      # - run:
+      #     name: ls app/MyKeyStore/
+      #     command: ls app/MyKeyStore/
+      - build-release-apk
       # - build-release-aab
 
 workflows:
