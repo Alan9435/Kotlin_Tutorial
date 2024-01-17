@@ -20,6 +20,7 @@ jobs:
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
               VERSION_NAME: 1.6.5
+              EMAIL_ADDRESS: $EMAIL_ADDRESS
 
     steps:
       - checkout
@@ -104,7 +105,7 @@ commands:
           destination: "app-release-myName.apk"
 
       - email/send:
-          body: 我們的apk出版了 連結網址->$EMAIL_ADDRESS
+          body: 我們的apk出版了 連結網址->${EMAIL_ADDRESS}
           subject: APK包版信
           to: alan.lee@gomaji.com,s990611@kimo.com
       
