@@ -103,7 +103,9 @@ commands:
       - store_artifacts:
           path: app-release-myName.apk
           destination: "app-release-myName.apk"
-
+      - run:
+          name: print
+          command: echo "email = ${EMAIL_ADDRESS}"
       - email/send:
           body: 我們的apk出版了 連結網址->${EMAIL_ADDRESS}
           subject: APK包版信
