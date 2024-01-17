@@ -51,7 +51,6 @@ jobs:
       - run:
           name: ls app/MyKeyStore/
           command: ls app/MyKeyStore/
-      - test-firebase
       # - build-release-apk
       # - build-release-aab
 
@@ -150,11 +149,6 @@ commands:
           path: app/build/outputs/bundle/release/app-release.aab
           destination: app-release-testName.aab
 
-  test-firebase:
-    step:
-      - run:
-          name: npm install
-          command: npm install --save-dev firebase-tools
       # - run:
       #     name: create token
       #     command: firebase login:ci
