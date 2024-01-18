@@ -20,6 +20,7 @@ jobs:
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
               VERSION_NAME: 1.6.5
+              MY_VERSION_NAME: 1.0.0
 
     steps:
       - checkout
@@ -33,8 +34,8 @@ jobs:
           name: Set versionName
           command: |
             myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
-            export MY_VERSION_NAME=$myVersionName >> $BASH_ENV
-            source "$BASH_ENV"
+            MY_VERSION_NAME=$myVersionName
+
       # - run: gradle --version
       # - run:
       #     name: Set CircleCI Environment Variable
@@ -42,10 +43,6 @@ jobs:
       #       export VERSION_NAME=$(./gradlew getVersionName | tail -n 1)
       #       echo "export VERSION_NAME='${VERSION_NAME}'" >> $BASH_ENV
       #       source $BASH_ENV
-      # - run:
-      #     name: Print CircleCI Environment Variable
-      #     command: $VERSION_NAME
-
 
       # - run:
       #     name: Download Dependencies # 確保項目的依賴庫是否正確,確保在不同環境都能編譯
