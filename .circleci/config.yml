@@ -38,7 +38,7 @@ jobs:
 
       - run:
           name: print now branch
-          command echo "${CIRCLE_BRANCH}"
+          command: echo "${CIRCLE_BRANCH}"
 
       # - run: gradle --version
       # - run:
