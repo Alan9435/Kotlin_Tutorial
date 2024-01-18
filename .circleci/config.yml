@@ -109,7 +109,10 @@ commands:
           command: |
             myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
             export MY_VERSION_NAME=$myVersionName
-            echo "$MY_VERSION_NAME"
+
+      - run:
+          name: Show version
+          command: echo "$MY_VERSION_NAME"
 
       - email/send:
           body: 我們的apk出版了 連結網址->"https://google.com"
