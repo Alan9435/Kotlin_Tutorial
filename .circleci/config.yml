@@ -36,7 +36,7 @@ jobs:
             myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
             echo "MY_VERSION_NAME=$myVersionName" >> $BASH_ENV
 
-      # 印出分支
+      # 印出分支 
       - run:
           name: print now branch
           command: echo "${CIRCLE_BRANCH}"
