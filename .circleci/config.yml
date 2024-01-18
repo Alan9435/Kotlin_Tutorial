@@ -28,6 +28,13 @@ jobs:
           name: Set execute permission for gradlew
           command: chmod +x gradlew  # 設定執行權限
       
+      # 抓app版本名稱 輸出MY_VERSION_NAME 作為變數
+      - run:
+          name: Set versionName
+          command: |
+            myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
+            export MY_VERSION_NAME=$myVersionName >> $BASH_ENV
+            source "$BASH_ENV"
       # - run: gradle --version
       # - run:
       #     name: Set CircleCI Environment Variable
@@ -103,14 +110,6 @@ commands:
       - store_artifacts:
           path: app-release-myName.apk
           destination: "app-release-myName.apk"
-
-          # 抓app版本名稱 輸出MY_VERSION_NAME 作為變數
-      - run:
-          name: Set versionName
-          command: |
-            myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
-            export MY_VERSION_NAME=$myVersionName >> $BASH_ENV
-            source "$BASH_ENV"
 
       - run:
           name: Show version
