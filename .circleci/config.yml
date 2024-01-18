@@ -36,10 +36,10 @@ jobs:
             myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
             echo "MY_VERSION_NAME=$myVersionName" >> $BASH_ENV
 
-      # 印出分支 
-      - run:
-          name: print now branch
-          command: echo "${CIRCLE_BRANCH}"
+      # 印出推送的目標分支 
+      # - run:
+      #     name: print now branch
+      #     command: echo "${CIRCLE_BRANCH}"
 
       # - run: gradle --version
       # - run:
@@ -56,11 +56,9 @@ jobs:
       #     paths:
       #       - ~/.gradle
       #     key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+
       # - build-debug-apk
       # - build-debug-aab
-      # - run:
-      #     name: ls app/MyKeyStore/
-      #     command: ls app/MyKeyStore/
       - build-release-apk
       # - build-release-aab
 
@@ -117,10 +115,21 @@ commands:
           name: Show version
           command: echo "$MY_VERSION_NAME"
 
-      - email/send:
-          body: 我們的app版本："${MY_VERSION_NAME}" 出版了 連結網址-> https://google.com
+      - aws-cli/setup:
+          aws_access_key_id: AWS_ACCESS_KEY_ID_BLUE
+          aws_secret_access_key: AWS_SECRET_ACCESS_KEY_BLUE
+          region: AWS_REGION_BLUE
+
+      # - email/send:
+          # body: 我們的app版本："${MY_VERSION_NAME}" 出版了 連結網址-> https://google.com
+          # subject: APK包版信
+          # to: alan.lee@gomaji.com #,s990611@kimo.com
+
+      - send_email:
+          to: alan.lee@gomaji.com
           subject: APK包版信
-          to: alan.lee@gomaji.com #,s990611@kimo.com
+          body: app版本${MY_VERSION_NAME}已出版
+          
       # - run:
       #     post:
       #       - mkdir $CIRCLE_ARTIFACTS/apks
