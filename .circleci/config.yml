@@ -36,6 +36,10 @@ jobs:
             myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
             echo "MY_VERSION_NAME=$myVersionName" >> $BASH_ENV
 
+      - run:
+          name: print now branch
+          command echo "${CIRCLE_BRANCH}"
+
       # - run: gradle --version
       # - run:
       #     name: Set CircleCI Environment Variable
@@ -113,7 +117,7 @@ commands:
           command: echo "$MY_VERSION_NAME"
 
       - email/send:
-          body: 我們的app版本："${MY_VERSION_NAME}" 出版了 連結網址->"https://google.com"
+          body: 我們的app版本："${MY_VERSION_NAME}" 出版了 連結網址-> https://google.com
           subject: APK包版信
           to: alan.lee@gomaji.com #,s990611@kimo.com
       # - run:
