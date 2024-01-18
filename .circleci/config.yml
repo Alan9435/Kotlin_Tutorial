@@ -4,7 +4,7 @@ orbs:
   android: circleci/android@2.0
   email: cinotify/email@1.2.1
   slack: circleci/slack@4.12.5
-  mailer-orb: sudiptog81/mailer-orb@dev:alpha
+  mailer-orb: sudiptog81/mailer-orb@1.0.0
 
 jobs:
   build:
