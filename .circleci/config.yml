@@ -20,7 +20,7 @@ jobs:
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
               VERSION_NAME: 1.6.5
-              MY_VERSION_NAME: 1.0.0
+              MY_VERSION_NAME: $(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
 
     steps:
       - checkout
@@ -30,11 +30,11 @@ jobs:
           command: chmod +x gradlew  # 設定執行權限
       
       # 抓app版本名稱 輸出MY_VERSION_NAME 作為變數
-      - run:
-          name: Set versionName
-          command: |
-            myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
-            $MY_VERSION_NAME=$myVersionName
+      # - run:
+      #     name: Set versionName
+      #     command: |
+      #       myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
+      #       $MY_VERSION_NAME=$myVersionName
 
       # - run: gradle --version
       # - run:
