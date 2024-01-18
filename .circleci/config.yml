@@ -113,7 +113,7 @@ commands:
           command: echo "$MY_VERSION_NAME"
 
       - email/send:
-          body: 我們的app版本：${MY_VERSION_NAME} 出版了 連結網址->"https://google.com"
+          body: 我們的app版本："${MY_VERSION_NAME}" 出版了 連結網址->"https://google.com"
           subject: APK包版信
           to: alan.lee@gomaji.com #,s990611@kimo.com
       # - run:
