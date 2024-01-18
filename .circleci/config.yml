@@ -115,11 +115,6 @@ commands:
           name: Show version
           command: echo "$MY_VERSION_NAME"
 
-      - aws-cli/setup:
-          aws_access_key_id: AWS_ACCESS_KEY_ID_BLUE
-          aws_secret_access_key: AWS_SECRET_ACCESS_KEY_BLUE
-          region: AWS_REGION_BLUE
-
       # - email/send:
           # body: 我們的app版本："${MY_VERSION_NAME}" 出版了 連結網址-> https://google.com
           # subject: APK包版信
@@ -129,7 +124,7 @@ commands:
           to: alan.lee@gomaji.com
           subject: APK包版信
           body: app版本${MY_VERSION_NAME}已出版
-          
+
       # - run:
       #     post:
       #       - mkdir $CIRCLE_ARTIFACTS/apks
