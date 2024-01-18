@@ -39,17 +39,6 @@ ext {
     varVersionName = "1.5.6"
 }
 
-task printVersionName {
-    doLast {
-        def versionName = '1.5.6'  // 實際的版本號
-//        println android.defaultConfig.versionName
-        androidComponents.configureEach { component ->
-            println "Version Name: ${component.defaultConfig.versionName}"
-        }
-//        println versionName
-    }
-}
-
 
 dependencies {
     implementation project(':common')
