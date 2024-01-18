@@ -106,7 +106,7 @@ commands:
           command: ls        
       - store_artifacts:
           path: app-release-myName.apk
-          destination: "app-release-${MY_VERSION_NAME}.apk"
+          destination: "app-release-1.5.3.apk"
 
       - run:
           name: Show version
