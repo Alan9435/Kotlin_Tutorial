@@ -2,9 +2,8 @@ version: 2.1
 
 orbs:
   android: circleci/android@2.0
-  # email: cinotify/email@1.2.1
+  email: cinotify/email@1.2.1
   slack: circleci/slack@4.12.5
-  email: circleci/email@1.0.0
 
 jobs:
   build:
@@ -121,13 +120,9 @@ commands:
           # subject: APK包版信
           # to: alan.lee@gomaji.com #,s990611@kimo.com
 
-      - email/notify:
-          to: alan.lee@gomaji.com
-          subject: "Build successful for branch $CIRCLE_BRANCH"
-          body: |
-            The build was successful for branch $CIRCLE_BRANCH.
-            Version: $MY_VERSION_NAME
-          from: "CircleCI <circleci@example.com>"
+      - run:
+          name: Send email notification
+          command: echo "Your email body" | mail -s "Subject" alan.lee@gomaji.com
 
       # - run:
       #     post:
