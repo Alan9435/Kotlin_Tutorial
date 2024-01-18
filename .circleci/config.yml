@@ -107,7 +107,7 @@ commands:
       - run:
           name: Set versionName
           command: |
-            versionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " ")
+            versionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
             echo "$versionName"
 
       - email/send:
