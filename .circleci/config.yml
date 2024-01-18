@@ -105,8 +105,15 @@ commands:
           destination: "app-release-myName.apk"
       
       - run:
-          name: Set Version Name
-          command: echo "export VERSION_NAME=$(./gradlew -q app:printVersionName)" >> $BASH_ENV
+          name: Set versionName
+          command: |
+            echo "versionName: ${env.ANDROID_VERSION_NAME}"
+
+      - run:
+          name: Print versionName
+          command: |
+            versionName = getenv("ANDROID_VERSION_NAME")
+            echo "versionName: ${versionName}"
 
       - email/send:
           body: 我們的apk出版了 連結網址->"https://google.com"
