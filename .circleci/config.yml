@@ -109,7 +109,7 @@ commands:
           name: Set versionName
           command: |
             myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
-            'export MY_VERSION_NAME=$myVersionName' >> $BASH_ENV
+            export MY_VERSION_NAME=$myVersionName >> $BASH_ENV
             source "$BASH_ENV"
 
       - run:
