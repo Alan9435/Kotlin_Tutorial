@@ -4,6 +4,7 @@ orbs:
   android: circleci/android@2.0
   email: cinotify/email@1.2.1
   slack: circleci/slack@4.12.5
+  mailer-orb: sudiptog81/mailer-orb@1.0.0
 
 jobs:
   build:
@@ -120,10 +121,14 @@ commands:
           # subject: APK包版信
           # to: alan.lee@gomaji.com #,s990611@kimo.com
 
-      - send_email:
+      - mailer-orb/mail:
+          body: |-
+            Sample Mail
+            Regards,
+            Circle CI
+          from: admin@ghosh.pro
+          subject: Example mail from mailer-orb
           to: alan.lee@gomaji.com
-          subject: APK包版信
-          body: app版本${MY_VERSION_NAME}已出版
 
       # - run:
       #     post:
