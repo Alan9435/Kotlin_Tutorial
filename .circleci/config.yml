@@ -4,6 +4,7 @@ orbs:
   android: circleci/android@2.0
   email: cinotify/email@1.2.1
   slack: circleci/slack@4.12.5
+  mailer-orb: sudiptog81/mailer-orb@dev:alpha
 
 jobs:
   build:
@@ -120,9 +121,12 @@ commands:
           # subject: APK包版信
           # to: alan.lee@gomaji.com #,s990611@kimo.com
 
-      - run:
-          name: Send email notification
-          command: echo "Your email body" | mail -s "Subject" alan.lee@gomaji.com
+      - mailer-orb/mail:
+          to: "alan.lee@gomaji.com"
+          from: "s990611@kimo.com"
+          subject: "Example mail from mailer-orb"
+          body: "Sample Mail\nRegards,\nCircle CI"
+
 
       # - run:
       #     post:
