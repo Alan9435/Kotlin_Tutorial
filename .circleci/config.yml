@@ -34,7 +34,7 @@ jobs:
           name: Set versionName
           command: |
             myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
-            MY_VERSION_NAME=$myVersionName
+            $MY_VERSION_NAME=$myVersionName
 
       # - run: gradle --version
       # - run:
