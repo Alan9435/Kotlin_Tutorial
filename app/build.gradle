@@ -39,7 +39,7 @@ ext {
     varVersionName = "1.5.6"
 }
 
-task getVersionName {
+task printVersionName {
     doLast {
         def versionName = '1.5.6'  // 實際的版本號
         println versionName
