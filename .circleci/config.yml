@@ -108,7 +108,7 @@ commands:
           name: Set versionName
           command: |
             withEnv:
-              - ANDROID_VERSION_NAME=$ANDROID_VERSION_NAME
+              - ANDROID_VERSION_NAME=$(cat app/build.gradle | grep versionName | cut -d'=' -f2)
             echo "versionName: ${ANDROID_VERSION_NAME}"
             
       - email/send:
