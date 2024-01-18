@@ -105,7 +105,7 @@ commands:
           name: ls app/build/outputs/apk/release/
           command: ls app/build/outputs/apk/release/  
       - store_artifacts:
-          path: / #app-release-1.5.3.apk
+          path: app/build/outputs/apk/release/
           #destination: "app-release-1.5.3.apk"
 
       - run:
