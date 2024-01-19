@@ -70,7 +70,7 @@ workflows:
   build-apk-workflow:
     jobs:
       - build:
-          context: slack-secrets
+          context: slack-secrets #slack的 token
 
 commands:
   build-debug-apk:
@@ -95,25 +95,6 @@ commands:
  #建構release版本apk
   build-release-apk:
     steps:
-
-      - slack/notify:
-          custom: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "plain_text",
-                      "text": "*This is a text notification*",
-                      "emoji": true
-                    }
-                  ]
-                }
-              ]
-            }
-          event: always
-
       - run:
           name: Build Release APK
           command: ./gradlew assembleRelease 
@@ -143,7 +124,24 @@ commands:
           # subject: APK包版信
           # to: alan.lee@gomaji.com #,s990611@kimo.com
       
-
+      #slack 通知發送
+      - slack/notify: #呼叫Slack orb 必須的步驟
+          custom: | #自訂
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "plain_text",
+                      "text": "*This is a text notification*",
+                      "emoji": true
+                    }
+                  ]
+                }
+              ]
+            }
+          event: success_tagged_deploy_1
 
       # - run:
       #     post:
