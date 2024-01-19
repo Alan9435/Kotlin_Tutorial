@@ -67,8 +67,6 @@ workflows:
   version: 2
   build-apk-workflow:
     jobs:
-      - notify:
-          context: slack-secrets
       - build
 
 commands:
@@ -94,6 +92,8 @@ commands:
  #建構release版本apk
   build-release-apk:
     steps:
+      - notify:
+          context: slack-secrets
       - run:
           name: Build Release APK
           command: ./gradlew assembleRelease 
