@@ -131,13 +131,15 @@ commands:
               "blocks": [
                 {
                   "type": "section",
-                  "fields": [
-                    {
-                      "type": "plain_text",
-                      "text": "*This is a text notification*",
-                      "emoji": true
-                    }
-                  ]
+                  "text": {
+                  "type": "mrkdwn",
+                  "text": "This is a Block Kit example"
+                },
+                "accessory": {
+                  "type": "image",
+                  "image_url": "https://api.slack.com/img/blocks/bkb_template_images/notifications.png",
+                  "alt_text": "calendar thumbnail"
+                  }
                 }
               ]
             }
@@ -152,7 +154,7 @@ commands:
       #發送成功通知
       - slack/notify:
           event: pass
-          channel: 'C06EJQLU7EH'
+          # channel: 'C06EJQLU7EH' #通知多個頻道 ps:預設context頻道不會通知 需再自行加入
           branch_pattern: circleci-project-new-setup #限定branch 才顯示
           template: success_tagged_deploy_1
 
