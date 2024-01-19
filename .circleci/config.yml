@@ -171,8 +171,8 @@ commands:
               ]
           event: pass
           # channel: 'C06EJQLU7EH' #通知多個頻道 ps:預設context頻道不會通知 需再自行加入
-          branch_pattern: circleci-project-new-setup #限定branch 才顯示
-          template: success_tagged_deploy_1
+          # branch_pattern: circleci-project-new-setup #限定branch 才顯示
+          # template: success_tagged_deploy_1
 
       # - run:
       #     post:
