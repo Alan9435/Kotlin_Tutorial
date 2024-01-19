@@ -137,7 +137,7 @@ commands:
                 },
                 "accessory": {
                   "type": "image",
-                  "image_url": "https://memeprod.ap-south-1.linodeobjects.com/user-gif/0212c6763ad064e77430c99fe806c737.gif",
+                  "image_url": "https://memeprod.ap-south-1.linodeobjects.com/user-gif/106f64689a5bc16e349cf39b2a3f1195.gif",
                   "alt_text": "calendar thumbnail"
                   }
                 }
@@ -153,23 +153,24 @@ commands:
 
       #發送成功通知
       - slack/notify:
-          # custom: | #自訂
-          #   {
-          #     "blocks": [
-          #       {
-          #         "type": "section",
-          #         "text": {
-          #         "type": "mrkdwn",
-          #         "text": "This is a Block Kit example ${MY_VERSION_NAME}"
-          #       },
-          #       "accessory": {
-          #         "type": "image",
-          #         "image_url": "https://memeprod.ap-south-1.linodeobjects.com/user-gif/5c1b4c055fab8939c3569407b73e07f1.gif",
-          #         "alt_text": "calendar thumbnail"
-          #         }
-          #       }
-          #     ]
           event: pass
+          custom: | #自訂
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                  "type": "mrkdwn",
+                  "text": "This is a Block Kit example ${MY_VERSION_NAME}"
+                },
+                "accessory": {
+                  "type": "image",
+                  "image_url": "https://memeprod.ap-south-1.linodeobjects.com/user-gif/106f64689a5bc16e349cf39b2a3f1195.gif",
+                  "alt_text": "calendar thumbnail"
+                  }
+                }
+              ]
+            }
           channel: 'C06EJQLU7EH' #通知多個頻道 ps:預設context頻道不會通知 需再自行加入
           branch_pattern: circleci-project-new-setup #限定branch 才顯示
           template: success_tagged_deploy_1
