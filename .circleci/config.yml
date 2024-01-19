@@ -137,7 +137,7 @@ commands:
                 },
                 "accessory": {
                   "type": "image",
-                  "image_url": "https://api.slack.com/img/blocks/bkb_template_images/notifications.png",
+                  "image_url": "https://memeprod.ap-south-1.linodeobjects.com/user-gif/5c1b4c055fab8939c3569407b73e07f1.gif",
                   "alt_text": "calendar thumbnail"
                   }
                 }
