@@ -125,7 +125,34 @@ commands:
           # to: alan.lee@gomaji.com #,s990611@kimo.com
       
       #slack 通知發送
-      - slack/notify: #呼叫Slack orb 必須的步驟
+      # - slack/notify: #呼叫Slack orb 必須的步驟
+      #     custom: | #自訂
+      #       {
+      #         "blocks": [
+      #           {
+      #             "type": "section",
+      #             "text": {
+      #             "type": "mrkdwn",
+      #             "text": "This is a Block Kit example ${MY_VERSION_NAME}"
+      #           },
+      #           "accessory": {
+      #             "type": "image",
+      #             "image_url": "https://memeprod.ap-south-1.linodeobjects.com/user-gif/5c1b4c055fab8939c3569407b73e07f1.gif",
+      #             "alt_text": "calendar thumbnail"
+      #             }
+      #           }
+      #         ]
+      #       }
+      #     event: always #不論成功失敗都會發送
+
+      #發送失敗通知
+      - slack/notify:
+          event: fail
+          mentions: '@AlanLee'
+          template: basic_fail_1
+
+      #發送成功通知
+      - slack/notify:
           custom: | #自訂
             {
               "blocks": [
@@ -142,17 +169,6 @@ commands:
                   }
                 }
               ]
-            }
-          event: always #不論成功失敗都會發送
-
-      #發送失敗通知
-      - slack/notify:
-          event: fail
-          mentions: '@AlanLee'
-          template: basic_fail_1
-
-      #發送成功通知
-      - slack/notify:
           event: pass
           # channel: 'C06EJQLU7EH' #通知多個頻道 ps:預設context頻道不會通知 需再自行加入
           branch_pattern: circleci-project-new-setup #限定branch 才顯示
