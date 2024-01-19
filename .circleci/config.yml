@@ -92,9 +92,9 @@ commands:
  #建構release版本apk
   build-release-apk:
     steps:
-      - notify:
-          context: slack-secrets
+
       - slack/notify:
+          context: slack-secrets
           custom: |
             {
               "blocks": [
