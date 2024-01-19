@@ -149,9 +149,9 @@ commands:
           template: basic_fail_1
 
       #發送成功通知
-      # - slack/notify:
-      #     event: pass
-      #     template: success_tagged_deploy_1
+      - slack/notify:
+          event: pass
+          template: success_tagged_deploy_1
 
       # - run:
       #     post:
