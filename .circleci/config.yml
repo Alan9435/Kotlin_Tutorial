@@ -141,7 +141,8 @@ commands:
                 }
               ]
             }
-          event: success_tagged_deploy_1
+          event: pass
+          template: success_tagged_deploy_1
 
       # - run:
       #     post:
