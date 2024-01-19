@@ -7,7 +7,6 @@ orbs:
   mailer-orb: sudiptog81/mailer-orb@1.0.0
 
 jobs:
-  context: slack-secrets
   build:
     docker:
       - image: cimg/android:2023.08
@@ -93,6 +92,25 @@ commands:
  #建構release版本apk
   build-release-apk:
     steps:
+      - notify:
+          context: slack-secrets
+      - slack/notify:
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "plain_text",
+                      "text": "*This is a text notification*",
+                      "emoji": true
+                    }
+                  ]
+                }
+              ]
+            }
+          event: always
       - run:
           name: Build Release APK
           command: ./gradlew assembleRelease 
@@ -121,24 +139,7 @@ commands:
           # body: 我們的app版本："${MY_VERSION_NAME}" 出版了 連結網址-> https://google.com
           # subject: APK包版信
           # to: alan.lee@gomaji.com #,s990611@kimo.com
-
-      - slack/notify:
-          custom: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "plain_text",
-                      "text": "*This is a text notification*",
-                      "emoji": true
-                    }
-                  ]
-                }
-              ]
-            }
-          event: always
+      
 
 
       # - run:
