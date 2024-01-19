@@ -7,6 +7,7 @@ orbs:
   mailer-orb: sudiptog81/mailer-orb@1.0.0
 
 jobs:
+  context: slack-secrets
   build:
     docker:
       - image: cimg/android:2023.08
@@ -92,8 +93,6 @@ commands:
  #建構release版本apk
   build-release-apk:
     steps:
-      - notify:
-          context: slack-secrets
       - run:
           name: Build Release APK
           command: ./gradlew assembleRelease 
