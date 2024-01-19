@@ -141,16 +141,18 @@ commands:
                 }
               ]
             }
-          event: always
+          event: always #不論成功失敗都會發送
 
+      #發送失敗通知
       - slack/notify:
-          event: always
+          event: fail
           mentions: '@AlanLee'
           template: basic_fail_1
 
       #發送成功通知
       - slack/notify:
           event: pass
+          branch_pattern: main
           template: success_tagged_deploy_1
 
       # - run:
