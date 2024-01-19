@@ -144,10 +144,10 @@ commands:
           event: always
 
       - slack/notify:
-          event: fail
+          event: always
           mentions: '@AlanLee'
           template: basic_fail_1
-          
+
       #發送成功通知
       # - slack/notify:
       #     event: pass
