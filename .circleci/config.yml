@@ -133,7 +133,7 @@ commands:
                   "type": "section",
                   "text": {
                   "type": "mrkdwn",
-                  "text": "This is a Block Kit example"
+                  "text": "This is a Block Kit example ${MY_VERSION_NAME}"
                 },
                 "accessory": {
                   "type": "image",
