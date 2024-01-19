@@ -152,7 +152,7 @@ commands:
       #發送成功通知
       - slack/notify:
           event: pass
-          branch_pattern: main
+          branch_pattern: circleci-project-new-setup
           template: success_tagged_deploy_1
 
       # - run:
