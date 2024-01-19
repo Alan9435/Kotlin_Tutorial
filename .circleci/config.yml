@@ -62,13 +62,8 @@ jobs:
       # - build-debug-aab
       - build-release-apk
       # - build-release-aab
+      
 
-workflows:
-  send-notification:
-    jobs:
-      - notify:
-        context: slack-secrets
-        
 workflows:
   version: 2
   build-apk-workflow:
@@ -116,6 +111,8 @@ commands:
               ]
             }
           event: always
+      - notify:
+        context: slack-secrets
       - run:
           name: Build Release APK
           command: ./gradlew assembleRelease 
