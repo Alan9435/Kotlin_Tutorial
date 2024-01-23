@@ -24,7 +24,7 @@ jobs:
               VERSION_NAME: 1.6.5
               MY_VERSION_NAME: ""
               COMMIT_MESSAGE: ""
-
+ 
     steps:
       - checkout
       - run: java --version
