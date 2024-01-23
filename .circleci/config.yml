@@ -23,7 +23,7 @@ jobs:
               KEY_PASSWORD: rfe666
               VERSION_NAME: 1.6.5
               MY_VERSION_NAME: ""
-              COMMIT_MSG: ""
+              MY_COMMIT_MSG: ""
  
     steps:
       - checkout
@@ -44,8 +44,8 @@ jobs:
           command: |
             myCommitMsg=$(git log -10 --pretty=format:"%s")
             echo "${myCommitMsg}"
-            echo "COMMIT_MSG=$myCommitMsg" >> $BASH_ENV
-            echo "commit msg: ${COMMIT_MSG}"
+            echo "MY_COMMIT_MSG=$myCommitMsg" >> $BASH_ENV
+            echo "commit msg: ${MY_COMMIT_MSG}"
 
       # 印出推送的目標分支 
       # - run:
