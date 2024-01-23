@@ -39,10 +39,11 @@ jobs:
             myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
             echo "MY_VERSION_NAME=$myVersionName" >> $BASH_ENV
 
-      - script:
-          name: Run script
-          script: |
-            echo "COMMIT_SHA=$(git rev-parse HEAD)" >> $BASH_ENV
+      - run:
+          name: Print commit messages
+          command: |
+            echo "Commit messages:"
+            git log --pretty=%B $CIRCLE_SHA1..HEAD
 
       # 印出推送的目標分支 
       # - run:
