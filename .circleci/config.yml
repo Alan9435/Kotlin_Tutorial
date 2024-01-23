@@ -42,7 +42,7 @@ jobs:
       - run:
           name: Print commit messages
           command: |
-            "COMMIT_MESSAGE=git log --pretty=%B $CIRCLE_SHA1..HEAD"
+            echo "COMMIT_MESSAGE=git log --pretty=%B $CIRCLE_SHA1..HEAD" >> $BASH_ENV
             echo "Commit messages: ${COMMIT_MESSAGE}"
 
       # 印出推送的目標分支 
