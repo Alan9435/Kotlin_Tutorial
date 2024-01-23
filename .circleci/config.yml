@@ -23,6 +23,7 @@ jobs:
               KEY_PASSWORD: rfe666
               VERSION_NAME: 1.6.5
               MY_VERSION_NAME: ""
+              COMMIT_LOG: ""
 
     steps:
       - checkout
@@ -33,10 +34,14 @@ jobs:
       
       # 抓app版本名稱 輸出MY_VERSION_NAME 作為變數
       - run:
-          name: Set versionName
+          name: Set version name
           command: |
             myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
             echo "MY_VERSION_NAME=$myVersionName" >> $BASH_ENV
+
+      - run:
+          name: Set commit log
+          command: echo "export COMMIT_MESSAGE=\"$(git log --format=oneline -n 1 $CIRCLE_SHA1)\"" >> ~/.bashrc
 
       # 印出推送的目標分支 
       # - run:
