@@ -166,7 +166,7 @@ commands:
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": "${COMMIT_MESSAGE}",
+                        "text": "${COMMIT_MESSAGE}"
                     }
                 }
               ]
