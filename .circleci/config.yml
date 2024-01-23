@@ -44,8 +44,6 @@ jobs:
           command: |
             myCommitMsg=$(git log -10 --pretty=format:"%s")
             echo "${myCommitMsg}"
-            echo "MY_COMMIT_MSG=$myCommitMsg" >> $BASH_ENV
-            echo "commit msg: ${MY_COMMIT_MSG}"
 
       # 印出推送的目標分支 
       # - run:
