@@ -42,8 +42,9 @@ jobs:
       - run:
           name: Print commit messages
           command: |
-            COMMIT_MESSAGE=$(git log -10 --pretty=format:"%s") >> $BASH_ENV
-            echo "${COMMIT_MESSAGE}"
+            myCommitMsg=$(git log -10 --pretty=format:"%s")
+            echo "COMMIT_MESSAGE=$myCommitMsg" >> $BASH_ENV
+            echo "commit msg: ${COMMIT_MESSAGE}"
 
       # 印出推送的目標分支 
       # - run:
