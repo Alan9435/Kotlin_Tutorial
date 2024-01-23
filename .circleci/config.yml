@@ -23,7 +23,7 @@ jobs:
               KEY_PASSWORD: rfe666
               VERSION_NAME: 1.6.5
               MY_VERSION_NAME: ""
-              COMMIT_LOG: ""
+              COMMIT_MESSAGE: ""
 
     steps:
       - checkout
@@ -41,8 +41,8 @@ jobs:
 
       - run:
           name: Set commit log
-          command: |
-            echo "sha-1 ${CIRCLE_SHA1}"
+          command: "export COMMIT_MESSAGE=\"$(git log --format=oneline -n 1 $CIRCLE_SHA1)\"" >> ~/.bashrc}"
+          
       # 印出推送的目標分支 
       # - run:
       #     name: print now branch
