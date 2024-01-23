@@ -164,6 +164,9 @@ commands:
                 }
               ]
             }
+          attachments:
+            - text: "test"
+              file: app/build/outputs/apk/release/
           event: pass #不論成功失敗都會發送
 
       #失敗時的通知
