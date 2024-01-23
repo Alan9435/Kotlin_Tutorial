@@ -42,7 +42,7 @@ jobs:
       - run:
           name: Set commit log
           command: |
-            echo "COMMIT_LOG="$(git log --format=oneline -n 1 $CIRCLE_SHA1)\"" >> $BASH_ENV
+            echo "sha-1 ${CIRCLE_SHA1}"
       # 印出推送的目標分支 
       # - run:
       #     name: print now branch
