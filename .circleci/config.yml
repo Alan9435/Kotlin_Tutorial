@@ -39,11 +39,11 @@ jobs:
           command: |
             myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
             echo "MY_VERSION_NAME=$myVersionName" >> $BASH_ENV
-            
+
       - run:
           name: Print commit messages
           command: |
-            COMMIT_MESSAGE=$(circleci orb get git get-commit-message)
+            COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s")
             echo "${COMMIT_MESSAGE}"
 
       # 印出推送的目標分支 
