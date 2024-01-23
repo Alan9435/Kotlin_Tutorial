@@ -42,7 +42,7 @@ jobs:
       - run:
           name: Print commit messages
           command: |
-            COMMIT_MESSAGE=$(git log --pretty=format:"%s")
+            COMMIT_MESSAGE=$(git log -10 --pretty=format:"%s")
             echo "${COMMIT_MESSAGE}"
 
       # 印出推送的目標分支 
@@ -161,7 +161,15 @@ commands:
                         "image_url": "https://memeprod.ap-south-1.linodeobjects.com/user-gif/2b1f84ab1f27ffeeb98e35fc46a4c79b.gif",
                         "alt_text": "calendar thumbnail"
                     }
-                }
+                },
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "${COMMIT_MESSAGE}",
+                        "emoji": true
+                    }
+                },
               ]
             }
           event: pass #不論成功失敗都會發送
