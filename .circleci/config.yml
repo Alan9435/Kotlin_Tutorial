@@ -42,7 +42,7 @@ jobs:
       - run:
           name: Print commit messages
           command: |
-            COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s")
+            COMMIT_MESSAGE=$(git log --pretty=format:"%s")
             echo "${COMMIT_MESSAGE}"
 
       # 印出推送的目標分支 
