@@ -40,6 +40,7 @@ jobs:
             echo "MY_VERSION_NAME=$myVersionName" >> $BASH_ENV
 
       - script:
+          name: Run script
           script: |
             git log --oneline | tail -n 1
       # 印出推送的目標分支 
