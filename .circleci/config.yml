@@ -39,11 +39,9 @@ jobs:
             myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
             echo "MY_VERSION_NAME=$myVersionName" >> $BASH_ENV
 
-      - run:
-          name: Set commit log
-          command: |
-            "export COMMIT_MESSAGE=\"$(git log --format=oneline -n 1 $CIRCLE_SHA1)\"" >> $BASH_ENV"
-            echo "msg = ${COMMIT_MESSAGE}"
+      - script:
+          script: |
+            git log --oneline | tail -n 1
       # 印出推送的目標分支 
       # - run:
       #     name: print now branch
@@ -163,7 +161,7 @@ commands:
                 }
               ]
             }
-          event: always #不論成功失敗都會發送
+          event: pass #不論成功失敗都會發送
 
       #失敗時的通知
       - slack/notify:
