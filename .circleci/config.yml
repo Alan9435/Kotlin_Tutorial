@@ -42,7 +42,8 @@ jobs:
       - script:
           name: Run script
           script: |
-            git log --oneline | tail -n 1
+            echo "COMMIT_SHA=$(git rev-parse HEAD)" >> $BASH_ENV
+
       # 印出推送的目標分支 
       # - run:
       #     name: print now branch
