@@ -43,6 +43,7 @@ jobs:
           name: Print commit messages
           command: |
             myCommitMsg=$(git log -10 --pretty=format:"%s")
+            echo "${myCommitMsg}"
             echo "COMMIT_MESSAGE=$myCommitMsg" >> $BASH_ENV
             echo "commit msg: ${COMMIT_MESSAGE}"
 
@@ -167,7 +168,7 @@ commands:
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": "${COMMIT_MESSAGE}"
+                        "text": "test"
                     }
                 }
               ]
