@@ -5,6 +5,7 @@ orbs:
   email: cinotify/email@1.2.1
   slack: circleci/slack@4.9.3
   mailer-orb: sudiptog81/mailer-orb@1.0.0
+  git: circleci/git@4.4.1 # Replace with the latest version
 
 jobs:
   build:
@@ -38,11 +39,11 @@ jobs:
           command: |
             myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
             echo "MY_VERSION_NAME=$myVersionName" >> $BASH_ENV
-            
+
       - run:
           name: Print commit messages
           command: |
-            COMMIT_MESSAGE=$(circleci/git/get-commit-message)
+            COMMIT_MESSAGE=<span class="math-inline">\(circleci orb get git get\-commit\-message\)
             echo "${COMMIT_MESSAGE}"
 
       # 印出推送的目標分支 
