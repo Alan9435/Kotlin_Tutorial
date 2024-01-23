@@ -43,7 +43,7 @@ jobs:
           name: Print commit messages
           command: |
             echo "Commit messages:"
-            git log --pretty=%B $CIRCLE_SHA1..$CIRCLE_SHA1^
+            git log --pretty=%B -n 1 $CIRCLE_SHA1
 
       # 印出推送的目標分支 
       # - run:
@@ -169,6 +169,7 @@ commands:
       #失敗時的通知
       - slack/notify:
           event: fail
+          logo: "https://memeprod.ap-south-1.linodeobjects.com/user-gif/2b1f84ab1f27ffeeb98e35fc46a4c79b.gif"
           mentions: '@AlanLee'
           template: basic_fail_1
 
