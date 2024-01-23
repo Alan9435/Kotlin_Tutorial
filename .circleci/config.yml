@@ -127,36 +127,36 @@ commands:
       #slack 通知發送
       - slack/notify: #呼叫Slack orb 必須的步驟
           custom: | #自訂
-          {
-  "blocks": [
-    {
-      "type": "header",
-      "text": {
-        "type": "plain_text",
-        "text": "Android包版成功",
-        "emoji": true
-      }
-    },
-    {
-      "type": "section",
-      "fields": [
-        {
-          "type": "mrkdwn",
-          "text": "```Version = ${}```"
-        },
-        {
-          "type": "mrkdwn",
-          "text": "```Branch = ${}```"
-        }
-      ],
-      "accessory": {
-        "type": "image",
-        "image_url": "https://memeprod.ap-south-1.linodeobjects.com/user-gif/3101fd91a6117fc07710fd8a5d761c51.gif",
-        "alt_text": "calendar thumbnail"
-      }
-    }
-  ]
-}
+            {
+              "blocks": [
+                {
+                    "type": "header",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Android包版成功",
+                        "emoji": true
+                    }
+                },
+                {
+                    "type": "section",
+                    "fields": [
+                        {
+                            "type": "mrkdwn",
+                            "text": "```Version = ${}```"
+                        },
+                        {
+                            "type": "mrkdwn",
+                            "text": "```Branch = ${}```"
+                        }
+                    ],
+                    "accessory": {
+                        "type": "image",
+                        "image_url": "https://memeprod.ap-south-1.linodeobjects.com/user-gif/3101fd91a6117fc07710fd8a5d761c51.gif",
+                        "alt_text": "calendar thumbnail"
+                    }
+                }
+              ]
+            }
           event: always #不論成功失敗都會發送
 
       #失敗時的通知
@@ -168,23 +168,23 @@ commands:
       #發送成功通知
       # - slack/notify:
       #     event: pass
-      #     custom: | #自訂
-      #       {
-      #         "blocks": [
-      #           {
-      #             "type": "section",
-      #             "text": {
-      #             "type": "mrkdwn",
-      #             "text": "test ${MY_VERSION_NAME}"
-      #           },
-      #           "accessory": {
-      #             "type": "image",
-      #             "image_url": "https://memeprod.ap-south-1.linodeobjects.com/user-gif/106f64689a5bc16e349cf39b2a3f1195.gif",
-      #             "alt_text": "calendar thumbnail"
-      #             }
-      #           }
-      #         ]
-      #       }
+          # custom: | #自訂
+          #   {
+          #     "blocks": [
+          #       {
+          #         "type": "section",
+          #         "text": {
+          #         "type": "mrkdwn",
+          #         "text": "test ${MY_VERSION_NAME}"
+          #       },
+          #       "accessory": {
+          #         "type": "image",
+          #         "image_url": "https://memeprod.ap-south-1.linodeobjects.com/user-gif/106f64689a5bc16e349cf39b2a3f1195.gif",
+          #         "alt_text": "calendar thumbnail"
+          #         }
+          #       }
+          #     ]
+          #   }
       #     # channel: 'C06EJQLU7EH' #通知多個頻道 ps:預設context頻道不會通知 需再自行加入
       #     branch_pattern: circleci-project-new-setup #限定branch 才顯示
       #     template: success_tagged_deploy_1
