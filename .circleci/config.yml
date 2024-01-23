@@ -142,11 +142,11 @@ commands:
                     "fields": [
                         {
                             "type": "mrkdwn",
-                            "text": "```Version = ${}```"
+                            "text": "```Version = ```"
                         },
                         {
                             "type": "mrkdwn",
-                            "text": "```Branch = ${}```"
+                            "text": "```Branch = ```"
                         }
                     ],
                     "accessory": {
