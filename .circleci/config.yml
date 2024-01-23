@@ -42,8 +42,7 @@ jobs:
       - run:
           name: Set commit log
           command: |
-            echo "export COMMIT_MESSAGE=\"$(git log --format=oneline -n 1 $CIRCLE_SHA1)\"" >> ~/.bashrc
-            echo "msg = ${COMMIT_MESSAGE}"
+            echo "COMMIT_LOG="$(git log --format=oneline -n 1 $CIRCLE_SHA1)\"" >> $BASH_ENV
       # 印出推送的目標分支 
       # - run:
       #     name: print now branch
