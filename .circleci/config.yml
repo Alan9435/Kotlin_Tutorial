@@ -162,13 +162,6 @@ commands:
                         "alt_text": "calendar thumbnail"
                     }
                 },
-                {
-                    "type": "section",
-                    "text": {
-                        "type": "mrkdwn",
-                        "text": "test123",
-                    }
-                },
               ]
             }
           event: pass #不論成功失敗都會發送
