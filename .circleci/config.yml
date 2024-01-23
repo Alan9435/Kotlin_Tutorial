@@ -41,8 +41,9 @@ jobs:
 
       - run:
           name: Set commit log
-          command: "export COMMIT_MESSAGE=\"$(git log --format=oneline -n 1 $CIRCLE_SHA1)\"" >> ~/.bashrc}"
-          
+          command: |
+            export "COMMIT_MESSAGE"=\"$(git log --format=oneline -n 1 $CIRCLE_SHA1)\"" >> $BASH_ENV
+            echo "msg = ${COMMIT_MESSAGE}"
       # 印出推送的目標分支 
       # - run:
       #     name: print now branch
@@ -156,7 +157,7 @@ commands:
                     ],
                     "accessory": {
                         "type": "image",
-                        "image_url": "https://memeprod.ap-south-1.linodeobjects.com/user-gif/3101fd91a6117fc07710fd8a5d761c51.gif",
+                        "image_url": "https://memeprod.ap-south-1.linodeobjects.com/user-gif/2b1f84ab1f27ffeeb98e35fc46a4c79b.gif",
                         "alt_text": "calendar thumbnail"
                     }
                 }
