@@ -45,6 +45,11 @@ jobs:
             myCommitMsg=$(git log -10 --pretty=format:"%s")
             echo "${myCommitMsg}"
 
+      - run:
+          name: Get artifacts URL
+          command: |
+            echo $CI_ARTIFACTS_URL
+
       # 印出推送的目標分支 
       # - run:
       #     name: print now branch
