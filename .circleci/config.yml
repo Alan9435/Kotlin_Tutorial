@@ -161,14 +161,6 @@ commands:
                         "image_url": "https://memeprod.ap-south-1.linodeobjects.com/user-gif/2b1f84ab1f27ffeeb98e35fc46a4c79b.gif",
                         "alt_text": "calendar thumbnail"
                     }
-                },
-                {
-                    "files": [
-                        {
-                            "path": "app/build/outputs/apk/release/app-release.apk",
-                            "name": "My App APK"
-                        }
-                    ]
                 }
               ]
             }
