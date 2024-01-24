@@ -146,7 +146,7 @@ commands:
                     "type": "header",
                     "text": {
                         "type": "plain_text",
-                        "text": "Android包版成功 ${CIRCLE_BUILD_URL}",
+                        "text": "Android包版成功",
                         "emoji": true
                     }
                 },
@@ -160,6 +160,10 @@ commands:
                         {
                             "type": "mrkdwn",
                             "text": "```Branch = ${CIRCLE_BRANCH}```"
+                        },
+                        {
+                            "type": "mrkdwn",
+                            "text": "```Download = ${CIRCLE_BUILD_URL}```"
                         }
                     ],
                     "accessory": {
