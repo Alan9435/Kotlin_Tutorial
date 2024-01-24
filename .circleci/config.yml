@@ -162,12 +162,14 @@ commands:
                         "alt_text": "calendar thumbnail"
                     }
                 },
-                "files": [
-                  {
-                      "path": "app/build/outputs/apk/release/app-release.apk",
-                      "name": "My App APK"
-                  }
-                ]
+                {
+                    "files": [
+                        {
+                            "path": "app/build/outputs/apk/release/app-release.apk",
+                            "name": "My App APK"
+                        }
+                    ]
+                }
               ]
             }
           event: pass #不論成功失敗都會發送
