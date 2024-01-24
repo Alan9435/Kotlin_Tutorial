@@ -49,7 +49,7 @@ jobs:
       - run:
           name: Get artifacts URL
           command: |
-            echo "${CI_ARTIFACTS_URL}"
+            echo "${CIRCLE_ARTIFACTS}"
 
       # 印出推送的目標分支 
       # - run:
