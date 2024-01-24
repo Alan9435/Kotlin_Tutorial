@@ -49,7 +49,8 @@ jobs:
       - run:
           name: Get artifacts URL
           command: |
-            echo "${CIRCLE_ARTIFACTS}"
+            echo "CIRCLE_NODE_INDEX = ${CIRCLE_NODE_INDEX}"
+            echo "CIRCLE_WORKFLOW_JOB_ID = ${CIRCLE_WORKFLOW_JOB_ID}"
 
       # 印出推送的目標分支 
       # - run:
