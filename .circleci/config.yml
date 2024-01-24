@@ -5,6 +5,8 @@ orbs:
   email: cinotify/email@1.2.1
   slack: circleci/slack@4.9.3
   mailer-orb: sudiptog81/mailer-orb@1.0.0
+  circleci: circleci/circleci-cli@3.0.0
+
 
 jobs:
   build:
