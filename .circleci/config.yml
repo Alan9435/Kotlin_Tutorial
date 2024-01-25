@@ -264,4 +264,4 @@ commands:
     steps:
       - run:
           name: show version name
-          command: echo $MY_VERSION_NAME | sed 's/\.//g' | expr + 1
+          command: echo $MY_VERSION_NAME | sed 's/\.//g' | expr -f "%.0f" + 1
