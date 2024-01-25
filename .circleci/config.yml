@@ -46,11 +46,6 @@ jobs:
             myCommitMsg=$(git log -10 --pretty=format:"%s")
             echo "${myCommitMsg}"
 
-      - artifacts:
-            permissions:
-              - user: Alan9435
-                access: read-write
-
       # 印出推送的目標分支 
       # - run:
       #     name: print now branch
@@ -176,11 +171,15 @@ commands:
             }
           event: pass #不論成功失敗都會發送
 
-      #失敗時的通知
+        #失敗時的通知
       - slack/notify:
           event: fail
           mentions: '@AlanLee'
           template: basic_fail_1
+      
+      - run:
+           name: Circle State
+           command: echo "state = ${CIRCLE_BUILD_STATUS}"
 
       #發送成功通知
       # - slack/notify:
@@ -256,3 +255,4 @@ commands:
       # - run:
       #     name: create token
       #     command: firebase login:ci
+
