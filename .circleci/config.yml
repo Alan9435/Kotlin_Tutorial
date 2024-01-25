@@ -176,10 +176,16 @@ commands:
           event: fail
           mentions: '@AlanLee'
           template: basic_fail_1
-      
+
+    on_failure:
       - run:
-           name: Circle State
-           command: echo "state = ${CIRCLE_BUILD_STATUS}"
+          name: on_failure
+          command: echo "on fail"
+
+    on_success:
+      - run:
+          name: on_success
+          command: echo "on succ"
 
       #發送成功通知
       # - slack/notify:
