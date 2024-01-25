@@ -261,4 +261,4 @@ commands:
     steps:
       - run:
           name: show version name
-          command: echo "my versionName = ${MY_VERSION_NAME}"
+          command: echo "my versionName = ${MY_VERSION_NAME | tr -d "."}"
