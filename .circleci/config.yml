@@ -262,6 +262,6 @@ commands:
 
   up-version-name:
     steps:
-      -run:
-        name: show version name
-        command: echo "my versionName = ${MY_VERSION_NAME}"
+      - run:
+          name: show version name
+          command: echo "my versionName = ${MY_VERSION_NAME}"
