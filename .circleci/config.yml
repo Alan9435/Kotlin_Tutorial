@@ -45,7 +45,7 @@ jobs:
           command: |
             myCommitMsg=$(git log -10 --pretty=format:"%s")
             echo "${myCommitMsg}"
-            
+
       - up-version-name
 
       # 印出推送的目標分支 
@@ -264,4 +264,4 @@ commands:
     steps:
       - run:
           name: show version name
-          command: echo sed 's/\.//g' ${MY_VERSION_NAME}
+          command: echo $MY_VERSION_NAME | sed 's/\.//g'
