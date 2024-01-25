@@ -46,10 +46,10 @@ jobs:
             myCommitMsg=$(git log -10 --pretty=format:"%s")
             echo "${myCommitMsg}"
 
-      - run:
-          name: Get artifacts URL
-          command: |
-            echo "CIRCLE_BUILD_URL = ${CIRCLE_BUILD_URL}"
+      - artifacts:
+            permissions:
+              - user: Alan9435
+                access: read-write
 
       # 印出推送的目標分支 
       # - run:
