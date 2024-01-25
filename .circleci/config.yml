@@ -45,6 +45,8 @@ jobs:
           command: |
             myCommitMsg=$(git log -10 --pretty=format:"%s")
             echo "${myCommitMsg}"
+            
+      - up-version-name
 
       # 印出推送的目標分支 
       # - run:
@@ -69,7 +71,7 @@ jobs:
 
       # - build-debug-apk
       # - build-debug-aab
-      - build-release-apk
+      # - build-release-apk
       # - build-release-aab
 
 workflows:
@@ -127,7 +129,8 @@ commands:
           command: echo "$MY_VERSION_NAME"
 
       - set-notify
-      - up-version-name
+      # - up-version-name
+
       # - email/send:
           # body: 我們的app版本："${MY_VERSION_NAME}" 出版了 連結網址-> https://google.com
           # subject: APK包版信
@@ -261,4 +264,4 @@ commands:
     steps:
       - run:
           name: show version name
-          command: echo "my versionName = sed 's/\.//g' ${MY_VERSION_NAME}"
+          command: echo sed 's/\.//g' ${MY_VERSION_NAME}
