@@ -248,7 +248,7 @@ commands:
                     }
                 }
               ]
-            },
+            }
           event: pass #不論成功失敗都會發送
 
         #失敗時的通知
@@ -256,3 +256,6 @@ commands:
           event: fail
           mentions: '@AlanLee'
           template: basic_fail_1
+          accessory:
+            type: image
+            image_url: "https://memeprod.ap-south-1.linodeobjects.com/user-gif/2b1f84ab1f27ffeeb98e35fc46a4c79b.gif"
