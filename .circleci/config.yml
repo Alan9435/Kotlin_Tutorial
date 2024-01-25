@@ -72,6 +72,15 @@ jobs:
       - build-release-apk
       # - build-release-aab
       
+    on_failure:
+      - run:
+          name: on_failure
+          command: echo "on fail"
+
+  on_success:
+    - run:
+        name: on_success
+        command: echo "on succ"
 
 workflows:
   version: 2
@@ -176,16 +185,6 @@ commands:
           event: fail
           mentions: '@AlanLee'
           template: basic_fail_1
-
-    on_failure:
-      - run:
-          name: on_failure
-          command: echo "on fail"
-
-    on_success:
-      - run:
-          name: on_success
-          command: echo "on succ"
 
       #發送成功通知
       # - slack/notify:
