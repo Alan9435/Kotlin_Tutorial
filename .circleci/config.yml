@@ -136,55 +136,14 @@ commands:
           name: Show version
           command: echo "$MY_VERSION_NAME"
 
+      - set-notify
+      
       # - email/send:
           # body: 我們的app版本："${MY_VERSION_NAME}" 出版了 連結網址-> https://google.com
           # subject: APK包版信
           # to: alan.lee@gomaji.com #,s990611@kimo.com
       
-      #slack 通知發送
-      - slack/notify: #呼叫Slack orb 必須的步驟
-          custom: | #自訂
-            {
-              "blocks": [
-                {
-                    "type": "header",
-                    "text": {
-                        "type": "plain_text",
-                        "text": "Android包版成功",
-                        "emoji": true
-                    }
-                },
-                {
-                    "type": "section",
-                    "fields": [
-                        {
-                            "type": "mrkdwn",
-                            "text": "```Version = Android ${MY_VERSION_NAME}```"
-                        },
-                        {
-                            "type": "mrkdwn",
-                            "text": "```Branch = ${CIRCLE_BRANCH}```"
-                        },
-                        {
-                            "type": "mrkdwn",
-                            "text": "```Download = ${CIRCLE_BUILD_URL}```"
-                        }
-                    ],
-                    "accessory": {
-                        "type": "image",
-                        "image_url": "https://memeprod.ap-south-1.linodeobjects.com/user-gif/2b1f84ab1f27ffeeb98e35fc46a4c79b.gif",
-                        "alt_text": "calendar thumbnail"
-                    }
-                }
-              ]
-            }
-          event: pass #不論成功失敗都會發送
-
-        #失敗時的通知
-      - slack/notify:
-          event: fail
-          mentions: '@AlanLee'
-          template: basic_fail_1
+      
 
       #發送成功通知
       # - slack/notify:
@@ -261,3 +220,49 @@ commands:
       #     name: create token
       #     command: firebase login:ci
 
+  set-notify:
+    steps:
+      #slack 通知發送
+      - slack/notify: #呼叫Slack orb 必須的步驟
+          custom: | #自訂
+            {
+              "blocks": [
+                {
+                    "type": "header",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Android包版成功",
+                        "emoji": true
+                    }
+                },
+                {
+                    "type": "section",
+                    "fields": [
+                        {
+                            "type": "mrkdwn",
+                            "text": "```Version = Android ${MY_VERSION_NAME}```"
+                        },
+                        {
+                            "type": "mrkdwn",
+                            "text": "```Branch = ${CIRCLE_BRANCH}```"
+                        },
+                        {
+                            "type": "mrkdwn",
+                            "text": "```Download = ${CIRCLE_BUILD_URL}```"
+                        }
+                    ],
+                    "accessory": {
+                        "type": "image",
+                        "image_url": "https://memeprod.ap-south-1.linodeobjects.com/user-gif/2b1f84ab1f27ffeeb98e35fc46a4c79b.gif",
+                        "alt_text": "calendar thumbnail"
+                    }
+                }
+              ]
+            }
+          event: pass #不論成功失敗都會發送
+
+        #失敗時的通知
+      - slack/notify:
+          event: fail
+          mentions: '@AlanLee'
+          template: basic_fail_1
