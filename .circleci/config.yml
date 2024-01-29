@@ -14,7 +14,8 @@ jobs:
       xcode: 13.3.0
 
     steps:
-      - run: xcode --version
+      - checkout
+      - run: echo "in test"
   build:
     # docker 執行環境
     docker:
