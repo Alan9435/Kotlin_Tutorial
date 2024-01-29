@@ -33,12 +33,11 @@ jobs:
               KEYSTORE_PASSWORD: rfe666
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
-              VERSION_NAME: 1.6.5
               MY_VERSION_NAME: ""
               MY_COMMIT_MSG: ""
  
     steps:
-      - checkout
+      # - checkout
       - run: java --version
       - run:
           name: Set execute permission for gradlew
@@ -49,7 +48,8 @@ jobs:
           name: Set version name
           command: |
             myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
-            echo "MY_VERSION_NAME=$myVersionName"
+            echo "MY_VERSION_NAME=$myVersionName" >> $BASH_ENV
+
       - run:
           name: Print commit messages
           command: |
