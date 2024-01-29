@@ -7,6 +7,7 @@ orbs:
   slack: circleci/slack@4.9.3
   circleci-cli: circleci/circleci-cli@0.1.9
 
+# 
 jobs:
   build:
     docker:
@@ -46,7 +47,7 @@ jobs:
             myCommitMsg=$(git log -10 --pretty=format:"%s")
             echo "${myCommitMsg}"
 
-      - up-version-name
+      # - up-version-name
 
       # 印出推送的目標分支 
       # - run:
@@ -131,10 +132,10 @@ commands:
       - set-notify
       # - up-version-name
 
-      # - email/send:
-          # body: 我們的app版本："${MY_VERSION_NAME}" 出版了 連結網址-> https://google.com
-          # subject: APK包版信
-          # to: alan.lee@gomaji.com #,s990611@kimo.com
+      - email/send:
+          body: 我們的app版本："${MY_VERSION_NAME}" 出版了 連結網址-> https://google.com
+          subject: APK包版信
+          to: alan.lee@gomaji.com #,s990611@kimo.com
       
       
 
