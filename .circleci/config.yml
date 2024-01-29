@@ -1,10 +1,10 @@
+#CircleCI版本
 version: 2.1
 
 orbs:
   android: circleci/android@2.0
   email: cinotify/email@1.2.1
   slack: circleci/slack@4.9.3
-  mailer-orb: sudiptog81/mailer-orb@1.0.0
   circleci-cli: circleci/circleci-cli@0.1.9
 
 jobs:
@@ -264,4 +264,4 @@ commands:
     steps:
       - run:
           name: show version name
-          command: echo $MY_VERSION_NAME | sed 's/\.//g' | let "number=$REPLY+1; echo $(bc <<< $number)"
+          command: echo $MY_VERSION_NAME | sed 's/\.//g' | expr -f "%.0f" + 1
