@@ -1,5 +1,4 @@
-#CircleCI版本
-version: 2.1
+version: 2.1 
 
 orbs:
   android: circleci/android@2.0
