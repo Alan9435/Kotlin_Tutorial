@@ -7,11 +7,20 @@ orbs:
   slack: circleci/slack@4.9.3
   circleci-cli: circleci/circleci-cli@0.1.9
 
+jobs:
+  test:
+    macos:
+      xcode: 13.3.0
+
+    steps:
+      -run: xcode --version
+
 # 
 jobs:
   build:
+    # docker 執行環境
     docker:
-      - image: cimg/android:2023.08
+      - image: cimg/android:2023.08 #指定android 映象檔
 
     # executor:
     #   name: android/android-machine
@@ -79,6 +88,7 @@ workflows:
   version: 2
   build-apk-workflow:
     jobs:
+      - test:
       - build:
           context: slack-secrets #slack的 token
 
