@@ -49,8 +49,8 @@ jobs:
           name: Set version name
           command: |
             myVersionName=1213
-    #        myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
             echo "MY_VERSION_NAME=$myVersionName" >> $BASH_ENV
+    #        myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
 
       - run:
           name: Print commit messages
