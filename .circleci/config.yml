@@ -8,7 +8,6 @@ orbs:
   circleci-cli: circleci/circleci-cli@0.1.9  
 
 workflows:
-  version: 2
   build-apk-workflow:
     jobs:
       - build:
