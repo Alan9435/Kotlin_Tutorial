@@ -72,7 +72,7 @@ jobs:
 
       # - build-debug-apk
       # - build-debug-aab
-      # - build-release-apk
+      - build-release-apk
       # - build-release-aab
 
 workflows:
