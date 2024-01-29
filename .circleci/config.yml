@@ -4,8 +4,9 @@ orbs:
   android: circleci/android@2.0
   email: cinotify/email@1.2.1
   slack: circleci/slack@4.9.3
-  circleci-cli: circleci/circleci-cli@0.1.9
+  circleci-cli: circleci/circleci-cli@0.1.9  
 
+# 
 jobs:
   test:
     macos:
@@ -13,9 +14,6 @@ jobs:
 
     steps:
       -run: xcode --version
-
-# 
-jobs:
   build:
     # docker 執行環境
     docker:
