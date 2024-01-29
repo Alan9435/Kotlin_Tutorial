@@ -48,10 +48,8 @@ jobs:
       - run:
           name: Set version name
           command: |
-            myVersionName=1213
-            echo "MY_VERSION_NAME=$myVersionName" >> $BASH_ENV
-    #        myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
-
+            myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
+            echo "MY_VERSION_NAME=$myVersionName"
       - run:
           name: Print commit messages
           command: |
