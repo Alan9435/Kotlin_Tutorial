@@ -1,3 +1,4 @@
+# circleCI 版本
 version: 2.1 
 
 orbs:
@@ -13,7 +14,7 @@ jobs:
       xcode: 13.3.0
 
     steps:
-      -run: xcode --version
+      - run: xcode --version
   build:
     # docker 執行環境
     docker:
