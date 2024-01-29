@@ -7,19 +7,18 @@ orbs:
   slack: circleci/slack@4.9.3
   circleci-cli: circleci/circleci-cli@0.1.9  
 
-# 
-jobs:
-  test:
-    docker:
-      - image: cimg/base:2023.06
-    steps:
-      - checkout
-      - run:
-          name: test
-          command: echo "test in"
+workflows:
+  version: 2
+  build-apk-workflow:
+    jobs:
+      - build:
+          context: slack-secrets #slack的 token
 
+# jobs是建立工作環境的集合
+jobs:
+  # 名稱為build的工作流程
   build:
-    # docker 執行環境
+    # 設定docker執行環境
     docker:
       - image: cimg/android:2023.08 #指定android 映象檔
 
@@ -84,14 +83,6 @@ jobs:
       # - build-debug-aab
       - build-release-apk
       # - build-release-aab
-
-workflows:
-  version: 2
-  build-apk-workflow:
-    jobs:
-      - test
-      - build:
-          context: slack-secrets #slack的 token
 
 commands:
   build-debug-apk:
