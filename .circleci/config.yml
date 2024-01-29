@@ -89,7 +89,7 @@ workflows:
   version: 2
   build-apk-workflow:
     jobs:
-      - test:
+      - test
       - build:
           context: slack-secrets #slack的 token
 
