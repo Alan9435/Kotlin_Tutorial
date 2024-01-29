@@ -7,10 +7,12 @@ orbs:
   slack: circleci/slack@4.9.3
   circleci-cli: circleci/circleci-cli@0.1.9  
 
+# 定義工作流程
 workflows:
+  # 定義一個名為build-apk-workflow 的工作流程
   build-apk-workflow:
     jobs:
-      - build:
+      - build: # 執行名為build的工作
           context: slack-secrets #slack的 token
 
 # jobs是建立工作環境的集合
@@ -46,7 +48,8 @@ jobs:
       - run:
           name: Set version name
           command: |
-            myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
+            myVersionName="1213"
+    #        myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
             echo "MY_VERSION_NAME=$myVersionName" >> $BASH_ENV
 
       - run:
