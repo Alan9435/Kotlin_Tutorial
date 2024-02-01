@@ -272,6 +272,8 @@ commands:
       - run:
           name: Increment Version name
           command: |
-            let MY_VERSION_NAME+=1
-            MY_VERSION_NAME = $(printf "%03d" $MY_VERSION_NAME)
+            my_version_name = $MY_VERSION_NAME | sed 's/\.//g'
+            let my_version_name+=1
+            MY_VERSION_NAME = my_version_name
+            echo $MY_VERSION_NAME
 
