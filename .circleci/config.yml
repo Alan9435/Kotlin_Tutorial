@@ -268,4 +268,10 @@ commands:
     steps:
       - run:
           name: show version name
-          command: echo $MY_VERSION_NAME | sed 's/\.//g' | + 1
+          command: echo $MY_VERSION_NAME | sed 's/\.//g'
+      - run:
+          name: Increment Version name
+          command: |
+            let MY_VERSION_NAME+=1
+            MY_VERSION_NAME = $(printf "%03d" $MY_VERSION_NAME)
+
