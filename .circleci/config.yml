@@ -1,3 +1,4 @@
+#todo : 改版號後commit push 
 # circleCI 版本
 version: 2.1 
 
@@ -37,7 +38,7 @@ jobs:
               MY_COMMIT_MSG: ""
  
     steps:
-      # - checkout
+      - checkout
       - run: java --version
       - run:
           name: Set execute permission for gradlew
@@ -249,7 +250,7 @@ commands:
                     ],
                     "accessory": {
                         "type": "image",
-                        "image_url": "https://memeprod.ap-south-1.linodeobjects.com/user-gif/2b1f84ab1f27ffeeb98e35fc46a4c79b.gif",
+                        "image_url": "https://media1.tenor.com/m/zCrMy3G0X4YAAAAd/slap-slapping.gif",
                         "alt_text": "calendar thumbnail"
                     }
                 }
