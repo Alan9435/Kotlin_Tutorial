@@ -268,7 +268,7 @@ commands:
     steps:
       - run:
           name: show version name
-          command: echo $MY_VERSION_NAME | sed 's/\.//g'
+          command: echo ($MY_VERSION_NAME | sed 's/\.//g') += 1
       - run:
           name: Increment Version name
           command: |
