@@ -50,6 +50,9 @@ jobs:
           command: |
             myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
             echo "MY_VERSION_NAME=$myVersionName" >> $BASH_ENV
+      # 登入的流程要走到讀取環境變數 ex: mac的.bash_profile檔案 紀錄環境變數供主機使用
+      # >> $BASH_ENV 相當於寫入至.bash_profile 最後一行
+      # > $BASH_ENV 等於覆蓋掉所有.bash_profile 內容
 
       - run:
           name: Print commit messages
@@ -272,5 +275,6 @@ commands:
       - run:
           name: Increment Version name
           command: |
-            echo ($MY_VERSION_NAME | sed 's/\.//g')
+            let MY_VERSION_NAME+=1
+            MY_VERSION_NAME=$(printf "%03d" $MY_VERSION_NAME)
 
