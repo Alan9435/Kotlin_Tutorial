@@ -57,7 +57,7 @@ jobs:
             myCommitMsg=$(git log -10 --pretty=format:"%s")
             echo "${myCommitMsg}"
 
-      # - up-version-name
+      - up-version-name
 
       # 印出推送的目標分支 
       # - run:
@@ -82,7 +82,7 @@ jobs:
 
       # - build-debug-apk
       # - build-debug-aab
-      - build-release-apk
+      # - build-release-apk
       # - build-release-aab
 
 commands:
