@@ -35,6 +35,7 @@ jobs:
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
               MY_VERSION_NAME: ""
+              MY_NEW_VERSION_NAME: ""
               MY_COMMIT_MSG: ""
  
     steps:
@@ -278,14 +279,15 @@ commands:
           command: |
             version_number_int=$(echo $MY_VERSION_NAME | sed 's/\.//g')
             let version_number_int+=1
-            echo "1000" | sed 's/\(.\)\(.\)\(.\)\(.\)/\1\2.\3.\4/'
-
+            echo $version_number_int | sed 's/\(.\)\(.\)\(.\)\(.\)/\1\2.\3.\4/'
             if [ ${#version_number_int} -eq 3 ]; then
-              echo MY_VERSION_NAME=$(printf $version_number_int | sed 's/\(.\)\(.\)\(.\)/\1.\2.\3/g')
+              echo MY_NEW_VERSION_NAME=$(printf $version_number_int | sed 's/\(.\)\(.\)\(.\)/\1.\2.\3/g')
             elif [ ${#version_number_int} -eq 4 ]; then
-              echo "1543" | sed 's/\(.\)\(.\)\(.\)\(.\)/\1\2.\3.\4/'
+              echo $version_number_int | sed 's/\(.\)\(.\)\(.\)\(.\)/\1\2.\3.\4/'
             else
               echo "其他位數"
             fi
+            echo ${MY_NEW_VERSION_NAME} = $version_number_int >> BASH_ENV
+            echo "new version name = ${MY_NEW_VERSION_NAME}"
             
 
