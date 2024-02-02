@@ -282,7 +282,7 @@ commands:
               if [[ $length -eq 3 ]]; then
                 echo "${number:0:2}.${number:1:1:1}"
               elif [[ $length -eq 4 ]]; then
-                echo "${number:0:3}.${number:2:1:1}"
+                echo -n "${number:0:2}.${number:2:2}"
               else
                 echo "$number"
               fi
