@@ -288,7 +288,7 @@ commands:
               echo "其他位數"
             fi
 
-            echo "MY_NEW_VERSION_NAME = ${new_version_name}" >> BASH_ENV
+            echo "MY_NEW_VERSION_NAME = ${new_version_name}"
             echo "new version name = ${MY_NEW_VERSION_NAME}"
             
 
