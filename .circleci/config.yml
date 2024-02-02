@@ -289,6 +289,11 @@ commands:
             fi
 
             export MY_NEW_VERSION_NAME=$new_version_name
-            echo "new version name = ${MY_NEW_VERSION_NAME}"
-            
+      
+      - run:
+          name: Print New Version Name
+          command: echo "new version name = ${MY_NEW_VERSION_NAME}"
 
+
+
+          
