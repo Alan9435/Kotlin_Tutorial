@@ -281,13 +281,13 @@ commands:
             let version_number_int+=1
 
             if [ ${#version_number_int} -eq 3 ]; then
-              echo MY_NEW_VERSION_NAME=$(printf $version_number_int | sed 's/\(.\)\(.\)\(.\)/\1.\2.\3/g')
+              echo $version_number_int | sed 's/\(.\)\(.\)\(.\)/\1.\2.\3/g'
             elif [ ${#version_number_int} -eq 4 ]; then
               echo $version_number_int | sed 's/\(.\)\(.\)\(.\)\(.\)/\1\2.\3.\4/'
             else
               echo "其他位數"
             fi
-            echo "${version_number_int}"
+
             echo "MY_NEW_VERSION_NAME = ${version_number_int}" >> BASH_ENV
             echo "new version name = ${MY_NEW_VERSION_NAME}"
             
