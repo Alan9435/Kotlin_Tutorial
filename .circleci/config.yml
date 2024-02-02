@@ -62,6 +62,7 @@ jobs:
             echo "${myCommitMsg}"
 
       - up-version-name
+      - git-commit
 
       # 印出推送的目標分支 
       # - run:
@@ -294,6 +295,10 @@ commands:
           name: Print New Version Name
           command: echo "new version name = ${MY_NEW_VERSION_NAME}"
 
+  git-commit:
+    android:
+      defaultConfig:
+        versionName: ${{ env.NEW_VERSION_NAME }}
 
 
 
