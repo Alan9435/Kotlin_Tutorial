@@ -62,7 +62,7 @@ jobs:
             echo "${myCommitMsg}"
 
       - up-version-name
-      - git-commit
+      - replace-version-name
 
       # 印出推送的目標分支 
       # - run:
@@ -295,10 +295,9 @@ commands:
           name: Print New Version Name
           command: echo "new version name = ${MY_NEW_VERSION_NAME}"
 
-  git-commit:
-    android:
-      defaultConfig:
-        versionName: ${{ env.NEW_VERSION_NAME }}
-
-
-
+  replace-version-name:
+      steps:
+        - run:
+            name: Replace versionName
+            command: |
+              sed -i 's/versionName=.*/versionName=${NEW_VERSION_NAME}/g' build.gradle
