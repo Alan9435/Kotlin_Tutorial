@@ -301,6 +301,7 @@ commands:
             name: Replace versionName
             command: |
               sed -i 's/versionName=.*/versionName=${NEW_VERSION_NAME}/g' app/build.gradle
+              echo cat app/build.gradle | grep versionName
 
         - run:
             name: Commit changes
