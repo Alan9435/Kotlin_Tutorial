@@ -300,7 +300,7 @@ commands:
         - run:
             name: Replace versionName
             command: |
-              sed -i 's/versionName=.*/versionName=${NEW_VERSION_NAME}/g' app/build.gradle
+              ls app
 
         - run:
             name: Commit changes
