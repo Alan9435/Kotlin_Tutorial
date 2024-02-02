@@ -281,5 +281,6 @@ commands:
               echo "三位數"
             elif [[${version_number_int} -eq 4]]; then
               echo "四位數"
+            fi
             echo MY_VERSION_NAME=$(printf $version_number_int | sed 's/\(.\)\(.\)\(.\)/\1.\2.\3/g')
 
