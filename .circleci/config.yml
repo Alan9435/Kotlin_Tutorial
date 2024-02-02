@@ -281,7 +281,7 @@ commands:
             let version_number_int+=1
 
             if [ ${#version_number_int} -eq 3 ]; then
-              new_version_name = $version_number_int | sed 's/\(.\)\(.\)\(.\)/\1.\2.\3/g'
+              new_version_name = $($version_number_int | sed 's/\(.\)\(.\)\(.\)/\1.\2.\3/g')
             elif [ ${#version_number_int} -eq 4 ]; then
               new_version_name = $version_number_int | sed 's/\(.\)\(.\)\(.\)\(.\)/\1\2.\3.\4/'
             else
