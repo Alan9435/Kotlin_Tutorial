@@ -287,7 +287,7 @@ commands:
             else
               echo "其他位數"
             fi
-            echo ${MY_NEW_VERSION_NAME} = $version_number_int >> BASH_ENV
+            echo "MY_NEW_VERSION_NAME = ${version_number_int}" >> BASH_ENV
             echo "new version name = ${MY_NEW_VERSION_NAME}"
             
 
