@@ -301,3 +301,14 @@ commands:
             name: Replace versionName
             command: |
               sed -i 's/versionName=.*/versionName=${NEW_VERSION_NAME}/g' build.gradle
+
+        - run:
+            name: Commit changes
+            command: |
+              git add .
+              git commit -m "Update versionName to ${NEW_VERSION_NAME}"
+
+        - run:
+            name: Push changes
+            command: |
+              git push origin HEAD:
