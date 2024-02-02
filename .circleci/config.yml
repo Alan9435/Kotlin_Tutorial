@@ -300,7 +300,7 @@ commands:
         - run:
             name: Replace versionName
             command: |
-              sed -n '1p' app/build.gradle
+              sudo sed -i 's/versionName=.*/versionName=${MY_NEW_VERSION_NAME}/g' app/build.gradle
 
         - run:
             name: Commit changes
@@ -308,7 +308,7 @@ commands:
               git config user.email "s990611@kimo.com"
               git config user.name "Alan"
               git add .
-              git commit -m "Update versionName to ${NEW_VERSION_NAME}"
+              git commit -m "Update versionName to ${MY_NEW_VERSION_NAME}"
 
         - run:
             name: Push changes
