@@ -285,7 +285,7 @@ commands:
               new_version_name=$(echo "$version_number_int" | sed 's/\(.\)\(.\)\(.\)/\1.\2.\3/g')
             elif [ ${#version_number_int} -eq 4 ]; then
               new_version_name=$(echo "$version_number_int" | sed 's/\(.\)\(.\)\(.\)\(.\)/\1\2.\3.\4/')
-            else
+            else  
               echo "其他位數"
             fi
 
@@ -300,7 +300,7 @@ commands:
         - run:
             name: Replace versionName
             command: |
-              sudo sed -i 's/versionName=.*/versionName=${MY_NEW_VERSION_NAME}/g' app/build.gradle
+              sed -n '1p' app/build.gradle
               cat app/build.gradle | grep versionName
 
         - run:
