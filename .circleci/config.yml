@@ -277,5 +277,5 @@ commands:
           command: |
             version_number_int=$(echo $MY_VERSION_NAME | sed 's/\.//g')
             let version_number_int+=1
-            echo MY_VERSION_NAME=$(printf "%03d" $version_number_int | sed 's/\(.\)\(..\)/\1.\2/\3' | sed 's/\.$//' | sed 's/^0//')
+            echo MY_VERSION_NAME=$(printf $version_number_int | sed 's/\(.\)\(.\)\(.\)/\1.\2.\3/g'
 
