@@ -272,25 +272,6 @@ commands:
       - run:
           name: show version name
           command: echo $MY_VERSION_NAME | sed 's/\.//g'
-      - run:
-          name: Format version_number_int
-          command: |
-            function format_number() {
-              local number=$1
-              local length=${#number}
-
-              if [[ $length -eq 3 ]]; then
-                echo "${number:0:2}.${number:1:1:1}"
-              elif [[ $length -eq 4 ]]; then
-                echo -n "${number:0:2}.${number:2:2}"
-              else
-                echo "$number"
-              fi
-            }
-
-            echo $(format_number 1543)
-            echo $(format_number 1003)
-            echo $(format_number 143)
 
       - run:
           name: Increment Version name
@@ -302,7 +283,7 @@ commands:
             if [ ${#version_number_int} -eq 3 ]; then
               echo MY_VERSION_NAME=$(printf $version_number_int | sed 's/\(.\)\(.\)\(.\)/\1.\2.\3/g')
             elif [ ${#version_number_int} -eq 4 ]; then
-              echo "1543" | sed 's/^\(.\)\(.\{2\}\)\(.\{1\}\)$/ \1.\2.\3/'
+              echo "1543" | sed 's/\(.\)\(.\)\(.\)\(.\)/\1\2.\3.\4/'
             else
               echo "其他位數"
             fi
