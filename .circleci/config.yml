@@ -277,5 +277,9 @@ commands:
           command: |
             version_number_int=$(echo $MY_VERSION_NAME | sed 's/\.//g')
             let version_number_int+=1
+            if [[${version_number_int} -eq 3]]; then
+              echo "三位數"
+            elif [[${version_number_int} -eq 4]]; then
+              echo "四位數"
             echo MY_VERSION_NAME=$(printf $version_number_int | sed 's/\(.\)\(.\)\(.\)/\1.\2.\3/g')
 
