@@ -35,7 +35,7 @@ jobs:
               KEY_ALIAS: KotlinTutorialKey
               KEY_PASSWORD: rfe666
               MY_VERSION_NAME: ""
-              MY_NEW_VERSION_NAME:
+              MY_NEW_VERSION_NAME: 0
               MY_COMMIT_MSG: ""
  
     steps:
