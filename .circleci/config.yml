@@ -288,7 +288,7 @@ commands:
               echo "其他位數"
             fi
 
-            export MY_NEW_VERSION_NAME=$new_version_name
+            echo MY_NEW_VERSION_NAME=$new_version_name >> $BASH_ENV
       
       - run:
           name: Print New Version Name
@@ -296,4 +296,4 @@ commands:
 
 
 
-          
+
