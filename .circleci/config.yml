@@ -64,7 +64,7 @@ jobs:
 
       - run:
           name: Print pro version name
-          command: ./gradlew -PversName
+          command: grep 'versName' gradle.properties | cut -d'=' -f2
 
       - up-version-name
       - replace-version-name
