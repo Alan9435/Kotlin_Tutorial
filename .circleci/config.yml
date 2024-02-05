@@ -64,7 +64,7 @@ jobs:
 
       - run:
           name: Print pro version name
-          command: echo ./gradlew -PversName
+          command: ./gradlew -PversName
 
       - up-version-name
       - replace-version-name
