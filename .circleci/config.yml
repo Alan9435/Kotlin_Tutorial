@@ -310,7 +310,7 @@ commands:
         - run:
             name: Replace versionName
             command: |
-              sudo sed -i 's/versName=.*/versName="${MY_NEW_VERSION_NAME}"/g' gradle.properties
+              sudo sed -i "s/versName=.*/versName=${MY_NEW_VERSION_NAME}/g" gradle.properties
 
         - run:
             name: Commit changes
