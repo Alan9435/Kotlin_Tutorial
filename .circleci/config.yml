@@ -55,7 +55,7 @@ jobs:
       - run:
           name: Set version name
           command: |
-            myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2)
+            myVersionName=$(cat app/build.gradle | grep versionName | cut -d'=' -f2 | tr -d " " | tr -d "versionName")
             echo "MY_VERSION_NAME=$myVersionName" >> $BASH_ENV
       # 登入的流程要走到讀取環境變數 ex: mac的.bash_profile檔案 紀錄環境變數供主機使用
       # >> $BASH_ENV 相當於寫入至.bash_profile 最後一行
