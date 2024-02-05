@@ -315,7 +315,7 @@ commands:
               git config user.name "Alan"
               git add .
               git commit -m "Update versionName to ${MY_NEW_VERSION_NAME}"
-
+ 
         - run:
             name: Push changes
             command: |
