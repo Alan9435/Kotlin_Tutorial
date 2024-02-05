@@ -319,4 +319,4 @@ commands:
         - run:
             name: Push changes
             command: |
-              git push origin HEAD:
+              git push origin HEAD:${CIRCLE_BRANCH}
