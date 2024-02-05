@@ -55,11 +55,16 @@ jobs:
       # >> $BASH_ENV 相當於寫入至.bash_profile 最後一行
       # > $BASH_ENV 等於覆蓋掉所有.bash_profile 內容
 
+      #印出近10筆commit訊息
       - run:
           name: Print commit messages
           command: |
             myCommitMsg=$(git log -10 --pretty=format:"%s")
             echo "${myCommitMsg}"
+
+      - run:
+          name: Print pro version name
+          command: echo ./gradlew -PversName
 
       - up-version-name
       - replace-version-name
