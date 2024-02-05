@@ -44,6 +44,10 @@ jobs:
       - run:
           name: Set execute permission for gradlew
           command: chmod +x gradlew  # 設定執行權限
+
+      - add_ssh_keys:
+          fingerprints:
+            - "SO:ME:FIN:G:ER:PR:IN:T"
       
       # 抓app版本名稱 輸出MY_VERSION_NAME 作為變數
       # grep 'versName' gradle.properties 擷取從gradle.properties 含有 versName的字串
