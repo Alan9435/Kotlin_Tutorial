@@ -16,7 +16,7 @@ android {
         minSdk 28
         targetSdk 33
         versionCode 1
-        versionName providers.gradleProperty("versName").get()
+        versionName "1.5.9"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
