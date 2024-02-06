@@ -52,7 +52,9 @@ jobs:
           command: |
             myCommitMsg=$(git log -1 --pretty=format:"%s") 
             if "[VersionUp]" in myCommitMsg:
-              exit 1
+              echo "if"
+            else:
+              echo "else"
 
       - run: java --version
       - run:
