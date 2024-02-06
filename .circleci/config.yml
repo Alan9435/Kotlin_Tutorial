@@ -72,6 +72,7 @@ jobs:
           command: |
             cd ..
             ls -a
+            ls .ssh
 
       # - up-version-name
       # - replace-version-name
