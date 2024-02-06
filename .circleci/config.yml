@@ -279,10 +279,11 @@ commands:
 
   up-version-name:
     steps:
-      - run:
-          name: show version name
-          command: echo $MY_VERSION_NAME | sed 's/\.//g'
-
+      # 去除小數點後+1
+      # input 為 3位數 -> 111 to 1.1.1
+      # 4位數 -> 1111 -> 11.1.1
+      # eles -> 印出版號錯誤 並終止後面的 job
+      # 將結果存入環境變數 MY_NEW_VERSION_NAME內
       - run:
           name: Increment Version name
           command: |
@@ -306,20 +307,23 @@ commands:
 
   replace-version-name:
       steps:
+        # gradle.properties檔
         - run:
             name: Replace versionName
             command: |
               sudo sed -i "s/versName=.*/versName=${MY_NEW_VERSION_NAME}/g" gradle.properties
 
+        # git add . -> 變更移至暫存區域 ex: fork的staged區 此時尚未commit
+        # git commit -> 將暫存區的變更提交 -m 設定訊息      
         - run:
             name: Commit changes
             command: |
               git config user.email "s990611@kimo.com"
-              git config user.name "Alan"
+              git config user.name "AlanConfigName"
               git add .
               git commit -m "[VersionUp] Update versionName to ${MY_NEW_VERSION_NAME}"
  
-        - run:
-            name: Push changes
-            command: |
-              git push origin HEAD:${CIRCLE_BRANCH}
+        # - run:
+        #     name: Push changes
+        #     command: |
+        #       git push origin HEAD:${CIRCLE_BRANCH}
