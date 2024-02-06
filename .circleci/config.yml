@@ -55,7 +55,7 @@ jobs:
               echo "**** is version up ****"
               curl -X POST "https://circleci.com/api/v2/workflow/$CIRCLE_WORKFLOW_ID/cancel?circle-token=$CIRCLE_API_TOKEN"
             else
-              - showText
+              - show-text
             fi
 
       - run: java --version
@@ -111,7 +111,7 @@ jobs:
       # - build-release-aab
 
 commands:
-  showText:
+  show-text:
     steps:
       - run:
           name: test run
