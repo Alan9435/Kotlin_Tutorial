@@ -46,14 +46,19 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "SO:ME:FIN:G:ER:PR:IN:T"
- 
+      
+      - run:
+          name: print
+          command: |
+            echo "CIRCLE_API_TOKEN = ${CIRCLE_API_TOKEN}"
+            echo "CIRCLE_WORKFLOW_ID = ${CIRCLE_WORKFLOW_ID}"
       - run: 
           name: 檢查是否為進版號的commit
           command: |
             myCommitMsg=$(git log -1 --pretty=format:"%s") 
             if [[ $myCommitMsg =~ \[VersionUp\] ]]; then
               echo "**** is version up ****"
-              curl -X POST“https://circleci.com/api/v2/workflow/build-apk-workflow/cancel?circle-token=$CIRCLE_API_TOKEN” 
+              curl -X POST "https://circleci.com/api/v2/workflow/$CIRCLE_WORKFLOW_ID/cancel?circle-token=$CIRCLE_API_TOKEN"
             else
               echo "not version up"
             fi
