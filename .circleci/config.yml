@@ -74,7 +74,7 @@ jobs:
           command: |
             cd ..
             ls -a
-            echo grep .profile
+            grep .profile
 
       # - up-version-name
       # - replace-version-name
