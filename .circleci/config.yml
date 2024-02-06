@@ -41,6 +41,8 @@ jobs:
     steps:
       - checkout
 
+      # 使用密鑰將指紋新增 add_ssh_keys
+      # 以供circleCI驗證
       - add_ssh_keys:
           fingerprints:
             - "SO:ME:FIN:G:ER:PR:IN:T"
@@ -72,7 +74,7 @@ jobs:
           command: |
             cd ..
             ls -a
-            ls .ssh
+            ls .profile
 
       # - up-version-name
       # - replace-version-name
