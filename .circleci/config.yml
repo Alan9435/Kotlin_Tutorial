@@ -69,7 +69,9 @@ jobs:
 
       - run:
           name: ls
-          command: ls -a
+          command: |
+            cd ..
+            ls -a
 
       # - up-version-name
       # - replace-version-name
