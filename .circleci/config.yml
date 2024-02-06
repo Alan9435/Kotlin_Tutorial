@@ -54,7 +54,8 @@ jobs:
             if "[VersionUp]" in myCommitMsg:
               echo "if"
             else:
-              echo "else"
+              echo "else "
+            fi
 
       - run: java --version
       - run:
