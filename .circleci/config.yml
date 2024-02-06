@@ -46,7 +46,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "SO:ME:FIN:G:ER:PR:IN:T"
-
+ 
       - run: 
           name: 檢查是否為進版號的commit
           command: |
