@@ -51,9 +51,9 @@ jobs:
           name: 檢查是否為進版號的commit
           command: |
             myCommitMsg=$(git log -1 --pretty=format:"%s") 
-            if "[VersionUp]" in myCommitMsg:
+            if [[ $myCommitMsg =~ \[VersionUp\] ]]; then
               echo "if"
-            else:
+            else
               echo "else "
             fi
 
