@@ -293,8 +293,9 @@ commands:
               new_version_name=$(echo "$version_number_int" | sed 's/\(.\)\(.\)\(.\)/\1.\2.\3/g')
             elif [ ${#version_number_int} -eq 4 ]; then
               new_version_name=$(echo "$version_number_int" | sed 's/\(.\)\(.\)\(.\)\(.\)/\1\2.\3.\4/')
-            else  
-              exit 1 "Version Name Error"
+            else
+              echo "**** Version Name Error ****" 
+              exit 1
             fi
 
             echo MY_NEW_VERSION_NAME=$new_version_name >> $BASH_ENV
