@@ -1,4 +1,4 @@
-#todo : 改版號後commit push 
+#todo : 阻止無限進版號
 # circleCI 版本
 version: 2.1 
 
@@ -40,14 +40,14 @@ jobs:
  
     steps:
       - checkout
-      - run: java --version
-      - run:
-          name: Set execute permission for gradlew
-          command: chmod +x gradlew  # 設定執行權限
 
       - add_ssh_keys:
           fingerprints:
             - "SO:ME:FIN:G:ER:PR:IN:T"
+      - run: java --version
+      - run:
+          name: Set execute permission for gradlew
+          command: chmod +x gradlew  # 設定執行權限
       
       # 抓app版本名稱 輸出MY_VERSION_NAME 作為變數
       # grep 'versName' gradle.properties 擷取從gradle.properties 含有 versName的字串
@@ -68,11 +68,11 @@ jobs:
             echo "${myCommitMsg}"
 
       - run:
-          name: Print pro version name
-          command: grep 'versName' gradle.properties
+          name: ls
+          command: ls
 
-      - up-version-name
-      - replace-version-name
+      # - up-version-name
+      # - replace-version-name
 
       # 印出推送的目標分支 
       # - run:
@@ -318,7 +318,7 @@ commands:
               git config user.email "s990611@kimo.com"
               git config user.name "Alan"
               git add .
-              git commit -m "Update versionName to ${MY_NEW_VERSION_NAME}"
+              git commit -m "[VersionUp] Update versionName to ${MY_NEW_VERSION_NAME}"
  
         - run:
             name: Push changes
