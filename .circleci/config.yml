@@ -69,15 +69,8 @@ jobs:
             myCommitMsg=$(git log -10 --pretty=format:"%s")
             echo "${myCommitMsg}"
 
-      - run:
-          name: ls
-          command: |
-            cd ..
-            ls -a
-            cat .profile
-
-      # - up-version-name
-      # - replace-version-name
+      - up-version-name
+      - replace-version-name
 
       # 印出推送的目標分支 
       # - run:
@@ -301,7 +294,7 @@ commands:
             elif [ ${#version_number_int} -eq 4 ]; then
               new_version_name=$(echo "$version_number_int" | sed 's/\(.\)\(.\)\(.\)\(.\)/\1\2.\3.\4/')
             else  
-              echo "其他位數"
+              exit 1
             fi
 
             echo MY_NEW_VERSION_NAME=$new_version_name >> $BASH_ENV
