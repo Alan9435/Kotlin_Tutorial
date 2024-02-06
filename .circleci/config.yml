@@ -51,7 +51,7 @@ jobs:
           name: 檢查是否為進版號的commit
           command: |
             myCommitMsg=$(git log -1 --pretty=format:"%s") 
-            if[ ${myCommitMsg} =~ "[VersionUp]" ]; then
+            if[[ ${myCommitMsg} =~ \[VersionUp\] ]]; then
               exit 1
 
       - run: java --version
