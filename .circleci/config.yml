@@ -331,7 +331,7 @@ commands:
             name: Commit changes
             command: |
               git config user.email "s990611@kimo.com"
-              git config user.name "AlanConfigName"
+              git config user.name "AlanCircleCI"
               git add .
               git commit -m "[VersionUp] Update versionName to ${MY_NEW_VERSION_NAME}"
  
