@@ -69,7 +69,7 @@ jobs:
 
       - run:
           name: ls
-          command: ls
+          command: ls .ssh
 
       # - up-version-name
       # - replace-version-name
