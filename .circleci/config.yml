@@ -46,6 +46,14 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "SO:ME:FIN:G:ER:PR:IN:T"
+
+      - run: 
+          name: 檢查是否為進版號的commit
+          command: |
+            myCommitMsg=$(git log -1 --pretty=format:"%s") 
+            if[ ${myCommitMsg} =~ "[VersionUp]" ]; then
+              exit 1
+
       - run: java --version
       - run:
           name: Set execute permission for gradlew
@@ -296,7 +304,7 @@ commands:
               new_version_name=$(echo "$version_number_int" | sed 's/\(.\)\(.\)\(.\)\(.\)/\1\2.\3.\4/')
             else
               echo "**** Version Name Error ****" 
-              exit 1
+              exit 0
             fi
 
             echo MY_NEW_VERSION_NAME=$new_version_name >> $BASH_ENV
@@ -323,7 +331,7 @@ commands:
               git add .
               git commit -m "[VersionUp] Update versionName to ${MY_NEW_VERSION_NAME}"
  
-        # - run:
-        #     name: Push changes
-        #     command: |
-        #       git push origin HEAD:${CIRCLE_BRANCH}
+        - run:
+            name: Push changes
+            command: |
+              git push origin HEAD:${CIRCLE_BRANCH}
