@@ -47,6 +47,12 @@ jobs:
           fingerprints:
             - "SO:ME:FIN:G:ER:PR:IN:T"
       
+      # 獲取最後一筆commit的message
+      # 如果訊息內包含字串 [VersionUp] 發送api取消workflow 
+      # 否則印出文字 繼續流程
+      # $CIRCLE_WORKFLOW_ID = CircleCI內建提供的環境變數
+      # $CIRCLE_API_TOKEN = https://circleci.com/docs/managing-api-tokens/#creating-a-personal-api-token
+      # *** API發送有延遲性 你的行程仍然會繼續進行 !!!
       - run: 
           name: 檢查是否為進版號的commit
           command: |
@@ -54,6 +60,7 @@ jobs:
             if [[ $myCommitMsg =~ \[VersionUp\] ]]; then
               echo "**** is version up ****"
               curl -X POST "https://circleci.com/api/v2/workflow/$CIRCLE_WORKFLOW_ID/cancel?circle-token=$CIRCLE_API_TOKEN"
+              exit 0
             else
               echo "not version up"
             fi
