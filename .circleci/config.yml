@@ -108,8 +108,8 @@ jobs:
       - build-release-apk
       # - build-release-aab
 
-      # - up-version-name
-      # - replace-version-name
+      - up-version-name
+      - replace-version-name
 
 commands:
   build-debug-apk:
@@ -162,7 +162,7 @@ commands:
       # - up-version-name
 
       - email/send:
-          body: 我們的app版本："${MY_VERSION_NAME}" 出版了 連結網址-> https://google.com
+          body: 我們的app版本："${MY_NEW_VERSION_NAME}" 出版了 連結網址-> https://google.com
           subject: APK包版信
           to: alan.lee@gomaji.com #,s990611@kimo.com
       
