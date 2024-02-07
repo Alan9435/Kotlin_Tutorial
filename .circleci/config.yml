@@ -65,10 +65,11 @@ jobs:
       
       # 抓app版本名稱 輸出MY_VERSION_NAME 作為變數
       # grep 'versName' gradle.properties 擷取從gradle.properties 含有 versName的字串
+      # tr -d "versName=" -> 刪除字串 "versName=" 僅留存1.1.1
       - run:
           name: Set version name
           command: |
-            myVersionName=$(grep 'versName' gradle.properties)
+            myVersionName=$(grep 'versName' gradle.properties | tr -d "versName=")
             echo "MY_VERSION_NAME=$myVersionName" >> $BASH_ENV
       # 登入的流程要走到讀取環境變數 ex: mac的.bash_profile檔案 紀錄環境變數供主機使用
       # >> $BASH_ENV 相當於寫入至.bash_profile 最後一行
@@ -106,8 +107,9 @@ jobs:
       # - build-debug-aab
       - build-release-apk
       # - build-release-aab
-      - up-version-name
-      - replace-version-name
+
+      # - up-version-name
+      # - replace-version-name
 
 commands:
   build-debug-apk:
