@@ -55,7 +55,7 @@ jobs:
               echo "**** is version up ****"
               curl -X POST "https://circleci.com/api/v2/workflow/$CIRCLE_WORKFLOW_ID/cancel?circle-token=$CIRCLE_API_TOKEN"
             else
-              - show-text
+              echo "not version up"
             fi
 
       - run: java --version
@@ -81,9 +81,6 @@ jobs:
             myCommitMsg=$(git log -10 --pretty=format:"%s")
             echo "${myCommitMsg}"
 
-      - up-version-name
-      - replace-version-name
-
       # 印出推送的目標分支 
       # - run:
       #     name: print now branch
@@ -107,15 +104,12 @@ jobs:
 
       # - build-debug-apk
       # - build-debug-aab
-      # - build-release-apk
+      - build-release-apk
       # - build-release-aab
+      - up-version-name
+      - replace-version-name
 
 commands:
-  show-text:
-    steps:
-      - run:
-          name: test run
-          command: echo print test
   build-debug-apk:
     steps:
       - run:
