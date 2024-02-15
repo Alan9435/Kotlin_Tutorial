@@ -53,14 +53,15 @@ jobs:
       # $CIRCLE_WORKFLOW_ID = CircleCI內建提供的環境變數
       # $CIRCLE_API_TOKEN = https://circleci.com/docs/managing-api-tokens/#creating-a-personal-api-token
       # *** API發送有延遲性 你的行程仍然會繼續進行 !!!
+              #curl -X POST "https://circleci.com/api/v2/workflow/$CIRCLE_WORKFLOW_ID/cancel?circle-token=$CIRCLE_API_TOKEN"
+
       - run: 
           name: 檢查是否為進版號的commit
           command: |
             myCommitMsg=$(git log -1 --pretty=format:"%s") 
             if [[ $myCommitMsg =~ \[VersionUp\] ]]; then
               echo "**** is version up ****"
-              curl -X POST "https://circleci.com/api/v2/workflow/$CIRCLE_WORKFLOW_ID/cancel?circle-token=$CIRCLE_API_TOKEN"
-              exit 1
+              circleci-agent step halt
             else
               echo "not version up"
             fi
@@ -327,7 +328,14 @@ commands:
 
   replace-version-name:
       steps:
-        # gradle.properties檔
+        # sudo 以管理員權限執行
+        # sed (stream editor) 常用於編輯/替換文字
+        # -i 直接修改檔案內容
+        # s -> 替換
+        # 搜尋versName= 後面跟著任意字元 (.*)
+        # versName=${MY_NEW_VERSION_NAME} -> 替換內容
+        # /g -> 全部替換 (所有符合條件的字串都會替換)
+        # 編輯的檔案為 gradle.properties
         - run:
             name: Replace versionName
             command: |
