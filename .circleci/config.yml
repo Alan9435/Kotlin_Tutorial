@@ -61,7 +61,7 @@ jobs:
             myCommitMsg=$(git log -1 --pretty=format:"%s") 
             if [[ $myCommitMsg =~ \[VersionUp\] ]]; then
               echo "**** is version up ****"
-              circleci-agent step halt
+              circleci step halt
             else
               echo "not version up"
             fi
