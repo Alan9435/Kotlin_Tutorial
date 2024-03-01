@@ -53,8 +53,8 @@ jobs:
       # $CIRCLE_WORKFLOW_ID = CircleCI內建提供的環境變數
       # $CIRCLE_API_TOKEN = https://circleci.com/docs/managing-api-tokens/#creating-a-personal-api-token
       # *** API發送有延遲性 你的行程仍然會繼續進行 !!!
-              #curl -X POST "https://circleci.com/api/v2/workflow/$CIRCLE_WORKFLOW_ID/cancel?circle-token=$CIRCLE_API_TOKEN"
-
+      # curl -X POST "https://circleci.com/api/v2/workflow/$CIRCLE_WORKFLOW_ID/cancel?circle-token=$CIRCLE_API_TOKEN"
+      # circleci step halt -> 暫停當前命令
       - run: 
           name: 檢查是否為進版號的commit
           command: |
@@ -348,7 +348,7 @@ commands:
             command: |
               git config user.email "s990611@kimo.com"
               git config user.name "AlanCircleCI"
-              git add .
+              git add gradle.properties
               git commit -m "[VersionUp] Update versionName to ${MY_NEW_VERSION_NAME}"
  
         - run:
