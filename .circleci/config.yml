@@ -1,4 +1,4 @@
-#todo : 阻止無限進版號
+# 想像自己開了一台新的電腦 要在上面執行的各種步驟
 # circleCI 版本
 version: 2.1 
 
@@ -341,8 +341,10 @@ commands:
             command: |
               sudo sed -i "s/versName=.*/versName=${MY_NEW_VERSION_NAME}/g" gradle.properties
 
-        # git add . -> 變更移至暫存區域 ex: fork的staged區 此時尚未commit
+        # git add . -> 變更移至暫存區域 ex: fork的staged區 此時尚未commit 會造成一些未預期的log檔也被commit至專案
+        # git add gradle.properties 指定檔案提交至暫存區
         # git commit -> 將暫存區的變更提交 -m 設定訊息      
+        # 可以開啟終端機驗證
         - run:
             name: Commit changes
             command: |
