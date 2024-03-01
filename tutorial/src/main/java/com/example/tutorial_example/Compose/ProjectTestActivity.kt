@@ -63,7 +63,6 @@ import com.example.tutorial_example.R
 class ProjectTestActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       "1123".toCharArray()
         setContent {
             val navController = rememberNavController()
             MyAppNavHost(navController = navController, startDestination = LoginContainer.routeName)
