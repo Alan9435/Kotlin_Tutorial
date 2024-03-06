@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/navigation_rxjava" />
+        app:navGraph="@navigation/navigation_home" />
         <!--  透過navGraph 調整需要進入的頁面  -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

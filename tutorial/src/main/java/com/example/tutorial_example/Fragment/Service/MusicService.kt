@@ -2,9 +2,11 @@ package com.example.tutorial_example.Fragment.Service
 
 import android.app.Service
 import android.content.Intent
+import android.content.res.Resources.NotFoundException
 import android.media.MediaPlayer
 import android.os.Binder
 import android.os.IBinder
+import android.widget.Toast
 import com.example.common.Base.Extensins.isBoolean
 
 class MusicService : Service() {
@@ -13,7 +15,11 @@ class MusicService : Service() {
     override fun onCreate() {
         super.onCreate()
         //參數二 替換成自己的音檔
-        mediaPlayer = MediaPlayer.create(this, 0) //初始化mediaPlayer
+        try {
+            mediaPlayer = MediaPlayer.create(this, 0) //初始化mediaPlayer
+        } catch (e: NotFoundException) {
+            Toast.makeText(this, "避免版權問題 MusicService line 19 參數2 請替換成自己的音檔", Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -28,17 +34,17 @@ class MusicService : Service() {
         stopSelf()
     }
 
-    fun isPlay() : Boolean = mediaPlayer?.isPlaying.isBoolean()
+    fun isPlay(): Boolean = mediaPlayer?.isPlaying.isBoolean()
 
-    fun musicStart(){
+    fun musicStart() {
         mediaPlayer?.start()
     }
 
-    fun musicPause(){
+    fun musicPause() {
         mediaPlayer?.pause()
     }
 
-    fun releaseMP(){
+    fun releaseMP() {
         mediaPlayer?.release()
         mediaPlayer = null
     }
