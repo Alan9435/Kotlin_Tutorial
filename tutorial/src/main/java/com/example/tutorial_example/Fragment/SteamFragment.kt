@@ -14,7 +14,9 @@ import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.util.MimeTypes
 
-
+/**
+ * 參考：https://developer.android.com/media/media3/exoplayer/hello-world
+ * */
 class SteamFragment : BaseFragment<FragmentStreamBinding>() {
     private var player: ExoPlayer? = null
     /**串流一般都以分段進行 每個分段代表檔案或URL
@@ -71,18 +73,22 @@ class SteamFragment : BaseFragment<FragmentStreamBinding>() {
         val hlsMediaSourceFactory = HlsMediaSource.Factory(dataSourceFactory)
         return hlsMediaSourceFactory.createMediaSource(mediaItem)
     }
-
+    
     override fun onPause() {
         super.onPause()
-        releasePlayer()
+        player?.stop()
     }
 
     override fun onStop() {
         super.onStop()
-        releasePlayer()
+        player?.stop()
     }
 
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        releasePlayer()
+    }
     private fun releasePlayer() {
         //釋放資源
         player?.release()
