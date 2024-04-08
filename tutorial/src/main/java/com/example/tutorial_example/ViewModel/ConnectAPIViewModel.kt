@@ -21,6 +21,7 @@ class ConnectAPIViewModel : ViewModel() {
     val isCoverOpen: SingleMutableLiveData<Boolean>
         get() = _isCoverOpen
 
+    //呼叫API 理論上需包裝到baseViewModel 或其它class 進行封裝
     fun getQuote() {
         //獲取物件實例
         val quotesApi = ConnectAPIFragment.RetrofitHelper.getInstance()
