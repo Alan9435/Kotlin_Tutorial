@@ -139,4 +139,7 @@ dependencies {
 // ui組件
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.7'
 
+    //mockk
+    testImplementation "io.mockk:mockk:1.12.7"
+    androidTestImplementation "io.mockk:mockk:1.12.7"
 }
