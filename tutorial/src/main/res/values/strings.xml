@@ -15,4 +15,9 @@
     <string name="compose_setting_title">設定</string>
     <string name="compose_msg_title">訊息</string>
     <string name="compose_toast_finish_app">再次滑動以退出</string>
+
+    <string name="unittest_account_hint">輸入帳號 (至少6碼, 第1碼為英文)</string>
+    <string name="unittest_pwd_hint">輸入密碼 (至少8碼, 第1碼為英文, 並包含數字)</string>
+    <string name="unittest_button_register">註冊</string>
+
 </resources>

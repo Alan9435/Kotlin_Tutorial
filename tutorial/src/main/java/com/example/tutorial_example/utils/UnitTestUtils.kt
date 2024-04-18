@@ -13,7 +13,11 @@ class UnitTestUtils {
         return result.length >= 50
     }
 
-    fun checkInt(i: Int): Boolean {
-        return i >= 3
+    fun isLoginAccountVerify(loginAccount: String): Boolean {
+        if (loginAccount.length >= 6) {
+            return loginAccount.uppercase().first() in 'A'..'Z'
+        }
+
+        return false
     }
 }
