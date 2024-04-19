@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_unit_test"
+    app:startDestination="@id/unitTestFragment">
+
+    <fragment
+        android:id="@+id/unitTestFragment"
+        android:name="com.example.tutorial_example.Fragment.UnitTestFragment"
+        android:label="UnitTestFragment" />
+</navigation>

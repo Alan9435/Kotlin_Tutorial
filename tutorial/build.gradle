@@ -57,7 +57,9 @@ android {
     }
     packagingOptions {
         resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+            excludes += '/META-INF/{AL2.0,LGPL2.1}' // Gradle 在打包 APK 時排除 排除掉/META-INF/{AL2.0,LGPL2.1} 檔案
+            merges += "META-INF/LICENSE.md" //合併META-INF/LICENSE.md檔案 因為Instrument test 需要此檔案包含授權資訊
+            merges += "META-INF/LICENSE-notice.md" //合併META-INF/LICENSE-notice.md檔案 因為Instrument test 需要此檔案包含授權資訊
         }
     }
 }

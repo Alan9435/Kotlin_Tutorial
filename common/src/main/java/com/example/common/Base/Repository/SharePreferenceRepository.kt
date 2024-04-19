@@ -1,10 +1,12 @@
 package com.example.common.Base.Repository
 
 import android.content.Context
+import com.example.common.Base.Repository.SharePreferenceRepository.Companion.SH_USER_ID
 
 class SharePreferenceRepository(val context: Context) {
     companion object {
         const val SharePrefName = "USER_DATA"
+        const val SH_USER_ID = "User_id"
     }
 
     fun saveUserId(id: String) {
@@ -17,6 +19,6 @@ class SharePreferenceRepository(val context: Context) {
 class SharePreferenceRepositoryPackage(private val prefManager: SharePrefManager) {
 
     fun saveUserIds(id: String) {
-        prefManager.saveUserId(id)
+        prefManager.saveString(SH_USER_ID ,id)
     }
 }

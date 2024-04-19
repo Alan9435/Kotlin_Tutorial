@@ -2,6 +2,7 @@ package com.example.tutorial_example.Fragment
 
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
+import com.example.common.Base.Repository.ISharedPreferenceManager
 import com.example.common.Base.Repository.SharePrefManager
 import com.example.common.Base.Repository.SharePreferenceRepository
 import com.example.common.Base.Repository.SharePreferenceRepository.Companion.SharePrefName
@@ -59,6 +60,7 @@ class UnitTestFragmentTest {
         assertFalse(util.isLoginAccountVerify("12223123"))
     }
 
+    // 逐步測試
     @Test
     fun saveUserId() {
         // mock context, SharedPreferences, SharedPreferences.Editor
@@ -93,11 +95,13 @@ class UnitTestFragmentTest {
         verify(exactly = 1) { sharePrefsEditor.apply() }
     }
 
+    // 僅測試是否正確的將參數傳入 function
     @Test
     fun saveIds() {
         // 建立 mock 物件
         val sharePreferenceManager = mockk<SharePrefManager>()
-        every { sharePreferenceManager.saveUserId(any()) } returns Unit
+
+        every { sharePreferenceManager.saveString(any(), any()) } returns Unit
 
         val userId = "A1234567"
         val sharePreferenceRepository = SharePreferenceRepositoryPackage(sharePreferenceManager)
