@@ -21,6 +21,9 @@
           <timeTargetWasSelectedWithDropDown value="2024-04-19T06:05:00.833086Z" />
         </State>
       </entry>
+      <entry key="uiTest()">
+        <State />
+      </entry>
       <entry key="useAppContext()">
         <State />
       </entry>

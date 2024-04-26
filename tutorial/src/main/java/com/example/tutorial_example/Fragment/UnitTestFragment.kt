@@ -1,17 +1,15 @@
 package com.example.tutorial_example.Fragment
 
+import android.widget.Toast
 import com.example.common.Base.BaseFragment
 import com.example.tutorial_example.databinding.FragmentUnitTestBinding
+import com.example.tutorial_example.utils.UnitTestUtils
 
 class UnitTestFragment : BaseFragment<FragmentUnitTestBinding>() {
     override fun onViewInit() {
 
         binding.btnRegister.setOnClickListener {
-            val loginAccount = binding.etAccount.text.toString()
-            val pwd = binding.etPwd.text.toString()
 
-//            result = UnitTestUtils().isLoginAccountVerify(loginAccount = loginAccount)
-//            ...
         }
     }
 

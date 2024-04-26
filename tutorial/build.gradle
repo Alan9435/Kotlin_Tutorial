@@ -122,6 +122,8 @@ dependencies {
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    //espresso for UI test
+
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     implementation 'androidx.media:media:1.4.3'
@@ -141,7 +143,13 @@ dependencies {
 // ui組件
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.7'
 
-    //mockk
+    //mockk for unit test
     testImplementation "io.mockk:mockk:1.12.7"
     androidTestImplementation "io.mockk:mockk:1.12.7"
+
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+
+    // UI test fragment
+    androidTestImplementation "androidx.fragment:fragment-testing:1.6.2"
 }
