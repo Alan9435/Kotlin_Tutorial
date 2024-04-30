@@ -20,4 +20,6 @@
     <string name="unittest_account_hint">輸入帳號 (至少6碼, 第1碼為英文) (en)</string>
     <string name="unittest_pwd_hint">輸入密碼 (至少8碼, 第1碼為英文, 並包含數字) (en)</string>
     <string name="unittest_button_register">註冊 (en)</string>
+    <string name="unittest_register_success">註冊成功 (en)</string>
+    <string name="unittest_register_fail">註冊失敗 (en)</string>
 </resources>

@@ -2,29 +2,16 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="UnitTestFragmentUITest">
+        <State />
+      </entry>
       <entry key="app">
         <State />
       </entry>
-      <entry key="saveIds()">
-        <State>
-          <runningDeviceTargetSelectedWithDropDown>
-            <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="SERIAL_NUMBER" />
-                  <value value="R5CT607SZ4K" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-04-19T06:05:00.833086Z" />
-        </State>
-      </entry>
-      <entry key="uiTest()">
+      <entry key="registrationFail()">
         <State />
       </entry>
-      <entry key="useAppContext()">
+      <entry key="uiTest()">
         <State />
       </entry>
     </value>

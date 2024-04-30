@@ -20,4 +20,12 @@ class UnitTestUtils {
 
         return false
     }
+
+    fun isLoginPwdVerify(pwd: String): Boolean {
+        if(pwd.length >= 8) {
+            return pwd.uppercase().first() in 'A'..'Z' && pwd.contains("[0-9]".toRegex())
+        }
+
+        return false
+    }
 }

@@ -58,6 +58,10 @@ class UnitTestFragmentTest {
         assertFalse(util.isLoginAccountVerify("a122"))
         assertFalse(util.isLoginAccountVerify("A122"))
         assertFalse(util.isLoginAccountVerify("12223123"))
+        assertTrue(util.isLoginPwdVerify("A12312123"))
+        assertFalse(util.isLoginPwdVerify("12223123"))
+        assertFalse(util.isLoginPwdVerify("g1234"))
+        assertFalse(util.isLoginPwdVerify("gqwrewraw"))
     }
 
     // 逐步測試
