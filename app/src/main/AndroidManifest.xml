@@ -48,8 +48,11 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <data android:scheme="https" android:host="www.alan9435.com" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <data android:scheme="https" android:host="www.alan9435.com" />
             </intent-filter>
         </activity>
 
