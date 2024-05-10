@@ -35,6 +35,7 @@ class RxjavaFragment : BaseFragment<FragmentRxjavaBinding>() {
             fetchData()
             getInfo()
             testZip()
+            testConcat()
         }
     }
 
@@ -119,6 +120,36 @@ class RxjavaFragment : BaseFragment<FragmentRxjavaBinding>() {
             }
         compositeDisposable.add(disposable)
     }
+
+    private fun testConcat() {
+        val observableA = Observable.fromArray("A1", "A2", "A3", "A4").delay(3,TimeUnit.SECONDS)
+        val observableB = Observable.fromArray("B1", "B2", "B3", "B4")
+
+        Observable.concat(observableA, observableB)
+            .subscribe(getObserver())
+    }
+
+    private fun getObserver(): Observer<String> {
+        return object : Observer<String> {
+
+            override fun onSubscribe(d: Disposable) {
+
+            }
+
+            override fun onNext(value: String) {
+                Log.d("*******", "testConcat onNext: ${value}")
+            }
+
+            override fun onError(e: Throwable) {
+
+            }
+
+            override fun onComplete() {
+
+            }
+        }
+    }
+
 
     private fun fetchData() {
         val disposable = Observable.just("Hello Reactive World")//模擬API回傳
