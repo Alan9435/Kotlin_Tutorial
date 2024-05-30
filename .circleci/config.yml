@@ -40,7 +40,7 @@ jobs:
  
     steps:
       - checkout
-
+      - android/restore-gradle-cache
       # 使用密鑰將指紋新增 add_ssh_keys
       # 以供circleCI驗證
       - add_ssh_keys:
