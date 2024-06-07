@@ -11,7 +11,7 @@ kapt {
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     buildFeatures {
         viewBinding = true
@@ -29,7 +29,7 @@ android {
     }
     defaultConfig {
         minSdk 28
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -139,4 +139,6 @@ dependencies {
 // ui組件
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.7'
 
+    //coil url下載圖片套件 Android官方推薦
+    implementation "io.coil-kt:coil-compose:2.6.0"
 }

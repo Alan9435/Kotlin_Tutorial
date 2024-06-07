@@ -11,8 +11,6 @@ import com.example.tutorial_example.Compose.common.route.RouteManager
 @Composable
 fun SettingPage(navController: NavController) {
     EnableBackPressed {
-        Button(onClick = { navController.popBackStack() }) {
-            Text(text = "setting")
-        }
+        Text(text = "setting")
     }
 }

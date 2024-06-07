@@ -1,6 +1,5 @@
 package com.example.tutorial_example.Compose.common.view
 
-import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -15,10 +14,6 @@ import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Build
-import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -29,7 +24,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.tutorial_example.Compose.ui.theme.Green_CEFFCE
-import com.google.android.material.animation.AnimationUtils.lerp
 import ir.kaaveh.sdpcompose.sdp
 import kotlinx.coroutines.delay
 
@@ -40,7 +34,7 @@ import kotlinx.coroutines.delay
 @Preview
 @Composable
 fun CarouselPager(data: List<CarouselPagerItemState> = listOf()) {
-    val pagerState = rememberPagerState(initialPage = 0)
+    val pagerState = rememberPagerState(initialPage = 0) { data.size }
 
     //輪播捲動循環
     LaunchedEffect(Unit) {
@@ -66,7 +60,6 @@ fun CarouselPager(data: List<CarouselPagerItemState> = listOf()) {
             state = pagerState,
             contentPadding = PaddingValues(horizontal = 32.sdp, vertical = 8.sdp),
             pageSpacing = 16.sdp,
-            pageCount = data.size
         ) { page ->
             Icon(
                 modifier = Modifier
@@ -91,7 +84,7 @@ fun CarouselPager(data: List<CarouselPagerItemState> = listOf()) {
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun DotIndicators(
-    pagerState: PagerState = rememberPagerState(),
+    pagerState: PagerState = rememberPagerState(pageCount = { Int.MAX_VALUE }),
     pageCount: Int
 ) {
     Row(

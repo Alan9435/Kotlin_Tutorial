@@ -17,8 +17,11 @@ enum class RouteManager(val routeName: String, val valueCanNull: String = "?", v
     SettingPage(routeName = "SettingPage"),
     /** 訊息頁 */
     EmailPage(routeName = "EmailPage"),
-    /** 頁*/
-    StoreListPage(routeName = "StoreListPage");
+    /** 商品列表頁*/
+    StoreListPage(routeName = "StoreListPage"),
+    /** 商品細節頁*/
+    ProductDetailPage(routeName = "ProductDetailPage", valueCanNull = "/", "productDetailData"),
+    ;
 
     fun getRoute(): String {
         //HomeContainer/{passValue}

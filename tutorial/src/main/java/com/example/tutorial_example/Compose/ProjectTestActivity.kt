@@ -81,6 +81,7 @@ class ProjectTestActivity : ComponentActivity() {
             loginGraph(navController = navController, context)
             homeGraph(navController = navController, context = context)
             storeListGraph(navController = navController, context = context)
+            productDetailGraph(navController = navController, context = context)
         }
     }
 
@@ -226,8 +227,8 @@ class ProjectTestActivity : ComponentActivity() {
         }
 
 //        for test
-//        val data = LoginUiState.LoginResponseData(title = "API RS測試標題", userName = "Alan", somethingFlag = 1, allowNav = true)
-//        navController.navigate(route = HomeContainer.setSender(enCodeUri(data).toString())) //導航至home頁
+        val data = LoginUiState.LoginResponseData(title = "API RS測試標題", userName = "Alan", somethingFlag = 1, allowNav = true)
+        navController.navigate(route = HomeContainer.setSender(enCodeUri(data).toString())) //導航至home頁
     }
 }
 

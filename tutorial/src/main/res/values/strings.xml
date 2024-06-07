@@ -15,4 +15,6 @@
     <string name="compose_setting_title">設定</string>
     <string name="compose_msg_title">訊息</string>
     <string name="compose_toast_finish_app">再次滑動以退出</string>
+    <string name="compose_product_name">%s</string>
+    <string name="compose_product_price">＄%s</string>
 </resources>
